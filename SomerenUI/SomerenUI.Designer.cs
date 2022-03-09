@@ -45,13 +45,9 @@
             this.listViewStudents = new System.Windows.Forms.ListView();
             this.studentID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.studentFirstName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.studentAge = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.studentLastName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lbl_Students = new System.Windows.Forms.Label();
-            this.studentLastName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.studentFemale = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.studentInternational = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.studentRoomNumber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlDashboard.SuspendLayout();
@@ -178,12 +174,8 @@
             this.listViewStudents.BackColor = System.Drawing.SystemColors.HighlightText;
             this.listViewStudents.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.studentID,
-            this.studentFemale,
             this.studentFirstName,
-            this.studentLastName,
-            this.studentAge,
-            this.studentInternational,
-            this.studentRoomNumber});
+            this.studentLastName});
             this.listViewStudents.ForeColor = System.Drawing.SystemColors.WindowText;
             this.listViewStudents.FullRowSelect = true;
             this.listViewStudents.GridLines = true;
@@ -206,9 +198,10 @@
             this.studentFirstName.Text = "First name";
             this.studentFirstName.Width = 200;
             // 
-            // studentAge
+            // studentLastName
             // 
-            this.studentAge.Text = "Age";
+            this.studentLastName.Text = "Last name";
+            this.studentLastName.Width = 220;
             // 
             // pictureBox1
             // 
@@ -231,25 +224,6 @@
             this.lbl_Students.Size = new System.Drawing.Size(129, 33);
             this.lbl_Students.TabIndex = 3;
             this.lbl_Students.Text = "Students";
-            // 
-            // studentLastName
-            // 
-            this.studentLastName.Text = "Last name";
-            this.studentLastName.Width = 220;
-            // 
-            // studentFemale
-            // 
-            this.studentFemale.Text = "Female";
-            this.studentFemale.Width = 80;
-            // 
-            // studentInternational
-            // 
-            this.studentInternational.Text = "International";
-            this.studentInternational.Width = 80;
-            // 
-            // studentRoomNumber
-            // 
-            this.studentRoomNumber.Text = "Room number";
             // 
             // SomerenUI
             // 
@@ -299,11 +273,7 @@
         private System.Windows.Forms.ListView listViewStudents;
         private System.Windows.Forms.ColumnHeader studentID;
         private System.Windows.Forms.ColumnHeader studentFirstName;
-        private System.Windows.Forms.ColumnHeader studentAge;
-        private System.Windows.Forms.ColumnHeader studentFemale;
         private System.Windows.Forms.ColumnHeader studentLastName;
-        private System.Windows.Forms.ColumnHeader studentInternational;
-        private System.Windows.Forms.ColumnHeader studentRoomNumber;
     }
 }
 

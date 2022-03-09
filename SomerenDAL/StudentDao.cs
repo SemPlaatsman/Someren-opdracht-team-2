@@ -28,12 +28,12 @@ namespace SomerenDAL
                 Student student = new Student()
                 {
                     Id = (int)dr["studentID"],
-                    Female = Convert.ToBoolean(dr["studentFemale"]),
+                    //Female = Convert.ToBoolean(dr["studentFemale"]),
                     FirstName = (string)dr["studentFirstName"],
-                    LastName = (string)dr["studentLastName"],
-                    Age = (int)dr["studentAge"],
-                    InternationalGroup = Convert.ToBoolean(dr["studentInternational"]),
-                    RoomNumber = (int)dr["roomNumber"]
+                    LastName = (string)dr["studentLastName"]
+                    //Age = (int)dr["studentAge"],
+                    //InternationalGroup = Convert.ToBoolean(dr["studentInternational"]),
+                    //RoomNumber = (int)dr["roomNumber"]
                 };
                 students.Add(student);
             }

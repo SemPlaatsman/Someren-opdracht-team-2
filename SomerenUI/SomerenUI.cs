@@ -57,12 +57,8 @@ namespace SomerenUI
                     foreach (Student s in studentList)
                     {
                         ListViewItem li = new ListViewItem(Convert.ToString(s.Id));
-                        li.SubItems.Add(Convert.ToString(s.Female));
                         li.SubItems.Add(s.FirstName);
                         li.SubItems.Add(s.LastName);
-                        li.SubItems.Add(Convert.ToString(s.Age));
-                        li.SubItems.Add(Convert.ToString(s.InternationalGroup));
-                        li.SubItems.Add(Convert.ToString(s.RoomNumber));
                         listViewStudents.Items.Add(li);
                     }
                     listViewStudents.View = View.Details;
