@@ -27,8 +27,7 @@ namespace SomerenDAL
             }
             catch (Exception e)
             {
-                //Print.ErrorLog(e);
-                throw;
+                ErrorLogger.WriteLogToFile(e.Message);
             }
             return conn;
         }
@@ -50,8 +49,7 @@ namespace SomerenDAL
             }
             catch (Exception e)
             {
-                //Print.ErrorLog(e);
-                throw;
+                ErrorLogger.WriteLogToFile(e.Message);
             }
         }
 
@@ -70,8 +68,7 @@ namespace SomerenDAL
             }
             catch (SqlException e)
             {
-                // Print.ErrorLog(e);
-                throw;
+                ErrorLogger.WriteLogToFile(e.Message);
             }
             finally
             {
@@ -98,9 +95,8 @@ namespace SomerenDAL
             }
             catch (SqlException e)
             {
-                // Print.ErrorLog(e);
+                ErrorLogger.WriteLogToFile(e.Message);
                 return null;
-                throw;
             }
             finally
             {
