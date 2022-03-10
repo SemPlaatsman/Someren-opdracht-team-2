@@ -12,11 +12,8 @@ namespace SomerenDAL
 
         public BaseDao()
         {
-            // DO NOT FORGET TO INSERT YOUR CONNECTION STRING NAMED 'SOMEREN DATABASE' IN YOUR APP.CONFIG!!
-            /*
-                conn = new SqlConnection(ConfigurationManager.ConnectionStrings["SomerenDatabase"].ConnectionString);
-                adapter = new SqlDataAdapter();
-             */
+            conn = new SqlConnection(ConfigurationManager.ConnectionStrings["SomerenDatabase"].ConnectionString);
+            adapter = new SqlDataAdapter();
         }
 
         protected SqlConnection OpenConnection()
@@ -30,8 +27,7 @@ namespace SomerenDAL
             }
             catch (Exception e)
             {
-                //Print.ErrorLog(e);
-                throw;
+                ErrorLogger.WriteLogToFile(e.Message);
             }
             return conn;
         }
@@ -53,8 +49,7 @@ namespace SomerenDAL
             }
             catch (Exception e)
             {
-                //Print.ErrorLog(e);
-                throw;
+                ErrorLogger.WriteLogToFile(e.Message);
             }
         }
 
@@ -73,8 +68,7 @@ namespace SomerenDAL
             }
             catch (SqlException e)
             {
-                // Print.ErrorLog(e);
-                throw;
+                ErrorLogger.WriteLogToFile(e.Message);
             }
             finally
             {
@@ -101,9 +95,8 @@ namespace SomerenDAL
             }
             catch (SqlException e)
             {
-                // Print.ErrorLog(e);
+                ErrorLogger.WriteLogToFile(e.Message);
                 return null;
-                throw;
             }
             finally
             {
