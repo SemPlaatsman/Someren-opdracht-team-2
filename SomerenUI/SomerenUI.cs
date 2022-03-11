@@ -24,6 +24,7 @@ namespace SomerenUI
             showPanel("Dashboard");
         }
 
+        //method that shows all panels
         private void showPanel(string panelName)
         {
 
@@ -60,7 +61,7 @@ namespace SomerenUI
            
         }
 
-
+        //hides all pannels
         private void hideAll()
         {
             foreach (Control c in this.Controls)
@@ -173,6 +174,7 @@ namespace SomerenUI
             showPanel("Students");
         }
 
+        //shows  teacher when the lecturer strip button is pressed
         private void lecturersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPanel("Teacher");
