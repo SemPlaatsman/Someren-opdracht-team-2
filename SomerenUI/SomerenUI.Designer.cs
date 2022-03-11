@@ -56,13 +56,13 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.labelRooms = new System.Windows.Forms.Label();
             this.lecturers_panel = new System.Windows.Forms.Panel();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.teatcherListView = new System.Windows.Forms.ListView();
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlDashboard.SuspendLayout();
@@ -307,7 +307,7 @@
             // 
             // lecturers_panel
             // 
-            this.lecturers_panel.Controls.Add(this.listView1);
+            this.lecturers_panel.Controls.Add(this.teatcherListView);
             this.lecturers_panel.Controls.Add(this.pictureBox3);
             this.lecturers_panel.Controls.Add(this.label1);
             this.lecturers_panel.ForeColor = System.Drawing.SystemColors.MenuText;
@@ -316,25 +316,25 @@
             this.lecturers_panel.Size = new System.Drawing.Size(938, 466);
             this.lecturers_panel.TabIndex = 7;
             // 
-            // listView1
+            // teatcherListView
             // 
-            this.listView1.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.teatcherListView.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.teatcherListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader4,
             this.columnHeader5,
             this.columnHeader6,
             this.columnHeader7});
-            this.listView1.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.listView1.FullRowSelect = true;
-            this.listView1.GridLines = true;
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(16, 42);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(766, 307);
-            this.listView1.TabIndex = 5;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
-            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            this.teatcherListView.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.teatcherListView.FullRowSelect = true;
+            this.teatcherListView.GridLines = true;
+            this.teatcherListView.HideSelection = false;
+            this.teatcherListView.Location = new System.Drawing.Point(16, 42);
+            this.teatcherListView.Name = "teatcherListView";
+            this.teatcherListView.Size = new System.Drawing.Size(766, 307);
+            this.teatcherListView.TabIndex = 5;
+            this.teatcherListView.UseCompatibleStateImageBehavior = false;
+            this.teatcherListView.View = System.Windows.Forms.View.Details;
+            this.teatcherListView.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
             // columnHeader4
             // 
@@ -350,6 +350,11 @@
             // 
             this.columnHeader6.Text = "Last Name";
             this.columnHeader6.Width = 200;
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "SuperViser";
+            this.columnHeader7.Width = 173;
             // 
             // pictureBox3
             // 
@@ -371,11 +376,6 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Lecturers";
             this.label1.Click += new System.EventHandler(this.label1_Click_2);
-            // 
-            // columnHeader7
-            // 
-            this.columnHeader7.Text = "SuperViser";
-            this.columnHeader7.Width = 173;
             // 
             // SomerenUI
             // 
@@ -441,7 +441,7 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label labelRooms;
         private System.Windows.Forms.Panel lecturers_panel;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView teatcherListView;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader6;

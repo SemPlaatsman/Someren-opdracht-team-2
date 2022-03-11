@@ -48,6 +48,7 @@ namespace SomerenUI
                 break;
                 case "Teacher":
                     hideAll();
+                    AddTeachersToList();
                     lecturers_panel.Show();
                 break;
                 default:
@@ -65,6 +66,32 @@ namespace SomerenUI
             foreach (Control c in this.Controls)
             {
                 if (c is Panel) c.Visible = false;
+            }
+        }
+
+        private void AddTeachersToList()
+        {
+            try
+            {
+                // fill the students listview within the students panel with a list of students
+                TeacherService teacherService = new TeacherService();
+                List<Teacher> TeacherList = teacherService.GetStudents();
+
+                // clear the listview before filling it again
+                teatcherListView.Items.Clear();
+
+                foreach (Teacher t in TeacherList)
+                {
+                    ListViewItem li = new ListViewItem(Convert.ToString(t.Number));
+                    li.SubItems.Add(t.FirstName);
+                    li.SubItems.Add(t.LastName);
+                    teatcherListView.Items.Add(li);
+                }
+                teatcherListView.View = View.Details;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong while loading the students: " + e.Message);
             }
         }
 

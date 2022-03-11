@@ -27,9 +27,9 @@ namespace SomerenDAL
             {
                 Teacher student = new Teacher()
                 {
-                    Number = (int)dr["studentID"],
-                    FirstName = (string)dr["studentFirstName"],
-                    LastName = (string)dr["studentLastName"]
+                    Number = (int)dr["teacherId"],
+                    FirstName = (string)dr["teacherFirstName"],
+                    LastName = (string)dr["teacherLastName"]
 
 
                 };
