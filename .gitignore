@@ -400,3 +400,4 @@ FodyWeavers.xsd
 *.cache
 *.cache
 *.cache
+SomerenDAL/obj/Debug/SomerenDAL.csproj.AssemblyReference.cache
