@@ -27,80 +27,122 @@ namespace SomerenUI
         private void showPanel(string panelName)
         {
 
-            if (panelName == "Dashboard")
-            {
-                // hide all other panels
-                pnlStudents.Hide();
-                pnlRooms.Hide();
+            switch(panelName){
+                case "Dashboard":
+                    hideAll();
 
-                // show dashboard
-                pnlDashboard.Show();
-                imgDashboard.Show();
+                    pnlDashboard.Show();
+                    imgDashboard.Show();
+                break;
+
+                case "Students":
+                    hideAll();
+                    AddStudentsTolist();
+                    pnlStudents.Show();
+                break;
+
+                case "Rooms":
+                    hideAll();
+                    AddRoomsToList();
+                    pnlRooms.Show();
+                break;
+                case "Teacher":
+                    hideAll();
+                    AddTeachersToList();
+                    lecturers_panel.Show();
+                break;
+                default:
+                    hideAll();
+                break;
             }
-            else if (panelName == "Students")
+
+
+           
+        }
+
+
+        private void hideAll()
+        {
+            foreach (Control c in this.Controls)
             {
-                // hide all other panels
-                pnlDashboard.Hide();
-                imgDashboard.Hide();
-                pnlRooms.Hide();
-
-                // show students
-                pnlStudents.Show();
-
-                try
-                {
-                    // fill the students listview within the students panel with a list of students
-                    StudentService studService = new StudentService(); ;
-                    List<Student> studentList = studService.GetStudents(); ;
-
-                    // clear the listview before filling it again
-                    listViewStudents.Items.Clear();
-
-                    foreach (Student s in studentList)
-                    {
-                        ListViewItem li = new ListViewItem(Convert.ToString(s.Id));
-                        li.SubItems.Add(s.FirstName);
-                        li.SubItems.Add(s.LastName);
-                        listViewStudents.Items.Add(li);
-                    }
-                    listViewStudents.View = View.Details;
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show("Something went wrong while loading the students: " + e.Message);
-                }
-            }
-            else if (panelName == "Rooms")
-            {
-                pnlDashboard.Hide();
-                imgDashboard.Hide();
-                pnlStudents.Hide();
-
-                pnlRooms.Show();
-
-                try
-                {
-                    RoomService roomService = new RoomService();
-                    List<Room> roomList = roomService.GetRooms();
-
-                    listViewRooms.Items.Clear();
-
-                    foreach (Room r in roomList)
-                    {
-                        ListViewItem li = new ListViewItem(r.Type);
-                        li.SubItems.Add(Convert.ToString(r.Capacity));
-                        li.SubItems.Add(Convert.ToString(r.Number));
-                        listViewRooms.Items.Add(li);
-                    }
-                    listViewRooms.View = View.Details;
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show("Something went wrong while loading the rooms: " + e.Message);
-                }
+                if (c is Panel) c.Visible = false;
             }
         }
 
+        private void AddTeachersToList()
+        {
+            try
+            {
+                // fill the students listview within the students panel with a list of students
+                TeacherService teacherService = new TeacherService();
+                List<Teacher> TeacherList = teacherService.GetStudents();
+
+                // clear the listview before filling it again
+                teatcherListView.Items.Clear();
+
+                foreach (Teacher t in TeacherList)
+                {
+                    ListViewItem li = new ListViewItem(Convert.ToString(t.Number));
+                    li.SubItems.Add(t.FirstName);
+                    li.SubItems.Add(t.LastName);
+                    teatcherListView.Items.Add(li);
+                }
+                teatcherListView.View = View.Details;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong while loading the students: " + e.Message);
+            }
+        }
+
+        private void AddStudentsTolist()
+        {
+            try
+            {
+                // fill the students listview within the students panel with a list of students
+                StudentService studService = new StudentService(); 
+                List<Student> studentList = studService.GetStudents(); 
+
+                // clear the listview before filling it again
+                listViewStudents.Items.Clear();
+
+                foreach (Student s in studentList)
+                {
+                    ListViewItem li = new ListViewItem(Convert.ToString(s.Id));
+                    li.SubItems.Add(s.FirstName);
+                    li.SubItems.Add(s.LastName);
+                    listViewStudents.Items.Add(li);
+                }
+                listViewStudents.View = View.Details;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong while loading the students: " + e.Message);
+            }
+        }
+        private void AddRoomsToList()
+        {
+            try
+            {
+                RoomService roomService = new RoomService();
+                List<Room> roomList = roomService.GetRooms();
+
+                listViewRooms.Items.Clear();
+
+                foreach (Room r in roomList)
+                {
+                    ListViewItem li = new ListViewItem(r.Type);
+                    li.SubItems.Add(Convert.ToString(r.Capacity));
+                    li.SubItems.Add(Convert.ToString(r.Number));
+                    listViewRooms.Items.Add(li);
+                }
+                listViewRooms.View = View.Details;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong while loading the rooms: " + e.Message);
+            }
+        }
         private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //
@@ -133,7 +175,7 @@ namespace SomerenUI
 
         private void lecturersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            showPanel("Teacher");
         }
 
         private void listViewStudents_SelectedIndexChanged(object sender, EventArgs e)
@@ -147,6 +189,21 @@ namespace SomerenUI
         }
 
         private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click_2(object sender, EventArgs e)
+        {
+
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

@@ -10,3 +10,9 @@ C:\Users\Joshua\Desktop\INF1C - Projectdossier (Groep 2) Floortje, Sem, Emanuel\
 C:\Users\Joshua\Desktop\INF1C - Projectdossier (Groep 2) Floortje, Sem, Emanuel\Project Someren (Project Databases)\Assignments\Assignment 2\Someren-opdracht-team-2\SomerenModel\obj\Debug\SomerenModel.csproj.CoreCompileInputs.cache
 C:\Users\Joshua\Desktop\INF1C - Projectdossier (Groep 2) Floortje, Sem, Emanuel\Project Someren (Project Databases)\Assignments\Assignment 2\Someren-opdracht-team-2\SomerenModel\obj\Debug\SomerenModel.dll
 C:\Users\Joshua\Desktop\INF1C - Projectdossier (Groep 2) Floortje, Sem, Emanuel\Project Someren (Project Databases)\Assignments\Assignment 2\Someren-opdracht-team-2\SomerenModel\obj\Debug\SomerenModel.pdb
+G:\Other computers\pc ssd\inholland\periode 3\project databases\opdracht\Someren-opdracht-team-2\SomerenModel\bin\Debug\SomerenModel.dll
+G:\Other computers\pc ssd\inholland\periode 3\project databases\opdracht\Someren-opdracht-team-2\SomerenModel\bin\Debug\SomerenModel.pdb
+G:\Other computers\pc ssd\inholland\periode 3\project databases\opdracht\Someren-opdracht-team-2\SomerenModel\obj\Debug\SomerenModel.csproj.AssemblyReference.cache
+G:\Other computers\pc ssd\inholland\periode 3\project databases\opdracht\Someren-opdracht-team-2\SomerenModel\obj\Debug\SomerenModel.csproj.CoreCompileInputs.cache
+G:\Other computers\pc ssd\inholland\periode 3\project databases\opdracht\Someren-opdracht-team-2\SomerenModel\obj\Debug\SomerenModel.dll
+G:\Other computers\pc ssd\inholland\periode 3\project databases\opdracht\Someren-opdracht-team-2\SomerenModel\obj\Debug\SomerenModel.pdb

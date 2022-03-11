@@ -15,3 +15,12 @@ C:\Users\Joshua\Desktop\INF1C - Projectdossier (Groep 2) Floortje, Sem, Emanuel\
 C:\Users\Joshua\Desktop\INF1C - Projectdossier (Groep 2) Floortje, Sem, Emanuel\Project Someren (Project Databases)\Assignments\Assignment 2\Someren-opdracht-team-2\SomerenDAL\obj\Debug\SomerenDAL.csproj.CopyComplete
 C:\Users\Joshua\Desktop\INF1C - Projectdossier (Groep 2) Floortje, Sem, Emanuel\Project Someren (Project Databases)\Assignments\Assignment 2\Someren-opdracht-team-2\SomerenDAL\obj\Debug\SomerenDAL.dll
 C:\Users\Joshua\Desktop\INF1C - Projectdossier (Groep 2) Floortje, Sem, Emanuel\Project Someren (Project Databases)\Assignments\Assignment 2\Someren-opdracht-team-2\SomerenDAL\obj\Debug\SomerenDAL.pdb
+G:\Other computers\pc ssd\inholland\periode 3\project databases\opdracht\Someren-opdracht-team-2\SomerenDAL\bin\Debug\SomerenDAL.dll
+G:\Other computers\pc ssd\inholland\periode 3\project databases\opdracht\Someren-opdracht-team-2\SomerenDAL\bin\Debug\SomerenDAL.pdb
+G:\Other computers\pc ssd\inholland\periode 3\project databases\opdracht\Someren-opdracht-team-2\SomerenDAL\bin\Debug\SomerenModel.dll
+G:\Other computers\pc ssd\inholland\periode 3\project databases\opdracht\Someren-opdracht-team-2\SomerenDAL\bin\Debug\SomerenModel.pdb
+G:\Other computers\pc ssd\inholland\periode 3\project databases\opdracht\Someren-opdracht-team-2\SomerenDAL\obj\Debug\SomerenDAL.csproj.AssemblyReference.cache
+G:\Other computers\pc ssd\inholland\periode 3\project databases\opdracht\Someren-opdracht-team-2\SomerenDAL\obj\Debug\SomerenDAL.csproj.CoreCompileInputs.cache
+G:\Other computers\pc ssd\inholland\periode 3\project databases\opdracht\Someren-opdracht-team-2\SomerenDAL\obj\Debug\SomerenDAL.csproj.CopyComplete
+G:\Other computers\pc ssd\inholland\periode 3\project databases\opdracht\Someren-opdracht-team-2\SomerenDAL\obj\Debug\SomerenDAL.dll
+G:\Other computers\pc ssd\inholland\periode 3\project databases\opdracht\Someren-opdracht-team-2\SomerenDAL\obj\Debug\SomerenDAL.pdb
