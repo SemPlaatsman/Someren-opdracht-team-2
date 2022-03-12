@@ -117,6 +117,20 @@ namespace SomerenUI
             return false;
         }
 
+        //get a Drink object from the textboxes
+        private Drink GetDrinkFromTxtBoxes()
+        {
+            Drink drink = new Drink()
+            {
+                Name = txtName.Text,
+                Stock = int.Parse(txtStock.Text),
+                SalesPrice = decimal.Parse(txtSalesPrice.Text),
+                Alcoholic = Convert.ToBoolean(txtAlcoholic.Text),
+                NrOfSales = int.Parse(txtNrOfSales.Text)
+            };
+            return drink;
+        }
+
         //if an item in the Drinks ListView is selected fill the textboxes with the values that belong to the selected Drink
         private void listViewDrinks_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -153,16 +167,19 @@ namespace SomerenUI
                 listViewDrinks.Items.Clear();
                 listViewDrinks.SmallImageList = GetDrinkIcons();
 
+                //foreach drink in the list of drinks make one row in the Drinks ListView
                 foreach (Drink d in drinksList)
                 {
                     ListViewItem li = new ListViewItem();
                     li.SubItems.Add(d.Name);
                     li.SubItems.Add(Convert.ToString(d.SalesPrice));
                     li.SubItems.Add(Convert.ToString(d.Stock));
+                    //display the 'Stock nearly depleted' icon when the stock is below 10
                     if (d.Stock < 10)
                     {
                         li.ImageIndex = 0;
                     }
+                    //display the 'Stock sufficient' icon when the stock is sufficient (above or equal to 10)
                     else
                     {
                         li.ImageIndex = 1;
@@ -302,49 +319,104 @@ namespace SomerenUI
 
         }
 
+        //show the drink panel when the drinks toolstrip menu item is clicked
         private void drinksToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPanel("Drinks");
         }
 
-        private void btnAddUpdate_Click_1(object sender, EventArgs e)
+        //button to clear all textboxes in the Drinks panel
+        private void btnClearDrinksTxtBoxes_Click(object sender, EventArgs e)
+        {
+            ClearDrinksTxtBoxes();
+        }
+
+        //add button for Drinks
+        private void btnAdd_Click(object sender, EventArgs e)
         {
             try
             {
+                //make a new DrinkService object
                 DrinkService drinkService = new DrinkService();
+                //if a textbox of Drinks isn't filled say that all textboxes must be filled
                 if (DrinksBoxesFilled())
                 {
                     MessageBox.Show("Please fill all textboxes!");
                     return;
                 }
-                Drink drink = new Drink()
-                {
-                    Name = txtName.Text,
-                    Stock = int.Parse(txtStock.Text),
-                    SalesPrice = decimal.Parse(txtSalesPrice.Text),
-                    Alcoholic = Convert.ToBoolean(txtAlcoholic.Text),
-                    NrOfSales = int.Parse(txtNrOfSales.Text)
-                };
-                if (listViewDrinks.SelectedItems.Count == 0)
-                {
-                    drinkService.AddDrink(drink);
-                }
-                else
-                {
-                    drinkService.UpdateDrink((Drink)listViewDrinks.SelectedItems[0].Tag, drink);
-                }
+                //make a new Drink object with all values from the textboxes
+                Drink drink = GetDrinkFromTxtBoxes();
+                //add a drink to the Drinks database
+                drinkService.AddDrink(drink);
+                //reload the Drinks in the ListView
                 AddDrinksToList();
+                //Clear all textboxes in the Drinks panel
                 ClearDrinksTxtBoxes();
             }
             catch (Exception exception)
             {
-                MessageBox.Show("Something went wrong while adding/updating the drinks: " + exception.Message);
+                MessageBox.Show("Something went wrong while adding a drink: " + exception.Message);
             }
         }
 
-        private void btnClearDrinksTxtBoxes_Click(object sender, EventArgs e)
+        //update button for Drinks
+        private void btnUpdate_Click(object sender, EventArgs e)
         {
-            ClearDrinksTxtBoxes();
+            try
+            {
+                //make a new DrinkService object
+                DrinkService drinkService = new DrinkService();
+                //if a row wasn't selected say that a row must be selected
+                if (listViewDrinks.SelectedItems.Count == 0)
+                {
+                    MessageBox.Show("Please select a row before updating one");
+                    return;
+                }
+                //if a textbox of Drinks isn't filled say that all textboxes must be filled
+                if (DrinksBoxesFilled())
+                {
+                    MessageBox.Show("Please fill all textboxes!");
+                    return;
+                }
+                //make a new Drink object with all values from the textboxes
+                Drink drink = GetDrinkFromTxtBoxes();
+                //update the selected drink in the Drinks database
+                drinkService.UpdateDrink((Drink)listViewDrinks.SelectedItems[0].Tag, drink);
+                //reload the Drinks in the ListView
+                AddDrinksToList();
+                //Clear all textboxes in the Drinks panel
+                ClearDrinksTxtBoxes();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Something went wrong while updating a drink: " + exception.Message);
+            }
+        }
+
+        //delete button for Drinks
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //make a new DrinkService object
+                DrinkService drinkService = new DrinkService();
+                //if a row wasn't selected say that a row must be selected
+                if (listViewDrinks.SelectedItems.Count == 0)
+                {
+                    MessageBox.Show("Please select a row before deleting one");
+                    return;
+                }
+                //update the selected drink in the Drinks database
+                drinkService.DeleteDrink((Drink)listViewDrinks.SelectedItems[0].Tag);
+                //reload the Drinks in the ListView
+                AddDrinksToList();
+                //Clear all textboxes in the Drinks panel
+                ClearDrinksTxtBoxes();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Something went wrong while deleting a drink: " + exception.Message);
+            }
         }
     }
 }

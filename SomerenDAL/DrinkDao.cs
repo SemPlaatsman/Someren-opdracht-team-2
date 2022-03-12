@@ -51,6 +51,17 @@ namespace SomerenDAL
             ExecuteEditQuery(query, sqlParameters);
         }
 
+        //query to delete a selected query
+        public void Delete(Drink drink)
+        {
+            string query = "DELETE FROM Drinks WHERE Id=@Id";
+            SqlParameter[] sqlParameters = new SqlParameter[1]
+            {
+                new SqlParameter("@Id", drink.Id)
+            };
+            ExecuteEditQuery(query, sqlParameters);
+        }
+
         //method to read the data from the query that the sql database returns
         private List<Drink> ReadTables(DataTable dataTable)
         {

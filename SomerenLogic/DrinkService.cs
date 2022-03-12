@@ -38,5 +38,11 @@ namespace SomerenLogic
         {
             drinkdb.Update(oldDrink, newDrink);
         }
+
+        //command to delete a drink with the drinkdb
+        public void DeleteDrink(Drink drink)
+        {
+            drinkdb.Delete(drink);
+        }
     }
 }

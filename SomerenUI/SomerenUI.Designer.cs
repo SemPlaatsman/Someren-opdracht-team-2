@@ -71,7 +71,6 @@
             this.drinksSalesPrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.drinksStock = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label2 = new System.Windows.Forms.Label();
-            this.btnAddUpdate = new System.Windows.Forms.Button();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -84,6 +83,9 @@
             this.txtAlcoholic = new System.Windows.Forms.TextBox();
             this.txtNrOfSales = new System.Windows.Forms.TextBox();
             this.btnClearDrinksTxtBoxes = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlDashboard.SuspendLayout();
@@ -422,6 +424,9 @@
             // 
             // pnlDrinks
             // 
+            this.pnlDrinks.Controls.Add(this.btnAdd);
+            this.pnlDrinks.Controls.Add(this.btnUpdate);
+            this.pnlDrinks.Controls.Add(this.btnDelete);
             this.pnlDrinks.Controls.Add(this.btnClearDrinksTxtBoxes);
             this.pnlDrinks.Controls.Add(this.txtNrOfSales);
             this.pnlDrinks.Controls.Add(this.txtAlcoholic);
@@ -433,7 +438,6 @@
             this.pnlDrinks.Controls.Add(this.label5);
             this.pnlDrinks.Controls.Add(this.label3);
             this.pnlDrinks.Controls.Add(this.txtName);
-            this.pnlDrinks.Controls.Add(this.btnAddUpdate);
             this.pnlDrinks.Controls.Add(this.pictureBox4);
             this.pnlDrinks.Controls.Add(this.listViewDrinks);
             this.pnlDrinks.Controls.Add(this.label2);
@@ -490,16 +494,6 @@
             this.label2.Size = new System.Drawing.Size(99, 33);
             this.label2.TabIndex = 0;
             this.label2.Text = "Drinks";
-            // 
-            // btnAddUpdate
-            // 
-            this.btnAddUpdate.Location = new System.Drawing.Point(328, 523);
-            this.btnAddUpdate.Name = "btnAddUpdate";
-            this.btnAddUpdate.Size = new System.Drawing.Size(170, 32);
-            this.btnAddUpdate.TabIndex = 13;
-            this.btnAddUpdate.Text = "Add/Update";
-            this.btnAddUpdate.UseVisualStyleBackColor = true;
-            this.btnAddUpdate.Click += new System.EventHandler(this.btnAddUpdate_Click_1);
             // 
             // pictureBox4
             // 
@@ -582,25 +576,55 @@
             // 
             this.txtAlcoholic.Location = new System.Drawing.Point(496, 452);
             this.txtAlcoholic.Name = "txtAlcoholic";
-            this.txtAlcoholic.Size = new System.Drawing.Size(181, 22);
+            this.txtAlcoholic.Size = new System.Drawing.Size(178, 22);
             this.txtAlcoholic.TabIndex = 11;
             // 
             // txtNrOfSales
             // 
             this.txtNrOfSales.Location = new System.Drawing.Point(496, 490);
             this.txtNrOfSales.Name = "txtNrOfSales";
-            this.txtNrOfSales.Size = new System.Drawing.Size(181, 22);
+            this.txtNrOfSales.Size = new System.Drawing.Size(178, 22);
             this.txtNrOfSales.TabIndex = 12;
             // 
             // btnClearDrinksTxtBoxes
             // 
-            this.btnClearDrinksTxtBoxes.Location = new System.Drawing.Point(507, 523);
+            this.btnClearDrinksTxtBoxes.Location = new System.Drawing.Point(592, 523);
             this.btnClearDrinksTxtBoxes.Name = "btnClearDrinksTxtBoxes";
-            this.btnClearDrinksTxtBoxes.Size = new System.Drawing.Size(170, 32);
-            this.btnClearDrinksTxtBoxes.TabIndex = 14;
+            this.btnClearDrinksTxtBoxes.Size = new System.Drawing.Size(82, 32);
+            this.btnClearDrinksTxtBoxes.TabIndex = 16;
             this.btnClearDrinksTxtBoxes.Text = "Clear textboxes";
             this.btnClearDrinksTxtBoxes.UseVisualStyleBackColor = true;
             this.btnClearDrinksTxtBoxes.Click += new System.EventHandler(this.btnClearDrinksTxtBoxes_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(504, 523);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(82, 32);
+            this.btnDelete.TabIndex = 15;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(416, 523);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(82, 32);
+            this.btnUpdate.TabIndex = 14;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(328, 523);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(82, 32);
+            this.btnAdd.TabIndex = 13;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // SomerenUI
             // 
@@ -686,7 +710,6 @@
         private System.Windows.Forms.ColumnHeader drinksSalesPrice;
         private System.Windows.Forms.ColumnHeader drinksStock;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnAddUpdate;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
@@ -699,6 +722,9 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnClearDrinksTxtBoxes;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnDelete;
     }
 }
 
