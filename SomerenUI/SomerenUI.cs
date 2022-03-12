@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace SomerenUI
 {
@@ -24,7 +25,7 @@ namespace SomerenUI
             showPanel("Dashboard");
         }
 
-        //method that shows all panels
+        //method that shows a specific panel
         private void showPanel(string panelName)
         {
 
@@ -34,31 +35,36 @@ namespace SomerenUI
 
                     pnlDashboard.Show();
                     imgDashboard.Show();
-                break;
+                    break;
 
                 case "Students":
                     hideAll();
                     AddStudentsTolist();
                     pnlStudents.Show();
-                break;
+                    break;
 
                 case "Rooms":
                     hideAll();
                     AddRoomsToList();
                     pnlRooms.Show();
-                break;
+                    break;
+
                 case "Teacher":
                     hideAll();
                     AddTeachersToList();
                     lecturers_panel.Show();
-                break;
+                    break;
+
+                case "Drinks":
+                    hideAll();
+                    AddDrinksToList();
+                    pnlDrinks.Show();
+                    break;
+
                 default:
                     hideAll();
-                break;
+                    break;
             }
-
-
-           
         }
 
         //hides all pannels
@@ -70,13 +76,115 @@ namespace SomerenUI
             }
         }
 
+        //method that returns a list of icons from the img filepath
+        private ImageList GetDrinkIcons()
+        {
+            ImageList imgs = new ImageList();
+            imgs.ImageSize = new Size(90, 40);
+            string[] filePaths = Directory.GetFiles("../../../img");
+
+            foreach (string filePath in filePaths)
+            {
+                imgs.Images.Add(Image.FromFile(filePath));
+            }
+
+            return imgs;
+        }
+
+        //clear all textboxes in the drinkspanel
+        private void ClearDrinksTxtBoxes()
+        {
+            txtName.Clear();
+            txtSalesPrice.Clear();
+            txtStock.Clear();
+            txtAlcoholic.Clear();
+            txtNrOfSales.Clear();
+        }
+
+        //check if the all textboxes in the drinks panel are filled
+        private bool DrinksBoxesFilled()
+        {
+            foreach (Control control in pnlDrinks.Controls)
+            {
+                if (control is TextBox)
+                {
+                    if (String.IsNullOrWhiteSpace(control.Text) || String.IsNullOrEmpty(control.Text))
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        //if an item in the Drinks ListView is selected fill the textboxes with the values that belong to the selected Drink
+        private void listViewDrinks_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                //this is to prevent the code running into exceptions when selecting an item for the second time because when you select an item for the second time
+                //c# will first deselect the previous row so there will be a call without a selected item creating an invald argument exception
+                if (listViewDrinks.SelectedItems.Count == 0)
+                    return;
+                //get the selected Drink
+                Drink lsDrink = (Drink)listViewDrinks.SelectedItems[0].Tag;
+                //put the selected Drink values into the textboxes
+                txtName.Text = lsDrink.Name;
+                txtSalesPrice.Text = Convert.ToString(lsDrink.SalesPrice);
+                txtStock.Text = Convert.ToString(lsDrink.Stock);
+                txtAlcoholic.Text = Convert.ToString(lsDrink.Alcoholic);
+                txtNrOfSales.Text = Convert.ToString(lsDrink.NrOfSales);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Something went wrong while selecting a drink: " + ex.Message);
+            }
+        }
+
+        private void AddDrinksToList()
+        {
+            try
+            {
+                // fill the students listview within the students panel with a list of students
+                DrinkService drinkService = new DrinkService();
+                List<Drink> drinksList = drinkService.GetDrinks();
+
+                // clear the listview before filling it again
+                listViewDrinks.Items.Clear();
+                listViewDrinks.SmallImageList = GetDrinkIcons();
+
+                foreach (Drink d in drinksList)
+                {
+                    ListViewItem li = new ListViewItem();
+                    li.SubItems.Add(d.Name);
+                    li.SubItems.Add(Convert.ToString(d.SalesPrice));
+                    li.SubItems.Add(Convert.ToString(d.Stock));
+                    if (d.Stock < 10)
+                    {
+                        li.ImageIndex = 0;
+                    }
+                    else
+                    {
+                        li.ImageIndex = 1;
+                    }
+                    li.Tag = d;
+                    listViewDrinks.Items.Add(li);
+                }
+                listViewDrinks.View = View.Details;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong while loading the drinks: " + e.Message);
+            }
+        }
+
         private void AddTeachersToList()
         {
             try
             {
                 // fill the students listview within the students panel with a list of students
                 TeacherService teacherService = new TeacherService();
-                List<Teacher> TeacherList = teacherService.GetStudents();
+                List<Teacher> TeacherList = teacherService.GetTeachers();
 
                 // clear the listview before filling it again
                 teatcherListView.Items.Clear();
@@ -92,10 +200,9 @@ namespace SomerenUI
             }
             catch (Exception e)
             {
-                MessageBox.Show("Something went wrong while loading the students: " + e.Message);
+                MessageBox.Show("Something went wrong while loading the teachers: " + e.Message);
             }
         }
-
         private void AddStudentsTolist()
         {
             try
@@ -190,24 +297,54 @@ namespace SomerenUI
             showPanel("Rooms");
         }
 
-        private void label1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click_2(object sender, EventArgs e)
-        {
-
-        }
-
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
         }
 
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        private void drinksToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            showPanel("Drinks");
+        }
 
+        private void btnAddUpdate_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                DrinkService drinkService = new DrinkService();
+                if (DrinksBoxesFilled())
+                {
+                    MessageBox.Show("Please fill all textboxes!");
+                    return;
+                }
+                Drink drink = new Drink()
+                {
+                    Name = txtName.Text,
+                    Stock = int.Parse(txtStock.Text),
+                    SalesPrice = decimal.Parse(txtSalesPrice.Text),
+                    Alcoholic = Convert.ToBoolean(txtAlcoholic.Text),
+                    NrOfSales = int.Parse(txtNrOfSales.Text)
+                };
+                if (listViewDrinks.SelectedItems.Count == 0)
+                {
+                    drinkService.AddDrink(drink);
+                }
+                else
+                {
+                    drinkService.UpdateDrink((Drink)listViewDrinks.SelectedItems[0].Tag, drink);
+                }
+                AddDrinksToList();
+                ClearDrinksTxtBoxes();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Something went wrong while adding/updating the drinks: " + exception.Message);
+            }
+        }
+
+        private void btnClearDrinksTxtBoxes_Click(object sender, EventArgs e)
+        {
+            ClearDrinksTxtBoxes();
         }
     }
 }

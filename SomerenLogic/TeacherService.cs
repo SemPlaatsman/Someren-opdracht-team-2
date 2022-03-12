@@ -11,17 +11,17 @@ namespace SomerenLogic
 {
     public class TeacherService
     {
-        TeacherDao Teacherdb;
+        TeacherDao teacherdb;
 
         public TeacherService()
         {
-            Teacherdb = new TeacherDao();
+            teacherdb = new TeacherDao();
         }
 
-        public List<Teacher> GetStudents()
+        public List<Teacher> GetTeachers()
         {
-            List<Teacher> students = Teacherdb.GetAllTeachers();
-            return students;
+            List<Teacher> teachers = teacherdb.GetAllTeachers();
+            return teachers;
         }
     }
 }
