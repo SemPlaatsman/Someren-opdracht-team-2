@@ -406,6 +406,7 @@ namespace SomerenUI
                     MessageBox.Show("Please select a row before deleting one");
                     return;
                 }
+                if (MessageBox.Show("Are you sure you want to delete this row?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No) { return; }
                 //update the selected drink in the Drinks database
                 drinkService.DeleteDrink((Drink)listViewDrinks.SelectedItems[0].Tag);
                 //reload the Drinks in the ListView
