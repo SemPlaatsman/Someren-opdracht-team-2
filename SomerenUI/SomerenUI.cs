@@ -59,6 +59,12 @@ namespace SomerenUI
                     hideAll();
                     AddDrinksToList();
                     pnlDrinks.Show();
+                break;
+                case "Checkout":
+                    hideAll();
+                    CheckoutPannel.Show();
+
+
                     break;
 
                 default:
@@ -418,6 +424,17 @@ namespace SomerenUI
             {
                 MessageBox.Show("Something went wrong while deleting a drink: " + exception.Message);
             }
+        }
+
+        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkoutToolStripItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Checkout");
+
         }
     }
 }

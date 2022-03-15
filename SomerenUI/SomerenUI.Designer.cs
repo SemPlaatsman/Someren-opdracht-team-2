@@ -40,6 +40,7 @@
             this.activitiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.roomsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.drinksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkoutToolStripItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlDashboard = new System.Windows.Forms.Panel();
             this.lbl_Dashboard = new System.Windows.Forms.Label();
             this.pnlStudents = new System.Windows.Forms.Panel();
@@ -86,8 +87,10 @@
             this.drinksSalesPrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.drinksStock = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label2 = new System.Windows.Forms.Label();
-            this.checkoutToolStripItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CheckoutPannel = new System.Windows.Forms.Panel();
+            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlDashboard.SuspendLayout();
@@ -99,12 +102,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.pnlDrinks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.CheckoutPannel.SuspendLayout();
             this.SuspendLayout();
             // 
             // imgDashboard
             // 
             this.imgDashboard.Location = new System.Drawing.Point(1254, 0);
-            this.imgDashboard.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.imgDashboard.Margin = new System.Windows.Forms.Padding(6);
             this.imgDashboard.Name = "imgDashboard";
             this.imgDashboard.Size = new System.Drawing.Size(622, 519);
             this.imgDashboard.TabIndex = 0;
@@ -125,7 +129,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 3, 0, 3);
-            this.menuStrip1.Size = new System.Drawing.Size(1924, 48);
+            this.menuStrip1.Size = new System.Drawing.Size(1924, 42);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -137,71 +141,78 @@
             this.toolStripSeparator1,
             this.exitToolStripMenuItem});
             this.dashboardToolStripMenuItem.Name = "dashboardToolStripMenuItem";
-            this.dashboardToolStripMenuItem.Size = new System.Drawing.Size(155, 42);
+            this.dashboardToolStripMenuItem.Size = new System.Drawing.Size(155, 38);
             this.dashboardToolStripMenuItem.Text = "Application";
             this.dashboardToolStripMenuItem.Click += new System.EventHandler(this.dashboardToolStripMenuItem_Click);
             // 
             // dashboardToolStripMenuItem1
             // 
             this.dashboardToolStripMenuItem1.Name = "dashboardToolStripMenuItem1";
-            this.dashboardToolStripMenuItem1.Size = new System.Drawing.Size(359, 44);
+            this.dashboardToolStripMenuItem1.Size = new System.Drawing.Size(264, 44);
             this.dashboardToolStripMenuItem1.Text = "Dashboard";
             this.dashboardToolStripMenuItem1.Click += new System.EventHandler(this.dashboardToolStripMenuItem1_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(356, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(261, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(264, 44);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // studentsToolStripMenuItem
             // 
             this.studentsToolStripMenuItem.Name = "studentsToolStripMenuItem";
-            this.studentsToolStripMenuItem.Size = new System.Drawing.Size(128, 42);
+            this.studentsToolStripMenuItem.Size = new System.Drawing.Size(128, 38);
             this.studentsToolStripMenuItem.Text = "Students";
             this.studentsToolStripMenuItem.Click += new System.EventHandler(this.studentsToolStripMenuItem_Click);
             // 
             // lecturersToolStripMenuItem
             // 
             this.lecturersToolStripMenuItem.Name = "lecturersToolStripMenuItem";
-            this.lecturersToolStripMenuItem.Size = new System.Drawing.Size(131, 42);
+            this.lecturersToolStripMenuItem.Size = new System.Drawing.Size(131, 38);
             this.lecturersToolStripMenuItem.Text = "Lecturers";
             this.lecturersToolStripMenuItem.Click += new System.EventHandler(this.lecturersToolStripMenuItem_Click);
             // 
             // activitiesToolStripMenuItem
             // 
             this.activitiesToolStripMenuItem.Name = "activitiesToolStripMenuItem";
-            this.activitiesToolStripMenuItem.Size = new System.Drawing.Size(130, 42);
+            this.activitiesToolStripMenuItem.Size = new System.Drawing.Size(130, 38);
             this.activitiesToolStripMenuItem.Text = "Activities";
             // 
             // roomsToolStripMenuItem
             // 
             this.roomsToolStripMenuItem.Name = "roomsToolStripMenuItem";
-            this.roomsToolStripMenuItem.Size = new System.Drawing.Size(107, 42);
+            this.roomsToolStripMenuItem.Size = new System.Drawing.Size(107, 38);
             this.roomsToolStripMenuItem.Text = "Rooms";
             this.roomsToolStripMenuItem.Click += new System.EventHandler(this.roomsToolStripMenuItem_Click);
             // 
             // drinksToolStripMenuItem
             // 
             this.drinksToolStripMenuItem.Name = "drinksToolStripMenuItem";
-            this.drinksToolStripMenuItem.Size = new System.Drawing.Size(102, 42);
+            this.drinksToolStripMenuItem.Size = new System.Drawing.Size(102, 38);
             this.drinksToolStripMenuItem.Text = "Drinks";
             this.drinksToolStripMenuItem.Click += new System.EventHandler(this.drinksToolStripMenuItem_Click);
+            // 
+            // checkoutToolStripItem
+            // 
+            this.checkoutToolStripItem.Name = "checkoutToolStripItem";
+            this.checkoutToolStripItem.Size = new System.Drawing.Size(136, 38);
+            this.checkoutToolStripItem.Text = "Checkout";
+            this.checkoutToolStripItem.Click += new System.EventHandler(this.checkoutToolStripItem_Click);
             // 
             // pnlDashboard
             // 
             this.pnlDashboard.Controls.Add(this.lbl_Dashboard);
             this.pnlDashboard.Controls.Add(this.imgDashboard);
             this.pnlDashboard.Location = new System.Drawing.Point(30, 56);
-            this.pnlDashboard.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pnlDashboard.Margin = new System.Windows.Forms.Padding(6);
             this.pnlDashboard.Name = "pnlDashboard";
-            this.pnlDashboard.Size = new System.Drawing.Size(1876, 897);
+            this.pnlDashboard.Size = new System.Drawing.Size(1876, 903);
             this.pnlDashboard.TabIndex = 2;
             // 
             // lbl_Dashboard
@@ -222,9 +233,9 @@
             this.pnlStudents.Controls.Add(this.lbl_Students);
             this.pnlStudents.ForeColor = System.Drawing.SystemColors.MenuText;
             this.pnlStudents.Location = new System.Drawing.Point(30, 56);
-            this.pnlStudents.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pnlStudents.Margin = new System.Windows.Forms.Padding(6);
             this.pnlStudents.Name = "pnlStudents";
-            this.pnlStudents.Size = new System.Drawing.Size(1876, 897);
+            this.pnlStudents.Size = new System.Drawing.Size(1876, 903);
             this.pnlStudents.TabIndex = 1;
             // 
             // listViewStudents
@@ -239,7 +250,7 @@
             this.listViewStudents.GridLines = true;
             this.listViewStudents.HideSelection = false;
             this.listViewStudents.Location = new System.Drawing.Point(32, 81);
-            this.listViewStudents.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.listViewStudents.Margin = new System.Windows.Forms.Padding(6);
             this.listViewStudents.Name = "listViewStudents";
             this.listViewStudents.Size = new System.Drawing.Size(1528, 587);
             this.listViewStudents.TabIndex = 5;
@@ -266,7 +277,7 @@
             this.pictureBox1.Image = global::SomerenUI.Properties.Resources.someren;
             this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
             this.pictureBox1.Location = new System.Drawing.Point(1610, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(6);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(260, 236);
             this.pictureBox1.TabIndex = 0;
@@ -290,9 +301,9 @@
             this.lecturers_panel.Controls.Add(this.label1);
             this.lecturers_panel.ForeColor = System.Drawing.SystemColors.MenuText;
             this.lecturers_panel.Location = new System.Drawing.Point(30, 56);
-            this.lecturers_panel.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.lecturers_panel.Margin = new System.Windows.Forms.Padding(6);
             this.lecturers_panel.Name = "lecturers_panel";
-            this.lecturers_panel.Size = new System.Drawing.Size(1876, 897);
+            this.lecturers_panel.Size = new System.Drawing.Size(1876, 903);
             this.lecturers_panel.TabIndex = 5;
             // 
             // teatcherListView
@@ -308,7 +319,7 @@
             this.teatcherListView.GridLines = true;
             this.teatcherListView.HideSelection = false;
             this.teatcherListView.Location = new System.Drawing.Point(32, 81);
-            this.teatcherListView.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.teatcherListView.Margin = new System.Windows.Forms.Padding(6);
             this.teatcherListView.Name = "teatcherListView";
             this.teatcherListView.Size = new System.Drawing.Size(1528, 587);
             this.teatcherListView.TabIndex = 5;
@@ -340,7 +351,7 @@
             this.pictureBox3.Image = global::SomerenUI.Properties.Resources.someren;
             this.pictureBox3.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox3.InitialImage")));
             this.pictureBox3.Location = new System.Drawing.Point(1610, 0);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(6);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(260, 236);
             this.pictureBox3.TabIndex = 0;
@@ -364,9 +375,9 @@
             this.pnlRooms.Controls.Add(this.labelRooms);
             this.pnlRooms.ForeColor = System.Drawing.SystemColors.MenuText;
             this.pnlRooms.Location = new System.Drawing.Point(30, 56);
-            this.pnlRooms.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pnlRooms.Margin = new System.Windows.Forms.Padding(6);
             this.pnlRooms.Name = "pnlRooms";
-            this.pnlRooms.Size = new System.Drawing.Size(1876, 897);
+            this.pnlRooms.Size = new System.Drawing.Size(1876, 903);
             this.pnlRooms.TabIndex = 6;
             // 
             // listViewRooms
@@ -381,7 +392,7 @@
             this.listViewRooms.GridLines = true;
             this.listViewRooms.HideSelection = false;
             this.listViewRooms.Location = new System.Drawing.Point(32, 81);
-            this.listViewRooms.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.listViewRooms.Margin = new System.Windows.Forms.Padding(6);
             this.listViewRooms.Name = "listViewRooms";
             this.listViewRooms.Size = new System.Drawing.Size(1528, 587);
             this.listViewRooms.TabIndex = 5;
@@ -408,7 +419,7 @@
             this.pictureBox2.Image = global::SomerenUI.Properties.Resources.someren;
             this.pictureBox2.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.InitialImage")));
             this.pictureBox2.Location = new System.Drawing.Point(1610, 0);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(6);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(260, 236);
             this.pictureBox2.TabIndex = 0;
@@ -589,7 +600,7 @@
             this.pictureBox4.Image = global::SomerenUI.Properties.Resources.someren;
             this.pictureBox4.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox4.InitialImage")));
             this.pictureBox4.Location = new System.Drawing.Point(1616, 0);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(6);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(260, 236);
             this.pictureBox4.TabIndex = 3;
@@ -646,26 +657,51 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Drinks";
             // 
-            // checkoutToolStripItem
-            // 
-            this.checkoutToolStripItem.Name = "checkoutToolStripItem";
-            this.checkoutToolStripItem.Size = new System.Drawing.Size(136, 42);
-            this.checkoutToolStripItem.Text = "Checkout";
-            // 
             // CheckoutPannel
             // 
+            this.CheckoutPannel.Controls.Add(this.checkedListBox1);
+            this.CheckoutPannel.Controls.Add(this.listBox2);
+            this.CheckoutPannel.Controls.Add(this.listBox1);
             this.CheckoutPannel.Location = new System.Drawing.Point(30, 56);
             this.CheckoutPannel.Name = "CheckoutPannel";
-            this.CheckoutPannel.Size = new System.Drawing.Size(200, 100);
+            this.CheckoutPannel.Size = new System.Drawing.Size(1876, 903);
             this.CheckoutPannel.TabIndex = 17;
+            // 
+            // checkedListBox1
+            // 
+            this.checkedListBox1.FormattingEnabled = true;
+            this.checkedListBox1.Location = new System.Drawing.Point(1362, 557);
+            this.checkedListBox1.Name = "checkedListBox1";
+            this.checkedListBox1.Size = new System.Drawing.Size(120, 88);
+            this.checkedListBox1.TabIndex = 2;
+            // 
+            // listBox2
+            // 
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.ItemHeight = 25;
+            this.listBox2.Location = new System.Drawing.Point(683, 80);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(441, 704);
+            this.listBox2.TabIndex = 1;
+            this.listBox2.SelectedIndexChanged += new System.EventHandler(this.listBox2_SelectedIndexChanged);
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 25;
+            this.listBox1.Location = new System.Drawing.Point(61, 81);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(523, 704);
+            this.listBox1.TabIndex = 0;
             // 
             // SomerenUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1924, 972);
-            this.Controls.Add(this.CheckoutPannel);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.CheckoutPannel);
             this.Controls.Add(this.pnlDrinks);
             this.Controls.Add(this.lecturers_panel);
             this.Controls.Add(this.pnlStudents);
@@ -673,9 +709,10 @@
             this.Controls.Add(this.pnlRooms);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "SomerenUI";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SomerenApp";
             this.Load += new System.EventHandler(this.SomerenUI_Load);
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).EndInit();
@@ -695,6 +732,7 @@
             this.pnlDrinks.ResumeLayout(false);
             this.pnlDrinks.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            this.CheckoutPannel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -761,6 +799,9 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.ToolStripMenuItem checkoutToolStripItem;
         private System.Windows.Forms.Panel CheckoutPannel;
+        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.CheckedListBox checkedListBox1;
     }
 }
 
