@@ -436,5 +436,10 @@ namespace SomerenUI
             showPanel("Checkout");
 
         }
+
+        private void CheckoutPannel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
