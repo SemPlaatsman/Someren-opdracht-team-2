@@ -469,8 +469,26 @@ namespace SomerenUI
         }
         private void orderButton_Click(object sender, EventArgs e)
         {
+            DrinkService drinkService = new DrinkService();
+            List<Drink> drinksList = drinkService.GetDrinks();
             MakeOrder();
         }
+
+        //makes the reciet
+        public void MakeReciet(List<Order> orders)
+        {
+            DrinkService drinkService = new DrinkService();
+            StudentService studentService = new StudentService();
+
+            recietLabel.Text = "";
+
+            foreach (Order order in orders)
+            {
+                recietLabel.Text += $"{studentService}";
+            }
+
+        }
+
 
         public void UpdateCheckout()
         {
@@ -499,12 +517,9 @@ namespace SomerenUI
 
                 orderService.makeOrder(order);
             }
-            
+            UpdateCheckout();
         }
 
-        private void drinkBindingSource_CurrentChanged(object sender, EventArgs e)
-        {
-
-        }
+     
     }
 }
