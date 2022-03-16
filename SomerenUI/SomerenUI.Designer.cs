@@ -88,8 +88,15 @@
             this.drinksStock = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label2 = new System.Windows.Forms.Label();
             this.CheckoutPannel = new System.Windows.Forms.Panel();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.recietPanel = new System.Windows.Forms.Panel();
+            this.recietLabel = new System.Windows.Forms.Label();
+            this.orderButton = new System.Windows.Forms.Button();
+            this.drinksSelectionCheckout = new System.Windows.Forms.CheckedListBox();
+            this.studentsListview = new System.Windows.Forms.ListView();
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.studentidColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.firstnameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lastnameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlDashboard.SuspendLayout();
@@ -102,6 +109,7 @@
             this.pnlDrinks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.CheckoutPannel.SuspendLayout();
+            this.recietPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // imgDashboard
@@ -130,7 +138,6 @@
             this.menuStrip1.Size = new System.Drawing.Size(960, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
-            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // dashboardToolStripMenuItem
             // 
@@ -141,24 +148,23 @@
             this.dashboardToolStripMenuItem.Name = "dashboardToolStripMenuItem";
             this.dashboardToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
             this.dashboardToolStripMenuItem.Text = "Application";
-            this.dashboardToolStripMenuItem.Click += new System.EventHandler(this.dashboardToolStripMenuItem_Click);
             // 
             // dashboardToolStripMenuItem1
             // 
             this.dashboardToolStripMenuItem1.Name = "dashboardToolStripMenuItem1";
-            this.dashboardToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.dashboardToolStripMenuItem1.Size = new System.Drawing.Size(131, 22);
             this.dashboardToolStripMenuItem1.Text = "Dashboard";
             this.dashboardToolStripMenuItem1.Click += new System.EventHandler(this.dashboardToolStripMenuItem1_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(128, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -222,7 +228,6 @@
             this.lbl_Dashboard.Size = new System.Drawing.Size(185, 13);
             this.lbl_Dashboard.TabIndex = 1;
             this.lbl_Dashboard.Text = "Welcome to the Someren Application!";
-            this.lbl_Dashboard.Click += new System.EventHandler(this.label1_Click);
             // 
             // pnlStudents
             // 
@@ -649,32 +654,85 @@
             // CheckoutPannel
             // 
             this.CheckoutPannel.AutoSize = true;
-            this.CheckoutPannel.Controls.Add(this.checkedListBox1);
-            this.CheckoutPannel.Controls.Add(this.listBox1);
+            this.CheckoutPannel.Controls.Add(this.studentsListview);
+            this.CheckoutPannel.Controls.Add(this.recietPanel);
+            this.CheckoutPannel.Controls.Add(this.drinksSelectionCheckout);
             this.CheckoutPannel.Location = new System.Drawing.Point(15, 29);
             this.CheckoutPannel.Margin = new System.Windows.Forms.Padding(2);
             this.CheckoutPannel.Name = "CheckoutPannel";
             this.CheckoutPannel.Size = new System.Drawing.Size(941, 423);
             this.CheckoutPannel.TabIndex = 17;
-            this.CheckoutPannel.Paint += new System.Windows.Forms.PaintEventHandler(this.CheckoutPannel_Paint);
             // 
-            // checkedListBox1
+            // recietPanel
             // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(330, 42);
-            this.checkedListBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(176, 34);
-            this.checkedListBox1.TabIndex = 2;
+            this.recietPanel.Controls.Add(this.recietLabel);
+            this.recietPanel.Controls.Add(this.orderButton);
+            this.recietPanel.Location = new System.Drawing.Point(658, 42);
+            this.recietPanel.Name = "recietPanel";
+            this.recietPanel.Size = new System.Drawing.Size(200, 253);
+            this.recietPanel.TabIndex = 4;
             // 
-            // listBox1
+            // recietLabel
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(30, 42);
-            this.listBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(264, 368);
-            this.listBox1.TabIndex = 0;
+            this.recietLabel.AutoSize = true;
+            this.recietLabel.Location = new System.Drawing.Point(23, 23);
+            this.recietLabel.Name = "recietLabel";
+            this.recietLabel.Size = new System.Drawing.Size(0, 13);
+            this.recietLabel.TabIndex = 4;
+            // 
+            // orderButton
+            // 
+            this.orderButton.Location = new System.Drawing.Point(62, 217);
+            this.orderButton.Name = "orderButton";
+            this.orderButton.Size = new System.Drawing.Size(75, 23);
+            this.orderButton.TabIndex = 3;
+            this.orderButton.Text = "Order";
+            this.orderButton.UseVisualStyleBackColor = true;
+            this.orderButton.Click += new System.EventHandler(this.orderButton_Click);
+            // 
+            // drinksSelectionCheckout
+            // 
+            this.drinksSelectionCheckout.CheckOnClick = true;
+            this.drinksSelectionCheckout.FormattingEnabled = true;
+            this.drinksSelectionCheckout.Location = new System.Drawing.Point(330, 42);
+            this.drinksSelectionCheckout.Margin = new System.Windows.Forms.Padding(2);
+            this.drinksSelectionCheckout.Name = "drinksSelectionCheckout";
+            this.drinksSelectionCheckout.Size = new System.Drawing.Size(176, 304);
+            this.drinksSelectionCheckout.TabIndex = 2;
+            // 
+            // studentsListview
+            // 
+            this.studentsListview.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.studentidColumn,
+            this.firstnameColumn,
+            this.lastnameColumn});
+            this.studentsListview.FullRowSelect = true;
+            this.studentsListview.GridLines = true;
+            this.studentsListview.HideSelection = false;
+            this.studentsListview.Location = new System.Drawing.Point(35, 43);
+            this.studentsListview.MinimumSize = new System.Drawing.Size(233, 304);
+            this.studentsListview.Name = "studentsListview";
+            this.studentsListview.Scrollable = false;
+            this.studentsListview.Size = new System.Drawing.Size(233, 304);
+            this.studentsListview.TabIndex = 5;
+            this.studentsListview.UseCompatibleStateImageBehavior = false;
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "ID";
+            // 
+            // studentidColumn
+            // 
+            this.studentidColumn.Text = "studentID";
+            // 
+            // firstnameColumn
+            // 
+            this.firstnameColumn.Text = "first name";
+            // 
+            // lastnameColumn
+            // 
+            this.lastnameColumn.Text = "last name";
+            this.lastnameColumn.Width = 100;
             // 
             // SomerenUI
             // 
@@ -682,8 +740,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(960, 389);
-            this.Controls.Add(this.CheckoutPannel);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.CheckoutPannel);
             this.Controls.Add(this.pnlDrinks);
             this.Controls.Add(this.lecturers_panel);
             this.Controls.Add(this.pnlStudents);
@@ -714,6 +772,8 @@
             this.pnlDrinks.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.CheckoutPannel.ResumeLayout(false);
+            this.recietPanel.ResumeLayout(false);
+            this.recietPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -780,8 +840,15 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.ToolStripMenuItem checkoutToolStripItem;
         private System.Windows.Forms.Panel CheckoutPannel;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.CheckedListBox drinksSelectionCheckout;
+        private System.Windows.Forms.Panel recietPanel;
+        private System.Windows.Forms.Button orderButton;
+        private System.Windows.Forms.Label recietLabel;
+        private System.Windows.Forms.ListView studentsListview;
+        private System.Windows.Forms.ColumnHeader columnHeader8;
+        private System.Windows.Forms.ColumnHeader studentidColumn;
+        private System.Windows.Forms.ColumnHeader firstnameColumn;
+        private System.Windows.Forms.ColumnHeader lastnameColumn;
     }
 }
 
