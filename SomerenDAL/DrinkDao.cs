@@ -20,6 +20,8 @@ namespace SomerenDAL
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
+       
+
         //query to add a drink to the Drinks database table
         public void Add(Drink drink)
         {
