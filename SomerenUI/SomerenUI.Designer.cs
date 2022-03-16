@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SomerenUI));
             this.imgDashboard = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -88,15 +89,17 @@
             this.drinksStock = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label2 = new System.Windows.Forms.Label();
             this.CheckoutPannel = new System.Windows.Forms.Panel();
+            this.studentsListview = new System.Windows.Forms.ListView();
+            this.studentidColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.firstnameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lastnameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.recietPanel = new System.Windows.Forms.Panel();
             this.recietLabel = new System.Windows.Forms.Label();
             this.orderButton = new System.Windows.Forms.Button();
             this.drinksSelectionCheckout = new System.Windows.Forms.CheckedListBox();
-            this.studentsListview = new System.Windows.Forms.ListView();
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.studentidColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.firstnameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lastnameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.drinkBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.drinkBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlDashboard.SuspendLayout();
@@ -110,6 +113,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.CheckoutPannel.SuspendLayout();
             this.recietPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.drinkBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.drinkBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // imgDashboard
@@ -663,6 +668,36 @@
             this.CheckoutPannel.Size = new System.Drawing.Size(941, 423);
             this.CheckoutPannel.TabIndex = 17;
             // 
+            // studentsListview
+            // 
+            this.studentsListview.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.studentidColumn,
+            this.firstnameColumn,
+            this.lastnameColumn});
+            this.studentsListview.FullRowSelect = true;
+            this.studentsListview.GridLines = true;
+            this.studentsListview.HideSelection = false;
+            this.studentsListview.Location = new System.Drawing.Point(35, 43);
+            this.studentsListview.MinimumSize = new System.Drawing.Size(233, 304);
+            this.studentsListview.Name = "studentsListview";
+            this.studentsListview.Scrollable = false;
+            this.studentsListview.Size = new System.Drawing.Size(233, 304);
+            this.studentsListview.TabIndex = 5;
+            this.studentsListview.UseCompatibleStateImageBehavior = false;
+            // 
+            // studentidColumn
+            // 
+            this.studentidColumn.Text = "studentID";
+            // 
+            // firstnameColumn
+            // 
+            this.firstnameColumn.Text = "first name";
+            // 
+            // lastnameColumn
+            // 
+            this.lastnameColumn.Text = "last name";
+            this.lastnameColumn.Width = 100;
+            // 
             // recietPanel
             // 
             this.recietPanel.Controls.Add(this.recietLabel);
@@ -699,40 +734,20 @@
             this.drinksSelectionCheckout.Name = "drinksSelectionCheckout";
             this.drinksSelectionCheckout.Size = new System.Drawing.Size(176, 304);
             this.drinksSelectionCheckout.TabIndex = 2;
-            // 
-            // studentsListview
-            // 
-            this.studentsListview.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.studentidColumn,
-            this.firstnameColumn,
-            this.lastnameColumn});
-            this.studentsListview.FullRowSelect = true;
-            this.studentsListview.GridLines = true;
-            this.studentsListview.HideSelection = false;
-            this.studentsListview.Location = new System.Drawing.Point(35, 43);
-            this.studentsListview.MinimumSize = new System.Drawing.Size(233, 304);
-            this.studentsListview.Name = "studentsListview";
-            this.studentsListview.Scrollable = false;
-            this.studentsListview.Size = new System.Drawing.Size(233, 304);
-            this.studentsListview.TabIndex = 5;
-            this.studentsListview.UseCompatibleStateImageBehavior = false;
+            this.drinksSelectionCheckout.Tag = "";
             // 
             // columnHeader8
             // 
             this.columnHeader8.Text = "ID";
             // 
-            // studentidColumn
+            // drinkBindingSource
             // 
-            this.studentidColumn.Text = "studentID";
+            this.drinkBindingSource.DataSource = typeof(SomerenModel.Drink);
+            this.drinkBindingSource.CurrentChanged += new System.EventHandler(this.drinkBindingSource_CurrentChanged);
             // 
-            // firstnameColumn
+            // drinkBindingSource1
             // 
-            this.firstnameColumn.Text = "first name";
-            // 
-            // lastnameColumn
-            // 
-            this.lastnameColumn.Text = "last name";
-            this.lastnameColumn.Width = 100;
+            this.drinkBindingSource1.DataSource = typeof(SomerenModel.Drink);
             // 
             // SomerenUI
             // 
@@ -774,6 +789,8 @@
             this.CheckoutPannel.ResumeLayout(false);
             this.recietPanel.ResumeLayout(false);
             this.recietPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.drinkBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.drinkBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -849,6 +866,8 @@
         private System.Windows.Forms.ColumnHeader studentidColumn;
         private System.Windows.Forms.ColumnHeader firstnameColumn;
         private System.Windows.Forms.ColumnHeader lastnameColumn;
+        private System.Windows.Forms.BindingSource drinkBindingSource;
+        private System.Windows.Forms.BindingSource drinkBindingSource1;
     }
 }
 

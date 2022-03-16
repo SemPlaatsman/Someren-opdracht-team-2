@@ -302,10 +302,11 @@ namespace SomerenUI
                 //foreach drink in the list of drinks make one row in the Drinks ListView
                 foreach (Drink d in drinksList)
                 {
-
-                    drinksChecklist.Items.Add(d.Name);
                     
-                   
+                    drinksChecklist.Items.Add(d);
+                    
+
+
                 }
             }
             catch (Exception e)
@@ -466,14 +467,42 @@ namespace SomerenUI
         {
             showPanel("Checkout");
         }
+        private void orderButton_Click(object sender, EventArgs e)
+        {
+            MakeOrder();
+        }
 
         public void UpdateCheckout()
         {
             AddStudentsTolist(studentsListview);
             AddDrinksToSelection(drinksSelectionCheckout);
         }
+        public void MakeOrder()
+        {
+            
+            OrderService orderService = new OrderService();
+            Order order = new Order();
+            //get the id of the selected student
+            foreach (ListViewItem l in studentsListview.Items)
+            {
+                if (l.Selected)
+                {
+                    order.CustomerId = int.Parse(l.SubItems[0].Text);
+                }
+            }
+            //make foreach of checked items
+            foreach(Drink item in drinksSelectionCheckout.CheckedItems)
+            {
 
-        private void orderButton_Click(object sender, EventArgs e)
+
+                order.DrinkId = item.Id;
+
+                orderService.makeOrder(order);
+            }
+            
+        }
+
+        private void drinkBindingSource_CurrentChanged(object sender, EventArgs e)
         {
 
         }
