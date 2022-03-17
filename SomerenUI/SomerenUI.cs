@@ -20,7 +20,6 @@ namespace SomerenUI
         {
             InitializeComponent();
 
-
         }
 
         private void SomerenUI_Load(object sender, EventArgs e)
@@ -478,16 +477,16 @@ namespace SomerenUI
         }
 
         //makes the reciet
-        public void MakeReciet(List<Order> orders)
+        public void MakeReciet(List<List<String>>orders)
         {
             DrinkService drinkService = new DrinkService();
             StudentService studentService = new StudentService();
 
             recietLabel.Text = "";
 
-            foreach (Order order in orders)
+            foreach (List<String> order in orders)
             {
-                recietLabel.Text += $"{studentService}";
+                recietLabel.Text += $"{order[0]}";
             }
 
         }
@@ -553,12 +552,12 @@ namespace SomerenUI
         private void drinksSelectionCheckout_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            MakeReciet(MakeOrder());
+            //MakeReciet(MakeOrder());
         }
 
         private void studentsListview_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
         }
     }
 }
