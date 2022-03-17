@@ -14,7 +14,10 @@ namespace SomerenDAL
         public bool MakeOrder(Order o)
         {
             string query = "INSERT INTO Orders(ForeignStudent,ForeignDrink)"
-                +"VALUES(@student, @drink)";
+                +"VALUES(@student, @drink)" +
+                "UPDATE  Drinks" +
+                "SET stock = stock-1" +
+                "WHERE Id = @drink AND stock > 0";
             SqlParameter[] sqlParameters = new SqlParameter[2];
             sqlParameters[0] = new SqlParameter("@student", o.CustomerId);
             sqlParameters[1] = new SqlParameter("@drink", o.DrinkId);

@@ -15,3 +15,15 @@ The statement has been terminated.
 [16/03/2022 22:38:19] : Conversion failed when converting the varchar value '@student' to data type int.
 [16/03/2022 22:38:38] : Conversion failed when converting the varchar value '@student' to data type int.
 [16/03/2022 22:40:25] : Conversion failed when converting the varchar value '@student' to data type int.
+[17/03/2022 20:40:29] : The INSERT statement conflicted with the FOREIGN KEY constraint "FK__Orders__ForeignS__66603565". The conflict occurred in database "2122_INF1c_db2", table "dbo.Students", column 'studentID'.
+The statement has been terminated.
+[17/03/2022 20:40:29] : The INSERT statement conflicted with the FOREIGN KEY constraint "FK__Orders__ForeignS__66603565". The conflict occurred in database "2122_INF1c_db2", table "dbo.Students", column 'studentID'.
+The statement has been terminated.
+[17/03/2022 23:37:32] : Incorrect syntax near 'stock'.
+[17/03/2022 23:37:32] : Incorrect syntax near 'stock'.
+[17/03/2022 23:37:32] : Incorrect syntax near 'stock'.
+[17/03/2022 23:37:32] : Incorrect syntax near 'stock'.
+[17/03/2022 23:37:32] : Incorrect syntax near 'stock'.
+[17/03/2022 23:37:32] : Incorrect syntax near 'stock'.
+[17/03/2022 23:37:32] : Incorrect syntax near 'stock'.
+[17/03/2022 23:59:54] : Incorrect syntax near 'stock'.

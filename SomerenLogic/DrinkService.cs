@@ -29,7 +29,7 @@ namespace SomerenLogic
 
         public List<Drink> GetDrinksByID(int ID)
         {
-            List<Drink> drinks = drinkdb.GetAllDrinks();
+            List<Drink> drinks = drinkdb.GetDrinkByid(ID);
             return drinks;
         }
 

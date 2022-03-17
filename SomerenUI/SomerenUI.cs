@@ -302,6 +302,7 @@ namespace SomerenUI
                 foreach (Drink d in drinksList)
                 {
                     
+
                     drinksChecklist.Items.Add(d);
                     
 
@@ -466,28 +467,35 @@ namespace SomerenUI
         {
             showPanel("Checkout");
         }
-        private void orderButton_Click(object sender, EventArgs e)
-        {
-            List<Order> orders = new List<Order>();
-            orders=MakeOrder();
-            SendOrder(orders);
-
-            UpdateCheckout();
-
-        }
+        
 
         //makes the reciet
-        public void MakeReciet(List<List<String>>orders)
+        public void MakeReciet(List<Order> orders)
         {
-            DrinkService drinkService = new DrinkService();
-            StudentService studentService = new StudentService();
+            int price=0;
+       
+            //----------------------
 
-            recietLabel.Text = "";
 
-            foreach (List<String> order in orders)
-            {
-                recietLabel.Text += $"{order[0]}";
+
+            recietListView.Clear();
+
+            foreach (Order order in orders)
+            { 
+
+                ListViewItem Orderitem = new ListViewItem(order.drink.Name);
+                Orderitem.SubItems.Add(order.drink.Stock.ToString());
+
+                recietListView.Items.Add(Orderitem);
+                
+
+
+                price += (int)order.drink.SalesPrice;
             }
+            recietListView.Update();
+
+            priceTextBox.Text=price.ToString();
+
 
         }
 
@@ -500,25 +508,28 @@ namespace SomerenUI
 
 
 
-        public List<Order> MakeOrder()
+        public List<Order> MakeOrderList()
         {
             List<Order> orders = new List<Order>();
-            OrderService orderService = new OrderService();
-            Order order = new Order();
-            //get the id of the selected student
-            foreach (ListViewItem l in studentsListview.Items)
-            {
-                if (l.Selected)
-                {
-                    order.CustomerId = int.Parse(l.SubItems[0].Text);
-                }
-            }
+
+           
             //make foreach of checked items
             foreach (Drink item in drinksSelectionCheckout.CheckedItems)
             {
 
+                Order order = new Order();
+
+                //get the id of the selected student
+                foreach (ListViewItem l in studentsListview.Items)
+                {
+                    if (l.Selected)
+                    {
+                        order.CustomerId = int.Parse(l.SubItems[0].Text);
+                    }
+                }
 
                 order.DrinkId = item.Id;
+                order.drink = item;
                 orders.Add(order);
     
             }
@@ -529,33 +540,39 @@ namespace SomerenUI
         {
             
             OrderService orderService = new OrderService();
-            Order order = new Order();
-            //get the id of the selected student
-            foreach (ListViewItem l in studentsListview.Items)
-            {
-                if (l.Selected)
-                {
-                    order.CustomerId = int.Parse(l.SubItems[0].Text);
-                }
-            }
-            //make foreach of checked items
-            foreach(Drink item in drinksSelectionCheckout.CheckedItems)
+
+            foreach(Order orderItem in orders)
             {
 
+                orderService.makeOrder(orderItem);
 
-                order.DrinkId = item.Id;
-
-                orderService.makeOrder(order);
             }
+
+           
         }
 
         private void drinksSelectionCheckout_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            //MakeReciet(MakeOrder());
+            MakeReciet(MakeOrderList());
         }
 
         private void studentsListview_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void orderButon_Click(object sender, EventArgs e)
+        {
+            List<Order> orders = new List<Order>();
+            orders = MakeOrderList();
+            SendOrder(orders);
+
+            UpdateCheckout();
+            CheckoutPannel.BackgroundImage = Properties.Resources.AthleticOptimisticAoudad_size_restricted;
+        }
+
+        private void priceTextBox_TextChanged(object sender, EventArgs e)
         {
 
         }
