@@ -478,21 +478,22 @@ namespace SomerenUI
 
 
 
-            recietListView.Clear();
+             recietListView.Items.Clear();
 
             foreach (Order order in orders)
             { 
 
                 ListViewItem Orderitem = new ListViewItem(order.drink.Name);
-                Orderitem.SubItems.Add(order.drink.Stock.ToString());
+               Orderitem.SubItems.Add(order.drink.SalesPrice.ToString());
 
                 recietListView.Items.Add(Orderitem);
                 
 
 
                 price += (int)order.drink.SalesPrice;
+                recietListView.Refresh();
+
             }
-            recietListView.Update();
 
             priceTextBox.Text=price.ToString();
 
