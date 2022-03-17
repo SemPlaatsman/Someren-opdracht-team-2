@@ -469,9 +469,12 @@ namespace SomerenUI
         }
         private void orderButton_Click(object sender, EventArgs e)
         {
-            DrinkService drinkService = new DrinkService();
-            List<Drink> drinksList = drinkService.GetDrinks();
-            MakeOrder();
+            List<Order> orders = new List<Order>();
+            orders=MakeOrder();
+            SendOrder(orders);
+
+            UpdateCheckout();
+
         }
 
         //makes the reciet
@@ -495,7 +498,35 @@ namespace SomerenUI
             AddStudentsTolist(studentsListview);
             AddDrinksToSelection(drinksSelectionCheckout);
         }
-        public void MakeOrder()
+
+
+
+        public List<Order> MakeOrder()
+        {
+            List<Order> orders = new List<Order>();
+            OrderService orderService = new OrderService();
+            Order order = new Order();
+            //get the id of the selected student
+            foreach (ListViewItem l in studentsListview.Items)
+            {
+                if (l.Selected)
+                {
+                    order.CustomerId = int.Parse(l.SubItems[0].Text);
+                }
+            }
+            //make foreach of checked items
+            foreach (Drink item in drinksSelectionCheckout.CheckedItems)
+            {
+
+
+                order.DrinkId = item.Id;
+                orders.Add(order);
+    
+            }
+            return orders;
+        }
+
+        public void SendOrder(List<Order> orders)
         {
             
             OrderService orderService = new OrderService();
@@ -517,9 +548,17 @@ namespace SomerenUI
 
                 orderService.makeOrder(order);
             }
-            UpdateCheckout();
         }
 
-     
+        private void drinksSelectionCheckout_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            MakeReciet(MakeOrder());
+        }
+
+        private void studentsListview_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
