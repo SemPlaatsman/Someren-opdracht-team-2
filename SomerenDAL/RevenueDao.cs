@@ -23,9 +23,9 @@ namespace SomerenDAL
         {
             RevenueReport revenueReport = new RevenueReport()
             {
-                Sales = (int)dataTable.Rows[0]["Sales"],
-                Turnover = (int)dataTable.Rows[0]["Turnover"],
-                NumberOfCustomers = (int)dataTable.Rows[0]["Number of customers"]
+                Sales = int.Parse(dataTable.Rows[0]["Sales"].ToString()),
+                Turnover = int.Parse(dataTable.Rows[0]["Turnover"].ToString()),
+                NumberOfCustomers = int.Parse(dataTable.Rows[0]["Number of customers"].ToString())
             };
             return revenueReport;
         }
