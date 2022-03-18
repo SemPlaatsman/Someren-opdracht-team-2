@@ -550,10 +550,7 @@
 </value>
   </data>
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
-=======
->>>>>>> parent of b1a6e54 (Merge branch 'development' into C)
   <metadata name="drinkBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>132, 17</value>
   </metadata>
@@ -667,9 +664,6 @@
         X54o1ZcnSvXlx61b/wNzFde/WH4FDAAAAABJRU5ErkJggg==
 </value>
   </data>
-<<<<<<< HEAD
->>>>>>> parent of b1a6e54 (Merge branch 'development' into C)
-=======
 >>>>>>> parent of b1a6e54 (Merge branch 'development' into C)
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
