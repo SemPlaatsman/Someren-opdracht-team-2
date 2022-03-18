@@ -20,7 +20,17 @@ namespace SomerenDAL
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
-       
+       public List<Drink> GetDrinkByid(int id)
+        {
+            string query = "SELECT Id, name, stock, salesPrice, alcoholic, nrOfSales FROM Drinks WHERE id=@id";
+            SqlParameter[] sqlParameters = new SqlParameter[1]
+            {
+                new SqlParameter("@id",id)
+            };
+            
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+
+        }
 
         //query to add a drink to the Drinks database table
         public void Add(Drink drink)
