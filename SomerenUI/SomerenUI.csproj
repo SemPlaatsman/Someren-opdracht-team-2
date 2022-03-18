@@ -68,6 +68,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Properties\DataSources\SomerenModel.Drink.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -97,6 +98,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\someren.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AthleticOptimisticAoudad-size_restricted.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

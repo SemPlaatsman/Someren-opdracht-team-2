@@ -15,9 +15,11 @@ namespace SomerenUI
 {
     public partial class SomerenUI : Form
     {
+
         public SomerenUI()
         {
             InitializeComponent();
+
         }
 
         private void SomerenUI_Load(object sender, EventArgs e)
@@ -39,7 +41,9 @@ namespace SomerenUI
 
                 case "Students":
                     hideAll();
-                    AddStudentsTolist();
+
+         
+                    AddStudentsTolist(listViewStudents);
                     pnlStudents.Show();
                     break;
 
@@ -57,8 +61,17 @@ namespace SomerenUI
 
                 case "Drinks":
                     hideAll();
-                    AddDrinksToList();
+                    AddDrinksToList(listViewDrinks);
                     pnlDrinks.Show();
+                break;
+                case "Checkout":
+
+                    hideAll();
+                    UpdateCheckout();
+                    CheckoutPannel.Show();
+
+
+
                     break;
 
                 default:
@@ -155,7 +168,8 @@ namespace SomerenUI
             }
         }
 
-        private void AddDrinksToList()
+        //adds drinks to list view
+        private void AddDrinksToList(ListView drinkslistview)
         {
             try
             {
@@ -164,8 +178,8 @@ namespace SomerenUI
                 List<Drink> drinksList = drinkService.GetDrinks();
 
                 // clear the listview before filling it again
-                listViewDrinks.Items.Clear();
-                listViewDrinks.SmallImageList = GetDrinkIcons();
+                drinkslistview.Items.Clear();
+                drinkslistview.SmallImageList = GetDrinkIcons();
 
                 //foreach drink in the list of drinks make one row in the Drinks ListView
                 foreach (Drink d in drinksList)
@@ -185,9 +199,9 @@ namespace SomerenUI
                         li.ImageIndex = 1;
                     }
                     li.Tag = d;
-                    listViewDrinks.Items.Add(li);
+                    drinkslistview.Items.Add(li);
                 }
-                listViewDrinks.View = View.Details;
+                drinkslistview.View = View.Details;
             }
             catch (Exception e)
             {
@@ -195,6 +209,7 @@ namespace SomerenUI
             }
         }
 
+        //adds teachers to the lsit view
         private void AddTeachersToList()
         {
             try
@@ -220,31 +235,34 @@ namespace SomerenUI
                 MessageBox.Show("Something went wrong while loading the teachers: " + e.Message);
             }
         }
-        private void AddStudentsTolist()
+        //add students to the list view
+        private void AddStudentsTolist(ListView studentslistView)
         {
             try
             {
                 // fill the students listview within the students panel with a list of students
                 StudentService studService = new StudentService(); 
-                List<Student> studentList = studService.GetStudents(); 
+                List<Student> studentList = studService.GetStudents();
 
                 // clear the listview before filling it again
-                listViewStudents.Items.Clear();
+                studentslistView.Items.Clear();
 
                 foreach (Student s in studentList)
                 {
                     ListViewItem li = new ListViewItem(Convert.ToString(s.Id));
                     li.SubItems.Add(s.FirstName);
                     li.SubItems.Add(s.LastName);
-                    listViewStudents.Items.Add(li);
+
+                    studentslistView.Items.Add(li);
                 }
-                listViewStudents.View = View.Details;
+                studentslistView.View = View.Details;
             }
             catch (Exception e)
             {
                 MessageBox.Show("Something went wrong while loading the students: " + e.Message);
             }
         }
+        //add rooms to room list
         private void AddRoomsToList()
         {
             try
@@ -268,31 +286,56 @@ namespace SomerenUI
                 MessageBox.Show("Something went wrong while loading the rooms: " + e.Message);
             }
         }
-        private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)
+
+       private void AddDrinksToSelection(CheckedListBox drinksChecklist)
         {
-            //
+            try
+            {
+                // fill the students listview within the students panel with a list of students
+                DrinkService drinkService = new DrinkService();
+                List<Drink> drinksList = drinkService.GetDrinks();
+
+                // clear the listview before filling it again
+                drinksChecklist.Items.Clear();
+
+                //foreach drink in the list of drinks make one row in the Drinks ListView
+                foreach (Drink d in drinksList)
+                {
+                    
+
+                    drinksChecklist.Items.Add(d);
+                    
+
+
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong while loading the drinks: " + e.Message);
+            }
+
         }
 
+        //exit application
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
+        //show dashboard when dashboard is clicked
         private void dashboardToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             showPanel("Dashboard");
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
 
-        }
-
+        //message when imgdashboard is clicked
         private void imgDashboard_Click(object sender, EventArgs e)
         {
             MessageBox.Show("What happens in Someren, stays in Someren!");
         }
 
+        //show pannel students
         private void studentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPanel("Students");
@@ -314,10 +357,7 @@ namespace SomerenUI
             showPanel("Rooms");
         }
 
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
+     
 
         //show the drink panel when the drinks toolstrip menu item is clicked
         private void drinksToolStripMenuItem_Click(object sender, EventArgs e)
@@ -349,7 +389,7 @@ namespace SomerenUI
                 //add a drink to the Drinks database
                 drinkService.AddDrink(drink);
                 //reload the Drinks in the ListView
-                AddDrinksToList();
+                AddDrinksToList(listViewDrinks);
                 //Clear all textboxes in the Drinks panel
                 ClearDrinksTxtBoxes();
             }
@@ -383,7 +423,7 @@ namespace SomerenUI
                 //update the selected drink in the Drinks database
                 drinkService.UpdateDrink((Drink)listViewDrinks.SelectedItems[0].Tag, drink);
                 //reload the Drinks in the ListView
-                AddDrinksToList();
+                AddDrinksToList(listViewDrinks);
                 //Clear all textboxes in the Drinks panel
                 ClearDrinksTxtBoxes();
             }
@@ -410,7 +450,7 @@ namespace SomerenUI
                 //update the selected drink in the Drinks database
                 drinkService.DeleteDrink((Drink)listViewDrinks.SelectedItems[0].Tag);
                 //reload the Drinks in the ListView
-                AddDrinksToList();
+                AddDrinksToList(listViewDrinks);
                 //Clear all textboxes in the Drinks panel
                 ClearDrinksTxtBoxes();
             }
@@ -418,6 +458,142 @@ namespace SomerenUI
             {
                 MessageBox.Show("Something went wrong while deleting a drink: " + exception.Message);
             }
+        }
+
+
+        //checkout menu
+
+        private void checkoutToolStripItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Checkout");
+        }
+        
+
+        //makes the reciet
+        public void MakeReciet(List<Order> orders)
+        {
+            int price=0;
+       
+            //----------------------
+
+
+
+             recietListView.Items.Clear();
+
+            foreach (Order order in orders)
+            { 
+
+                ListViewItem Orderitem = new ListViewItem(order.drink.Name);
+                Orderitem.SubItems.Add(order.drink.SalesPrice.ToString());
+                Orderitem.SubItems.Add(order.drink.Stock.ToString());
+                recietListView.Items.Add(Orderitem);
+
+
+                price += (int)order.drink.SalesPrice;
+                recietListView.Refresh();
+
+            }
+
+            priceTextBox.Text=price.ToString();
+
+
+        }
+
+
+        public void UpdateCheckout()
+        {
+            AddStudentsTolist(studentsListview);
+            AddDrinksToSelection(drinksSelectionCheckout);
+        }
+
+
+
+        public List<Order> MakeOrderList()
+        {
+            List<Order> orders = new List<Order>();
+
+            
+
+            //make foreach of checked items
+            foreach (Drink item in drinksSelectionCheckout.CheckedItems)
+            {
+
+                Order order = new Order();
+
+
+                //get the id of the selected student
+                foreach (ListViewItem l in studentsListview.Items)
+                {
+                    if (l.Selected)
+                    {
+                        order.CustomerId = int.Parse(l.SubItems[0].Text);
+                    }
+                }
+               
+
+                order.DrinkId = item.Id;
+                order.drink = item;
+               
+                orders.Add(order);
+            }
+            
+         
+           
+           
+            return orders;
+           
+        }
+
+       
+
+        private void drinksSelectionCheckout_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                MakeReciet(MakeOrderList());
+            }catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void studentsListview_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
+    
+        private void orderButon_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                List<Order> orders = new List<Order>();
+                OrderService orderService  = new OrderService();
+
+                orders = MakeOrderList();
+                orderService.validateOrder(orders);
+                UpdateCheckout();
+                orders.Clear();
+                MakeReciet(orders);
+                orderService.SendOrder(orders);
+
+                //CheckoutPannel.BackgroundImage = Properties.Resources.AthleticOptimisticAoudad_size_restricted;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+
+          
+
+
+        }
+
+        private void priceTextBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
