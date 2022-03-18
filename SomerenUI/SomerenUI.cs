@@ -41,6 +41,8 @@ namespace SomerenUI
 
                 case "Students":
                     hideAll();
+
+         
                     AddStudentsTolist(listViewStudents);
                     pnlStudents.Show();
                     break;
@@ -61,18 +63,15 @@ namespace SomerenUI
                     hideAll();
                     AddDrinksToList(listViewDrinks);
                     pnlDrinks.Show();
-                    break;
-
+                break;
                 case "Checkout":
+
                     hideAll();
                     UpdateCheckout();
                     CheckoutPannel.Show();
-                    break;
 
-                case "Revenue Report":
-                    hideAll();
-                    AddRevenueToList();
-                    panelRevenueReport.Show();
+
+
                     break;
 
                 default:
@@ -210,31 +209,6 @@ namespace SomerenUI
             }
         }
 
-        private void AddRevenueToList()
-        {
-            try
-            {
-                RevenueService revenueService = new RevenueService();
-                RevenueReport report = revenueService.GetReport();
-
-                MessageBox.Show($"{report.Sales}/{report.Turnover}/{report.NumberOfCustomers}");
-                ListViewItem lvi = new ListViewItem(Convert.ToString(report.Sales));
-                lvi.SubItems.Add(Convert.ToString(report.Turnover));
-                lvi.SubItems.Add(Convert.ToString(report.NumberOfCustomers));
-                lvi.Tag = report;
-                listViewRevenueReport.Items.Add(lvi);
-                listViewRevenueReport.View = View.Details;
-
-            
-            }
-
-            catch (Exception excep)
-            {
-                MessageBox.Show("Something went wrong while loading the revenue report: " + excep.Message);
-            }
-        }
-
-
         //adds teachers to the lsit view
         private void AddTeachersToList()
         {
@@ -288,8 +262,6 @@ namespace SomerenUI
                 MessageBox.Show("Something went wrong while loading the students: " + e.Message);
             }
         }
-
-       
         //add rooms to room list
         private void AddRoomsToList()
         {
@@ -622,12 +594,6 @@ namespace SomerenUI
         private void priceTextBox_TextChanged(object sender, EventArgs e)
         {
 
-        }
-
-        // show panel revenue report
-        private void reportRevenueToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            showPanel("Revenue Report");
         }
     }
 }
