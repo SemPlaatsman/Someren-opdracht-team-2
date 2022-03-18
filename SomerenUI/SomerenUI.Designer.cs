@@ -100,6 +100,7 @@
             this.name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.price = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.drinksSelectionCheckout = new System.Windows.Forms.CheckedListBox();
+            this.stock = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.menuStrip1.SuspendLayout();
             this.pnlDashboard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
@@ -737,7 +738,8 @@
             // 
             this.recietListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.name,
-            this.price});
+            this.price,
+            this.stock});
             this.recietListView.HideSelection = false;
             this.recietListView.Location = new System.Drawing.Point(611, 42);
             this.recietListView.Name = "recietListView";
@@ -754,7 +756,7 @@
             // price
             // 
             this.price.Text = "Price";
-            this.price.Width = 136;
+            this.price.Width = 62;
             // 
             // drinksSelectionCheckout
             // 
@@ -767,6 +769,10 @@
             this.drinksSelectionCheckout.TabIndex = 2;
             this.drinksSelectionCheckout.Tag = "";
             this.drinksSelectionCheckout.SelectedIndexChanged += new System.EventHandler(this.drinksSelectionCheckout_SelectedIndexChanged);
+            // 
+            // stock
+            // 
+            this.stock.Text = "stock";
             // 
             // SomerenUI
             // 
@@ -887,6 +893,7 @@
         private System.Windows.Forms.Button orderButon;
         private System.Windows.Forms.TextBox priceTextBox;
         private System.Windows.Forms.Label priceLabel;
+        private System.Windows.Forms.ColumnHeader stock;
     }
 }
 

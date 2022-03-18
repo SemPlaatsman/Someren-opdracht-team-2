@@ -484,10 +484,9 @@ namespace SomerenUI
             { 
 
                 ListViewItem Orderitem = new ListViewItem(order.drink.Name);
-               Orderitem.SubItems.Add(order.drink.SalesPrice.ToString());
-
+                Orderitem.SubItems.Add(order.drink.SalesPrice.ToString());
+                Orderitem.SubItems.Add(order.drink.Stock.ToString());
                 recietListView.Items.Add(Orderitem);
-                
 
 
                 price += (int)order.drink.SalesPrice;
@@ -513,12 +512,14 @@ namespace SomerenUI
         {
             List<Order> orders = new List<Order>();
 
-           
+            
+
             //make foreach of checked items
             foreach (Drink item in drinksSelectionCheckout.CheckedItems)
             {
 
                 Order order = new Order();
+
 
                 //get the id of the selected student
                 foreach (ListViewItem l in studentsListview.Items)
@@ -528,34 +529,32 @@ namespace SomerenUI
                         order.CustomerId = int.Parse(l.SubItems[0].Text);
                     }
                 }
+               
 
                 order.DrinkId = item.Id;
                 order.drink = item;
+               
                 orders.Add(order);
-    
             }
-            return orders;
-        }
-
-        public void SendOrder(List<Order> orders)
-        {
             
-            OrderService orderService = new OrderService();
-
-            foreach(Order orderItem in orders)
-            {
-
-                orderService.makeOrder(orderItem);
-
-            }
-
+         
+           
+           
+            return orders;
            
         }
 
+       
+
         private void drinksSelectionCheckout_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            MakeReciet(MakeOrderList());
+            try
+            {
+                MakeReciet(MakeOrderList());
+            }catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void studentsListview_SelectedIndexChanged(object sender, EventArgs e)
@@ -563,14 +562,33 @@ namespace SomerenUI
 
         }
 
+
+    
         private void orderButon_Click(object sender, EventArgs e)
         {
-            List<Order> orders = new List<Order>();
-            orders = MakeOrderList();
-            SendOrder(orders);
+            try
+            {
+                List<Order> orders = new List<Order>();
+                OrderService orderService  = new OrderService();
 
-            UpdateCheckout();
-            CheckoutPannel.BackgroundImage = Properties.Resources.AthleticOptimisticAoudad_size_restricted;
+                orders = MakeOrderList();
+                orderService.validateOrder(orders);
+                UpdateCheckout();
+                orders.Clear();
+                MakeReciet(orders);
+                orderService.SendOrder(orders);
+
+                //CheckoutPannel.BackgroundImage = Properties.Resources.AthleticOptimisticAoudad_size_restricted;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+
+          
+
+
         }
 
         private void priceTextBox_TextChanged(object sender, EventArgs e)
