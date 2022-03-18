@@ -20,7 +20,6 @@ namespace SomerenUI
         {
             InitializeComponent();
 
-
         }
 
         private void SomerenUI_Load(object sender, EventArgs e)
@@ -303,6 +302,7 @@ namespace SomerenUI
                 foreach (Drink d in drinksList)
                 {
                     
+
                     drinksChecklist.Items.Add(d);
                     
 
@@ -467,42 +467,131 @@ namespace SomerenUI
         {
             showPanel("Checkout");
         }
-        private void orderButton_Click(object sender, EventArgs e)
+        
+
+        //makes the reciet
+        public void MakeReciet(List<Order> orders)
         {
-            MakeOrder();
+            int price=0;
+       
+            //----------------------
+
+
+
+             recietListView.Items.Clear();
+
+            foreach (Order order in orders)
+            { 
+
+                ListViewItem Orderitem = new ListViewItem(order.drink.Name);
+                Orderitem.SubItems.Add(order.drink.SalesPrice.ToString());
+                Orderitem.SubItems.Add(order.drink.Stock.ToString());
+                recietListView.Items.Add(Orderitem);
+
+
+                price += (int)order.drink.SalesPrice;
+                recietListView.Refresh();
+
+            }
+
+            priceTextBox.Text=price.ToString();
+
+
         }
+
 
         public void UpdateCheckout()
         {
             AddStudentsTolist(studentsListview);
             AddDrinksToSelection(drinksSelectionCheckout);
         }
-        public void MakeOrder()
+
+
+
+        public List<Order> MakeOrderList()
         {
+            List<Order> orders = new List<Order>();
+
             
-            OrderService orderService = new OrderService();
-            Order order = new Order();
-            //get the id of the selected student
-            foreach (ListViewItem l in studentsListview.Items)
-            {
-                if (l.Selected)
-                {
-                    order.CustomerId = int.Parse(l.SubItems[0].Text);
-                }
-            }
+
             //make foreach of checked items
-            foreach(Drink item in drinksSelectionCheckout.CheckedItems)
+            foreach (Drink item in drinksSelectionCheckout.CheckedItems)
             {
 
+                Order order = new Order();
+
+
+                //get the id of the selected student
+                foreach (ListViewItem l in studentsListview.Items)
+                {
+                    if (l.Selected)
+                    {
+                        order.CustomerId = int.Parse(l.SubItems[0].Text);
+                    }
+                }
+               
 
                 order.DrinkId = item.Id;
-
-                orderService.makeOrder(order);
+                order.drink = item;
+               
+                orders.Add(order);
             }
             
+         
+           
+           
+            return orders;
+           
         }
 
-        private void drinkBindingSource_CurrentChanged(object sender, EventArgs e)
+       
+
+        private void drinksSelectionCheckout_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                MakeReciet(MakeOrderList());
+            }catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void studentsListview_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
+    
+        private void orderButon_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                List<Order> orders = new List<Order>();
+                OrderService orderService  = new OrderService();
+
+                orders = MakeOrderList();
+                orderService.validateOrder(orders);
+                UpdateCheckout();
+                orders.Clear();
+                MakeReciet(orders);
+                orderService.SendOrder(orders);
+
+                //CheckoutPannel.BackgroundImage = Properties.Resources.AthleticOptimisticAoudad_size_restricted;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+
+          
+
+
+        }
+
+        private void priceTextBox_TextChanged(object sender, EventArgs e)
         {
 
         }
