@@ -47,7 +47,6 @@
     <Compile Include="ErrorLogger.cs" />
     <Compile Include="OrderDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RevenueDao.cs" />
     <Compile Include="RoomDao.cs" />
     <Compile Include="TeacherDao.cs" />
     <Compile Include="StudentDao.cs" />
