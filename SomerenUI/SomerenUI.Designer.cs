@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SomerenUI));
             this.imgDashboard = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -90,8 +89,6 @@
             this.drinksStock = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label2 = new System.Windows.Forms.Label();
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.drinkBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.drinkBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.drinksSelectionCheckout = new System.Windows.Forms.CheckedListBox();
             this.recietPanel = new System.Windows.Forms.Panel();
             this.recietLabel = new System.Windows.Forms.Label();
@@ -120,8 +117,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.pnlDrinks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.drinkBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.drinkBindingSource1)).BeginInit();
             this.recietPanel.SuspendLayout();
             this.CheckoutPannel.SuspendLayout();
             this.panelRevenueReport.SuspendLayout();
@@ -300,7 +295,6 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::SomerenUI.Properties.Resources.someren;
             this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
             this.pictureBox1.Location = new System.Drawing.Point(805, 0);
             this.pictureBox1.Name = "pictureBox1";
@@ -371,7 +365,6 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Image = global::SomerenUI.Properties.Resources.someren;
             this.pictureBox3.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox3.InitialImage")));
             this.pictureBox3.Location = new System.Drawing.Point(805, 0);
             this.pictureBox3.Name = "pictureBox3";
@@ -436,7 +429,6 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::SomerenUI.Properties.Resources.someren;
             this.pictureBox2.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.InitialImage")));
             this.pictureBox2.Location = new System.Drawing.Point(805, 0);
             this.pictureBox2.Name = "pictureBox2";
@@ -616,7 +608,6 @@
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Image = global::SomerenUI.Properties.Resources.someren;
             this.pictureBox4.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox4.InitialImage")));
             this.pictureBox4.Location = new System.Drawing.Point(808, 0);
             this.pictureBox4.Name = "pictureBox4";
@@ -678,15 +669,6 @@
             // columnHeader8
             // 
             this.columnHeader8.Text = "ID";
-            // 
-            // drinkBindingSource
-            // 
-            this.drinkBindingSource.DataSource = typeof(SomerenModel.Drink);
-            this.drinkBindingSource.CurrentChanged += new System.EventHandler(this.drinkBindingSource_CurrentChanged);
-            // 
-            // drinkBindingSource1
-            // 
-            this.drinkBindingSource1.DataSource = typeof(SomerenModel.Drink);
             // 
             // drinksSelectionCheckout
             // 
@@ -823,7 +805,6 @@
             // 
             // pictureBox5
             // 
-            this.pictureBox5.Image = global::SomerenUI.Properties.Resources.someren;
             this.pictureBox5.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox5.InitialImage")));
             this.pictureBox5.Location = new System.Drawing.Point(795, 0);
             this.pictureBox5.Name = "pictureBox5";
@@ -880,8 +861,6 @@
             this.pnlDrinks.ResumeLayout(false);
             this.pnlDrinks.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.drinkBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.drinkBindingSource1)).EndInit();
             this.recietPanel.ResumeLayout(false);
             this.recietPanel.PerformLayout();
             this.CheckoutPannel.ResumeLayout(false);
@@ -954,8 +933,6 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.ToolStripMenuItem checkoutToolStripItem;
         private System.Windows.Forms.ColumnHeader columnHeader8;
-        private System.Windows.Forms.BindingSource drinkBindingSource;
-        private System.Windows.Forms.BindingSource drinkBindingSource1;
         private System.Windows.Forms.CheckedListBox drinksSelectionCheckout;
         private System.Windows.Forms.Panel recietPanel;
         private System.Windows.Forms.Label recietLabel;
