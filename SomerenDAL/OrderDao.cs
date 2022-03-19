@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using SomerenModel;
 
 namespace SomerenDAL
-{
+{ 
     public class OrderDao : BaseDao
     {
         public bool MakeOrder(Order o)
