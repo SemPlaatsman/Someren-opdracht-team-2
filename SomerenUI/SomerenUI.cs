@@ -20,6 +20,7 @@ namespace SomerenUI
         {
             InitializeComponent();
 
+
         }
 
         private void SomerenUI_Load(object sender, EventArgs e)
@@ -41,8 +42,6 @@ namespace SomerenUI
 
                 case "Students":
                     hideAll();
-
-         
                     AddStudentsTolist(listViewStudents);
                     pnlStudents.Show();
                     break;
@@ -63,15 +62,18 @@ namespace SomerenUI
                     hideAll();
                     AddDrinksToList(listViewDrinks);
                     pnlDrinks.Show();
-                break;
-                case "Checkout":
+                    break;
 
+                case "Checkout":
                     hideAll();
                     UpdateCheckout();
                     CheckoutPannel.Show();
+                    break;
 
-
-
+                case "Revenue Report":
+                    hideAll();
+                    AddRevenueToList();
+                    panelRevenueReport.Show();
                     break;
 
                 default:
@@ -170,7 +172,7 @@ namespace SomerenUI
 
         //adds drinks to list view
         private void AddDrinksToList(ListView drinkslistview)
-        { 
+        {
             try
             {
                 // fill the students listview within the students panel with a list of students
@@ -208,6 +210,31 @@ namespace SomerenUI
                 MessageBox.Show("Something went wrong while loading the drinks: " + e.Message);
             }
         }
+
+        private void AddRevenueToList()
+        {
+            try
+            {
+                RevenueService revenueService = new RevenueService();
+                RevenueReport report = revenueService.GetReport();
+
+                MessageBox.Show($"{report.Sales}/{report.Turnover}/{report.NumberOfCustomers}");
+                ListViewItem lvi = new ListViewItem(Convert.ToString(report.Sales));
+                lvi.SubItems.Add(Convert.ToString(report.Turnover));
+                lvi.SubItems.Add(Convert.ToString(report.NumberOfCustomers));
+                lvi.Tag = report;
+                listViewRevenueReport.Items.Add(lvi);
+                listViewRevenueReport.View = View.Details;
+
+            
+            }
+
+            catch (Exception excep)
+            {
+                MessageBox.Show("Something went wrong while loading the revenue report: " + excep.Message);
+            }
+        }
+
 
         //adds teachers to the lsit view
         private void AddTeachersToList()
@@ -262,6 +289,8 @@ namespace SomerenUI
                 MessageBox.Show("Something went wrong while loading the students: " + e.Message);
             }
         }
+
+       
         //add rooms to room list
         private void AddRoomsToList()
         {
@@ -302,7 +331,6 @@ namespace SomerenUI
                 foreach (Drink d in drinksList)
                 {
                     
-
                     drinksChecklist.Items.Add(d);
                     
 
@@ -467,133 +495,50 @@ namespace SomerenUI
         {
             showPanel("Checkout");
         }
-        
-
-        //makes the reciet
-        public void MakeReciet(List<Order> orders)
+        private void orderButton_Click(object sender, EventArgs e)
         {
-            int price=0;
-       
-            //----------------------
-
-
-
-             recietListView.Items.Clear();
-
-            foreach (Order order in orders)
-            { 
-
-                ListViewItem Orderitem = new ListViewItem(order.drink.Name);
-                Orderitem.SubItems.Add(order.drink.SalesPrice.ToString());
-                Orderitem.SubItems.Add(order.drink.Stock.ToString());
-                recietListView.Items.Add(Orderitem);
-
-
-                price += (int)order.drink.SalesPrice;
-                recietListView.Refresh();
-
-            }
-
-            priceTextBox.Text=price.ToString();
-
-
+            MakeOrder();
         }
-
 
         public void UpdateCheckout()
         {
             AddStudentsTolist(studentsListview);
             AddDrinksToSelection(drinksSelectionCheckout);
         }
-
-
-
-        public List<Order> MakeOrderList()
+        public void MakeOrder()
         {
-            List<Order> orders = new List<Order>();
-
             
-
+            OrderService orderService = new OrderService();
+            Order order = new Order();
+            //get the id of the selected student
+            foreach (ListViewItem l in studentsListview.Items)
+            {
+                if (l.Selected)
+                {
+                    order.CustomerId = int.Parse(l.SubItems[0].Text);
+                }
+            }
             //make foreach of checked items
-            foreach (Drink item in drinksSelectionCheckout.CheckedItems)
+            foreach(Drink item in drinksSelectionCheckout.CheckedItems)
             {
 
-                Order order = new Order();
-
-
-                //get the id of the selected student
-                foreach (ListViewItem l in studentsListview.Items)
-                {
-                    if (l.Selected)
-                    {
-                        order.CustomerId = int.Parse(l.SubItems[0].Text);
-                    }
-                }
-               
 
                 order.DrinkId = item.Id;
-                order.drink = item;
-               
-                orders.Add(order);
+
+                orderService.makeOrder(order);
             }
             
-         
-           
-           
-            return orders;
-           
         }
 
-       
-
-        private void drinksSelectionCheckout_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                MakeReciet(MakeOrderList());
-            }catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void studentsListview_SelectedIndexChanged(object sender, EventArgs e)
+        private void drinkBindingSource_CurrentChanged(object sender, EventArgs e)
         {
 
         }
 
-
-    
-        private void orderButon_Click(object sender, EventArgs e)
+        // show panel revenue report
+        private void reportRevenueToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
-            {
-                List<Order> orders = new List<Order>();
-                OrderService orderService  = new OrderService();
-
-                orders = MakeOrderList();
-                orderService.validateOrder(orders);
-                UpdateCheckout();
-                orders.Clear();
-                MakeReciet(orders);
-                orderService.SendOrder(orders);
-
-                //CheckoutPannel.BackgroundImage = Properties.Resources.AthleticOptimisticAoudad_size_restricted;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-
-          
-
-
-        }
-
-        private void priceTextBox_TextChanged(object sender, EventArgs e)
-        {
-
+            showPanel("Revenue Report");
         }
     }
 }
