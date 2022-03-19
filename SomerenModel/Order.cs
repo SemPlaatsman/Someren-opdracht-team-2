@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace SomerenModel
-{
+{ 
     public class Order
     {
         public int id { get; set; }

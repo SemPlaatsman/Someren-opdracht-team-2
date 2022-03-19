@@ -25,6 +25,6 @@ namespace SomerenModel
         public override string ToString()
         {
             return $"{Id} {Name} {SalesPrice} {Stock}";
-        }
+        } 
     }
 }

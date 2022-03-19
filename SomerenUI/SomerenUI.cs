@@ -180,7 +180,7 @@ namespace SomerenUI
                 // clear the listview before filling it again
                 drinkslistview.Items.Clear();
                 drinkslistview.SmallImageList = GetDrinkIcons();
-
+                 
                 //foreach drink in the list of drinks make one row in the Drinks ListView
                 foreach (Drink d in drinksList)
                 {
