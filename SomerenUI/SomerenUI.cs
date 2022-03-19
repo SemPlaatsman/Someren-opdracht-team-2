@@ -368,7 +368,7 @@ namespace SomerenUI
         //button to clear all textboxes in the Drinks panel
         private void btnClearDrinksTxtBoxes_Click(object sender, EventArgs e)
         {
-            ClearDrinksTxtBoxes();
+            ClearDrinksTxtBoxes(); 
         }
 
         //add button for Drinks
