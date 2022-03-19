@@ -495,50 +495,119 @@ namespace SomerenUI
         {
             showPanel("Checkout");
         }
-        private void orderButton_Click(object sender, EventArgs e)
+     
+        //makes the reciet
+        public void MakeReciet(List<Order> orders)
         {
-            MakeOrder();
+            int price = 0;
+
+
+
+
+            recietListView.Items.Clear();
+
+            foreach (Order order in orders)
+            {
+
+                ListViewItem Orderitem = new ListViewItem(order.drink.Name);
+                Orderitem.SubItems.Add(order.drink.SalesPrice.ToString());
+
+                recietListView.Items.Add(Orderitem);
+
+
+
+                price += (int)order.drink.SalesPrice;
+                recietListView.Refresh();
+
+            }
+
+            priceTextBox.Text = price.ToString();
+
+
+        }
+
+        public void SendOrder(List<Order> orders)
+        {
+
+            OrderService orderService = new OrderService();
+
+            foreach (Order orderItem in orders)
+            {
+
+                orderService.makeOrder(orderItem);
+
+            }
+
+
         }
 
         public void UpdateCheckout()
         {
             AddStudentsTolist(studentsListview);
             AddDrinksToSelection(drinksSelectionCheckout);
+            MakeReciet(new List<Order>());
+
         }
-        public void MakeOrder()
+
+        public List<Order> MakeOrderList()
         {
-            
-            OrderService orderService = new OrderService();
-            Order order = new Order();
-            //get the id of the selected student
-            foreach (ListViewItem l in studentsListview.Items)
-            {
-                if (l.Selected)
-                {
-                    order.CustomerId = int.Parse(l.SubItems[0].Text);
-                }
-            }
+            List<Order> orders = new List<Order>();
+
+
             //make foreach of checked items
-            foreach(Drink item in drinksSelectionCheckout.CheckedItems)
+            foreach (Drink item in drinksSelectionCheckout.CheckedItems)
             {
 
+                Order order = new Order();
+
+                //get the id of the selected student
+                foreach (ListViewItem l in studentsListview.Items)
+                {
+                    if (l.Selected)
+                    {
+                        order.CustomerId = int.Parse(l.SubItems[0].Text);
+                    }
+                }
 
                 order.DrinkId = item.Id;
+                order.drink = item;
+                orders.Add(order);
 
-                orderService.makeOrder(order);
             }
-            
+            return orders;
         }
 
-        private void drinkBindingSource_CurrentChanged(object sender, EventArgs e)
-        {
 
+
+
+
+      
+
+        private void drinksSelectionCheckout_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            MakeReciet(MakeOrderList());
         }
 
         // show panel revenue report
         private void reportRevenueToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPanel("Revenue Report");
+        }
+
+        private void recietListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void orderButon_Click_1(object sender, EventArgs e)
+        {
+
+            List<Order> orders = new List<Order>();
+            orders = MakeOrderList();
+            SendOrder(orders);
+
+            
+            UpdateCheckout();
         }
     }
 }
