@@ -170,7 +170,7 @@ namespace SomerenUI
 
         //adds drinks to list view
         private void AddDrinksToList(ListView drinkslistview)
-        {
+        { 
             try
             {
                 // fill the students listview within the students panel with a list of students
