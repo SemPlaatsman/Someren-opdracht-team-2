@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SomerenUI));
             this.imgDashboard = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -90,16 +89,6 @@
             this.drinksStock = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label2 = new System.Windows.Forms.Label();
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.drinkBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.drinkBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.drinksSelectionCheckout = new System.Windows.Forms.CheckedListBox();
-            this.recietPanel = new System.Windows.Forms.Panel();
-            this.recietLabel = new System.Windows.Forms.Label();
-            this.orderButton = new System.Windows.Forms.Button();
-            this.studentsListview = new System.Windows.Forms.ListView();
-            this.studentidColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.firstnameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lastnameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.CheckoutPannel = new System.Windows.Forms.Panel();
             this.panelRevenueReport = new System.Windows.Forms.Panel();
             this.monthCalendarRevenue = new System.Windows.Forms.MonthCalendar();
@@ -109,6 +98,18 @@
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.labelRevenueReport = new System.Windows.Forms.Label();
+            this.priceLabel = new System.Windows.Forms.Label();
+            this.priceTextBox = new System.Windows.Forms.TextBox();
+            this.orderButon = new System.Windows.Forms.Button();
+            this.studentsListview = new System.Windows.Forms.ListView();
+            this.studentidColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.firstnameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lastnameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.recietListView = new System.Windows.Forms.ListView();
+            this.name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.price = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.stock = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.drinksSelectionCheckout = new System.Windows.Forms.CheckedListBox();
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlDashboard.SuspendLayout();
@@ -120,9 +121,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.pnlDrinks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.drinkBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.drinkBindingSource1)).BeginInit();
-            this.recietPanel.SuspendLayout();
             this.CheckoutPannel.SuspendLayout();
             this.panelRevenueReport.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -679,89 +677,15 @@
             // 
             this.columnHeader8.Text = "ID";
             // 
-            // drinkBindingSource
-            // 
-            this.drinkBindingSource.DataSource = typeof(SomerenModel.Drink);
-            this.drinkBindingSource.CurrentChanged += new System.EventHandler(this.drinkBindingSource_CurrentChanged);
-            // 
-            // drinkBindingSource1
-            // 
-            this.drinkBindingSource1.DataSource = typeof(SomerenModel.Drink);
-            // 
-            // drinksSelectionCheckout
-            // 
-            this.drinksSelectionCheckout.CheckOnClick = true;
-            this.drinksSelectionCheckout.FormattingEnabled = true;
-            this.drinksSelectionCheckout.Location = new System.Drawing.Point(330, 42);
-            this.drinksSelectionCheckout.Margin = new System.Windows.Forms.Padding(2);
-            this.drinksSelectionCheckout.Name = "drinksSelectionCheckout";
-            this.drinksSelectionCheckout.Size = new System.Drawing.Size(176, 304);
-            this.drinksSelectionCheckout.TabIndex = 2;
-            this.drinksSelectionCheckout.Tag = "";
-            // 
-            // recietPanel
-            // 
-            this.recietPanel.Controls.Add(this.recietLabel);
-            this.recietPanel.Controls.Add(this.orderButton);
-            this.recietPanel.Location = new System.Drawing.Point(658, 42);
-            this.recietPanel.Name = "recietPanel";
-            this.recietPanel.Size = new System.Drawing.Size(200, 253);
-            this.recietPanel.TabIndex = 4;
-            // 
-            // recietLabel
-            // 
-            this.recietLabel.AutoSize = true;
-            this.recietLabel.Location = new System.Drawing.Point(23, 23);
-            this.recietLabel.Name = "recietLabel";
-            this.recietLabel.Size = new System.Drawing.Size(0, 13);
-            this.recietLabel.TabIndex = 4;
-            // 
-            // orderButton
-            // 
-            this.orderButton.Location = new System.Drawing.Point(62, 217);
-            this.orderButton.Name = "orderButton";
-            this.orderButton.Size = new System.Drawing.Size(75, 23);
-            this.orderButton.TabIndex = 3;
-            this.orderButton.Text = "Order";
-            this.orderButton.UseVisualStyleBackColor = true;
-            this.orderButton.Click += new System.EventHandler(this.orderButton_Click);
-            // 
-            // studentsListview
-            // 
-            this.studentsListview.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.studentidColumn,
-            this.firstnameColumn,
-            this.lastnameColumn});
-            this.studentsListview.FullRowSelect = true;
-            this.studentsListview.GridLines = true;
-            this.studentsListview.HideSelection = false;
-            this.studentsListview.Location = new System.Drawing.Point(35, 43);
-            this.studentsListview.MinimumSize = new System.Drawing.Size(233, 304);
-            this.studentsListview.Name = "studentsListview";
-            this.studentsListview.Scrollable = false;
-            this.studentsListview.Size = new System.Drawing.Size(233, 304);
-            this.studentsListview.TabIndex = 5;
-            this.studentsListview.UseCompatibleStateImageBehavior = false;
-            // 
-            // studentidColumn
-            // 
-            this.studentidColumn.Text = "studentID";
-            // 
-            // firstnameColumn
-            // 
-            this.firstnameColumn.Text = "first name";
-            // 
-            // lastnameColumn
-            // 
-            this.lastnameColumn.Text = "last name";
-            this.lastnameColumn.Width = 100;
-            // 
             // CheckoutPannel
             // 
             this.CheckoutPannel.AutoSize = true;
-            this.CheckoutPannel.Controls.Add(this.studentsListview);
-            this.CheckoutPannel.Controls.Add(this.recietPanel);
             this.CheckoutPannel.Controls.Add(this.drinksSelectionCheckout);
+            this.CheckoutPannel.Controls.Add(this.studentsListview);
+            this.CheckoutPannel.Controls.Add(this.recietListView);
+            this.CheckoutPannel.Controls.Add(this.orderButon);
+            this.CheckoutPannel.Controls.Add(this.priceTextBox);
+            this.CheckoutPannel.Controls.Add(this.priceLabel);
             this.CheckoutPannel.Location = new System.Drawing.Point(15, 29);
             this.CheckoutPannel.Margin = new System.Windows.Forms.Padding(2);
             this.CheckoutPannel.Name = "CheckoutPannel";
@@ -842,6 +766,102 @@
             this.labelRevenueReport.TabIndex = 3;
             this.labelRevenueReport.Text = "Revenue Report";
             // 
+            // priceLabel
+            // 
+            this.priceLabel.AutoSize = true;
+            this.priceLabel.Location = new System.Drawing.Point(593, 237);
+            this.priceLabel.Name = "priceLabel";
+            this.priceLabel.Size = new System.Drawing.Size(34, 13);
+            this.priceLabel.TabIndex = 9;
+            this.priceLabel.Text = "Price:";
+            // 
+            // priceTextBox
+            // 
+            this.priceTextBox.Location = new System.Drawing.Point(648, 234);
+            this.priceTextBox.Name = "priceTextBox";
+            this.priceTextBox.ReadOnly = true;
+            this.priceTextBox.Size = new System.Drawing.Size(48, 20);
+            this.priceTextBox.TabIndex = 8;
+            // 
+            // orderButon
+            // 
+            this.orderButon.Location = new System.Drawing.Point(648, 279);
+            this.orderButon.Name = "orderButon";
+            this.orderButon.Size = new System.Drawing.Size(75, 23);
+            this.orderButon.TabIndex = 6;
+            this.orderButon.Text = "ORDER";
+            this.orderButon.UseVisualStyleBackColor = true;
+            // 
+            // studentsListview
+            // 
+            this.studentsListview.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.studentidColumn,
+            this.firstnameColumn,
+            this.lastnameColumn});
+            this.studentsListview.FullRowSelect = true;
+            this.studentsListview.GridLines = true;
+            this.studentsListview.HideSelection = false;
+            this.studentsListview.Location = new System.Drawing.Point(35, 43);
+            this.studentsListview.MinimumSize = new System.Drawing.Size(233, 304);
+            this.studentsListview.Name = "studentsListview";
+            this.studentsListview.Scrollable = false;
+            this.studentsListview.Size = new System.Drawing.Size(233, 304);
+            this.studentsListview.TabIndex = 5;
+            this.studentsListview.UseCompatibleStateImageBehavior = false;
+            this.studentsListview.View = System.Windows.Forms.View.Details;
+            // 
+            // studentidColumn
+            // 
+            this.studentidColumn.Text = "studentID";
+            // 
+            // firstnameColumn
+            // 
+            this.firstnameColumn.Text = "first name";
+            // 
+            // lastnameColumn
+            // 
+            this.lastnameColumn.Text = "last name";
+            this.lastnameColumn.Width = 100;
+            // 
+            // recietListView
+            // 
+            this.recietListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.name,
+            this.price,
+            this.stock});
+            this.recietListView.HideSelection = false;
+            this.recietListView.Location = new System.Drawing.Point(611, 42);
+            this.recietListView.Name = "recietListView";
+            this.recietListView.Size = new System.Drawing.Size(203, 179);
+            this.recietListView.TabIndex = 5;
+            this.recietListView.UseCompatibleStateImageBehavior = false;
+            this.recietListView.View = System.Windows.Forms.View.Details;
+            // 
+            // name
+            // 
+            this.name.Text = "Name";
+            this.name.Width = 62;
+            // 
+            // price
+            // 
+            this.price.Text = "Price";
+            this.price.Width = 62;
+            // 
+            // stock
+            // 
+            this.stock.Text = "stock";
+            // 
+            // drinksSelectionCheckout
+            // 
+            this.drinksSelectionCheckout.CheckOnClick = true;
+            this.drinksSelectionCheckout.FormattingEnabled = true;
+            this.drinksSelectionCheckout.Location = new System.Drawing.Point(330, 42);
+            this.drinksSelectionCheckout.Margin = new System.Windows.Forms.Padding(2);
+            this.drinksSelectionCheckout.Name = "drinksSelectionCheckout";
+            this.drinksSelectionCheckout.Size = new System.Drawing.Size(176, 304);
+            this.drinksSelectionCheckout.TabIndex = 2;
+            this.drinksSelectionCheckout.Tag = "";
+            // 
             // SomerenUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -880,11 +900,8 @@
             this.pnlDrinks.ResumeLayout(false);
             this.pnlDrinks.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.drinkBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.drinkBindingSource1)).EndInit();
-            this.recietPanel.ResumeLayout(false);
-            this.recietPanel.PerformLayout();
             this.CheckoutPannel.ResumeLayout(false);
+            this.CheckoutPannel.PerformLayout();
             this.panelRevenueReport.ResumeLayout(false);
             this.panelRevenueReport.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
@@ -954,16 +971,6 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.ToolStripMenuItem checkoutToolStripItem;
         private System.Windows.Forms.ColumnHeader columnHeader8;
-        private System.Windows.Forms.BindingSource drinkBindingSource;
-        private System.Windows.Forms.BindingSource drinkBindingSource1;
-        private System.Windows.Forms.CheckedListBox drinksSelectionCheckout;
-        private System.Windows.Forms.Panel recietPanel;
-        private System.Windows.Forms.Label recietLabel;
-        private System.Windows.Forms.Button orderButton;
-        private System.Windows.Forms.ListView studentsListview;
-        private System.Windows.Forms.ColumnHeader studentidColumn;
-        private System.Windows.Forms.ColumnHeader firstnameColumn;
-        private System.Windows.Forms.ColumnHeader lastnameColumn;
         private System.Windows.Forms.Panel CheckoutPannel;
         private System.Windows.Forms.ToolStripMenuItem reportRevenueToolStripMenuItem;
         private System.Windows.Forms.Panel panelRevenueReport;
@@ -974,6 +981,18 @@
         private System.Windows.Forms.ColumnHeader columnHeader10;
         private System.Windows.Forms.ColumnHeader columnHeader11;
         private System.Windows.Forms.MonthCalendar monthCalendarRevenue;
+        private System.Windows.Forms.CheckedListBox drinksSelectionCheckout;
+        private System.Windows.Forms.ListView studentsListview;
+        private System.Windows.Forms.ColumnHeader studentidColumn;
+        private System.Windows.Forms.ColumnHeader firstnameColumn;
+        private System.Windows.Forms.ColumnHeader lastnameColumn;
+        private System.Windows.Forms.ListView recietListView;
+        private System.Windows.Forms.ColumnHeader name;
+        private System.Windows.Forms.ColumnHeader price;
+        private System.Windows.Forms.ColumnHeader stock;
+        private System.Windows.Forms.Button orderButon;
+        private System.Windows.Forms.TextBox priceTextBox;
+        private System.Windows.Forms.Label priceLabel;
     }
 }
 
