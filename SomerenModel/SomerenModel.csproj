@@ -48,6 +48,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="RevenueReport.cs" />
     <Compile Include="Room.cs" />
     <Compile Include="Teacher.cs" />
     <Compile Include="Student.cs" />
