@@ -84,6 +84,7 @@ namespace SomerenUI
                     pnlActivities.Show();
                     break;
 
+
                 default:
                     hideAll();
                     break;
@@ -585,6 +586,7 @@ namespace SomerenUI
             return orders;
         }
       
+
         private void drinksSelectionCheckout_SelectedIndexChanged(object sender, EventArgs e)
         {
             MakeReciet(MakeOrderList());
@@ -836,5 +838,6 @@ namespace SomerenUI
             }
             return false;
         }
+
     }
 }
