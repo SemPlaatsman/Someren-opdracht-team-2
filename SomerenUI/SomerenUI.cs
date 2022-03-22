@@ -32,7 +32,8 @@ namespace SomerenUI
         private void showPanel(string panelName)
         {
 
-            switch(panelName){
+            switch (panelName)
+            {
                 case "Dashboard":
                     hideAll();
 
@@ -80,11 +81,14 @@ namespace SomerenUI
                     hideAll();
                     dateTimeStart.CustomFormat = "dd-MM-yyyy HH:mm:ss";
                     dateTimeEnd.CustomFormat = "dd-MM-yyyy HH:mm:ss";
-                    AddActivitiesToList();
+                    AddActivitiesToList(listViewActivities);
                     pnlActivities.Show();
                     break;
-
-
+                case "ActivitiesAdd":
+                    hideAll();
+                    supervisorSetup();
+                    activitie2pannel.Show();
+                    break;
                 default:
                     hideAll();
                     break;
@@ -191,7 +195,7 @@ namespace SomerenUI
                 // clear the listview before filling it again
                 drinkslistview.Items.Clear();
                 drinkslistview.SmallImageList = GetDrinkIcons();
-                 
+
                 //foreach drink in the list of drinks make one row in the Drinks ListView
                 foreach (Drink d in drinksList)
                 {
@@ -235,7 +239,7 @@ namespace SomerenUI
                 listViewRevenueReport.Items.Add(lvi);
                 listViewRevenueReport.View = View.Details;
 
-            
+
             }
 
             catch (Exception excep)
@@ -277,7 +281,7 @@ namespace SomerenUI
             try
             {
                 // fill the students listview within the students panel with a list of students
-                StudentService studService = new StudentService(); 
+                StudentService studService = new StudentService();
                 List<Student> studentList = studService.GetStudents();
 
                 // clear the listview before filling it again
@@ -299,7 +303,7 @@ namespace SomerenUI
             }
         }
 
-       
+
         //add rooms to room list
         private void AddRoomsToList()
         {
@@ -324,8 +328,8 @@ namespace SomerenUI
                 MessageBox.Show("Something went wrong while loading the rooms: " + e.Message);
             }
         }
-
-       private void AddDrinksToSelection(CheckedListBox drinksChecklist)
+        //add drinks to selection
+        private void AddDrinksToSelection(CheckedListBox drinksChecklist)
         {
             try
             {
@@ -339,9 +343,9 @@ namespace SomerenUI
                 //foreach drink in the list of drinks make one row in the Drinks ListView
                 foreach (Drink d in drinksList)
                 {
-                    
+
                     drinksChecklist.Items.Add(d);
-                    
+
 
 
                 }
@@ -352,6 +356,36 @@ namespace SomerenUI
             }
 
         }
+
+        //add teacher to selection
+        private void AddTeacherToSelection(CheckedListBox checkedlist)
+        {
+            try
+            {
+                // fill the students listview within the students panel with a list of students
+                TeacherService teacherService = new TeacherService();
+                List<Teacher> TeacherList = teacherService.GetTeachers();
+
+                // clear the listview before filling it again
+                checkedlist.Items.Clear();
+
+                //foreach drink in the list of drinks make one row in the Drinks ListView
+                foreach (Teacher t in TeacherList)
+                {
+
+                    checkedlist.Items.Add(t);
+
+
+
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong while loading the drinks: " + e.Message);
+            }
+
+        }
+
 
         //exit application
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -394,7 +428,7 @@ namespace SomerenUI
             showPanel("Rooms");
         }
 
-     
+
 
         //show the drink panel when the drinks toolstrip menu item is clicked
         private void drinksToolStripMenuItem_Click(object sender, EventArgs e)
@@ -405,7 +439,7 @@ namespace SomerenUI
         //button to clear all textboxes in the Drinks panel
         private void btnClearDrinksTxtBoxes_Click(object sender, EventArgs e)
         {
-            ClearDrinksTxtBoxes(); 
+            ClearDrinksTxtBoxes();
         }
 
         //add button for Drinks
@@ -504,7 +538,7 @@ namespace SomerenUI
         {
             showPanel("Checkout");
         }
-     
+
         //makes the reciet
         public void MakeReciet(List<Order> orders)
         {
@@ -585,7 +619,7 @@ namespace SomerenUI
             }
             return orders;
         }
-      
+
 
         private void drinksSelectionCheckout_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -621,7 +655,7 @@ namespace SomerenUI
             showPanel("Activities");
         }
         //add activities to the ListView
-        private void AddActivitiesToList()
+        private void AddActivitiesToList(ListView listView)
         {
             try
             {
@@ -630,7 +664,7 @@ namespace SomerenUI
                 List<Activity> activitiesList = activityService.GetActivities();
 
                 // clear the listview before filling it again
-                listViewActivities.Items.Clear();
+                listView.Items.Clear();
 
                 //foreach activity in the list of activities make one row in the activity ListView
                 foreach (Activity a in activitiesList)
@@ -640,9 +674,9 @@ namespace SomerenUI
                     li.SubItems.Add(a.StartDate.ToString("dd-MM-yyyy HH:mm:ss"));
                     li.SubItems.Add(a.EndDate.ToString("dd-MM-yyyy HH:mm:ss"));
                     li.Tag = a;
-                    listViewActivities.Items.Add(li);
+                    listView.Items.Add(li);
                 }
-                listViewActivities.View = View.Details;
+                listView.View = View.Details;
             }
             catch (Exception e)
             {
@@ -703,7 +737,7 @@ namespace SomerenUI
                 //add an activity to the Activities database
                 activityService.AddActivity(activity);
                 //reload the activities in the ListView
-                AddActivitiesToList();
+                AddActivitiesToList(listViewActivities);
                 //Clear all textboxes in the activities panel
                 ClearActivityTxtBoxes();
             }
@@ -748,7 +782,7 @@ namespace SomerenUI
                 //update the selected drink in the Drinks database
                 activityService.UpdateActivity((Activity)listViewActivities.SelectedItems[0].Tag, activity);
                 //reload the activities in the ListView
-                AddActivitiesToList();
+                AddActivitiesToList(listViewActivities);
                 //Clear all textboxes in the activities panel
                 ClearActivityTxtBoxes();
             }
@@ -774,7 +808,7 @@ namespace SomerenUI
                 //update the selected activity in the Activities database
                 activityService.DeleteActivity((Activity)listViewActivities.SelectedItems[0].Tag);
                 //reload the activities in the ListView
-                AddActivitiesToList();
+                AddActivitiesToList(listViewActivities);
                 //Clear all textboxes in the activities panel
                 ClearActivityTxtBoxes();
             }
@@ -839,5 +873,46 @@ namespace SomerenUI
             return false;
         }
 
+        // got to supervisor Mmanagement tab
+        private void supervisorsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("ActivitiesAdd");
+        }
+        //super visor
+        private void supervisorSetup()
+        {
+            AddActivitiesToList(activitieslist2);
+            AddTeacherToSelection(supervisorsCheckedlist);
+
+
+        }
+        private void CheckTeachers(List<Activity> Supervisors)
+        {
+            foreach (Activity a in Supervisors)
+            {
+
+                for (int i =0; i< supervisorsCheckedlist.Items.Count;i++)
+                {
+                    Teacher t = (Teacher)supervisorsCheckedlist.Items[i];
+                    MessageBox.Show(t.ToString());
+                    if (t.Number == a.Teacher.Number)
+                    {
+                        supervisorsCheckedlist.SetItemChecked(i, true);
+                    }
+
+                }
+            }
+
+        }
+
+
+       
+
+        private void activitieslist2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ActivityService activity = new ActivityService();
+            List<Activity> supervisors = activity.GetActivitesWhitTeacherJoin(5);
+            CheckTeachers(supervisors);
+        }
     }
 }

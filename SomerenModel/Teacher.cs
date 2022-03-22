@@ -12,5 +12,10 @@ namespace SomerenModel
         public string LastName { get; set; }
 
         public int Number { get; set; } // LecturerNumber, e.g. 47198
+
+        public override string ToString()
+        {
+            return FirstName;
+        }
     }
 }
