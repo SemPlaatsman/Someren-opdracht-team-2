@@ -888,20 +888,22 @@ namespace SomerenUI
         }
         private void CheckTeachers(List<Activity> Supervisors)
         {
-            foreach (Activity a in Supervisors)
-            {
+            
+           
 
                 for (int i =0; i< supervisorsCheckedlist.Items.Count;i++)
                 {
-                    Teacher t = (Teacher)supervisorsCheckedlist.Items[i];
-                    MessageBox.Show(t.ToString());
-                    if (t.Number == a.Teacher.Number)
-                    {
+                supervisorsCheckedlist.SetItemChecked(i, false);
+                     foreach (Activity a in Supervisors)
+                     {
+                        Teacher t = (Teacher)supervisorsCheckedlist.Items[i];
+                        if (t.Number == a.Teacher.Number)
+                        {
                         supervisorsCheckedlist.SetItemChecked(i, true);
-                    }
+                        }
 
+                     }
                 }
-            }
 
         }
 
@@ -911,8 +913,11 @@ namespace SomerenUI
         private void activitieslist2_SelectedIndexChanged(object sender, EventArgs e)
         {
             ActivityService activity = new ActivityService();
-            List<Activity> supervisors = activity.GetActivitesWhitTeacherJoin(5);
-            CheckTeachers(supervisors);
+            foreach (ListViewItem l in  activitieslist2.Items) {
+                List<Activity> supervisors = activity.GetActivitesWhitTeacherJoin(5);
+                CheckTeachers(supervisors);
+
+            }
         }
     }
 }
