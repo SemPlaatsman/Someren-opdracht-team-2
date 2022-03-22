@@ -724,6 +724,7 @@
             this.drinksSelectionCheckout.Size = new System.Drawing.Size(176, 304);
             this.drinksSelectionCheckout.TabIndex = 2;
             this.drinksSelectionCheckout.Tag = "";
+            this.drinksSelectionCheckout.SelectedIndexChanged += new System.EventHandler(this.drinksSelectionCheckout_SelectedIndexChanged);
             // 
             // studentsListview
             // 
@@ -769,6 +770,7 @@
             this.recietListView.TabIndex = 5;
             this.recietListView.UseCompatibleStateImageBehavior = false;
             this.recietListView.View = System.Windows.Forms.View.Details;
+            this.recietListView.SelectedIndexChanged += new System.EventHandler(this.recietListView_SelectedIndexChanged);
             // 
             // name
             // 
@@ -792,6 +794,7 @@
             this.orderButon.TabIndex = 6;
             this.orderButon.Text = "ORDER";
             this.orderButon.UseVisualStyleBackColor = true;
+            this.orderButon.Click += new System.EventHandler(this.orderButon_Click_1);
             // 
             // priceTextBox
             // 
