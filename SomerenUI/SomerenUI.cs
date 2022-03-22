@@ -76,6 +76,15 @@ namespace SomerenUI
                     panelRevenueReport.Show();
                     break;
 
+                case "Activities":
+                    hideAll();
+                    dateTimeStart.CustomFormat = "dd-MM-yyyy HH:mm:ss";
+                    dateTimeEnd.CustomFormat = "dd-MM-yyyy HH:mm:ss";
+                    AddActivitiesToList();
+                    pnlActivities.Show();
+                    break;
+
+
                 default:
                     hideAll();
                     break;
@@ -576,11 +585,6 @@ namespace SomerenUI
             }
             return orders;
         }
-
-
-
-
-
       
 
         private void drinksSelectionCheckout_SelectedIndexChanged(object sender, EventArgs e)
@@ -606,8 +610,234 @@ namespace SomerenUI
             orders = MakeOrderList();
             SendOrder(orders);
 
-            
             UpdateCheckout();
         }
+
+        //==========ACTIVITIES CODE==========
+
+        //show the activity panel when the activities toolStrip menu item is clicked
+        private void activitiesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Activities");
+        }
+        //add activities to the ListView
+        private void AddActivitiesToList()
+        {
+            try
+            {
+                // fill the activity listview within the activity panel with a list of activities
+                ActivityService activityService = new ActivityService();
+                List<Activity> activitiesList = activityService.GetActivities();
+
+                // clear the listview before filling it again
+                listViewActivities.Items.Clear();
+
+                //foreach activity in the list of activities make one row in the activity ListView
+                foreach (Activity a in activitiesList)
+                {
+                    ListViewItem li = new ListViewItem(a.Name);
+                    li.SubItems.Add(a.Location);
+                    li.SubItems.Add(a.StartDate.ToString("dd-MM-yyyy HH:mm:ss"));
+                    li.SubItems.Add(a.EndDate.ToString("dd-MM-yyyy HH:mm:ss"));
+                    li.Tag = a;
+                    listViewActivities.Items.Add(li);
+                }
+                listViewActivities.View = View.Details;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong while loading the activities: " + e.Message);
+            }
+        }
+        //if an item in the Activities ListView is selected fill the textboxes with the values that belong to the selected Activity
+        private void listViewActivities_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                //this is to prevent the code running into exceptions when selecting an item for the second time because when you select an item for the second time
+                //c# will first deselect the previous row so there will be a call without a selected item creating an invald argument exception
+                if (listViewActivities.SelectedItems.Count == 0)
+                    return;
+                //get the selected activity
+                Activity lsActivity = (Activity)listViewActivities.SelectedItems[0].Tag;
+                //put the selected activity values into the textboxes
+                txtActivityName.Text = lsActivity.Name;
+                txtActivityLocation.Text = lsActivity.Location;
+                dateTimeStart.Value = lsActivity.StartDate;
+                dateTimeEnd.Value = lsActivity.EndDate;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Something went wrong while selecting an activity: " + ex.Message);
+            }
+        }
+
+
+        //add button for activities
+        private void btnActivityAdd_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //make a new ActivityService object
+                ActivityService activityService = new ActivityService();
+                //if a textbox of Activities isn't filled say that all textboxes must be filled
+                if (ActivityBoxEmpty())
+                {
+                    MessageBox.Show("Please fill all textboxes!");
+                    return;
+                }
+                //if the entered activity name has already been added say that the activity has already been added
+                if (ActivityNameWasAdded(txtActivityName.Text))
+                {
+                    MessageBox.Show("This activity has already been added!");
+                    return;
+                }
+                //if the start date is before the end date say that the start date can't be before the end date
+                if (dateTimeStart.Value > dateTimeEnd.Value)
+                {
+                    MessageBox.Show("The start date can't be before the end date!");
+                    return;
+                }
+                //make a new Activity object with all values from the textboxes
+                Activity activity = GetActivityFromTxtBoxes();
+                //add an activity to the Activities database
+                activityService.AddActivity(activity);
+                //reload the activities in the ListView
+                AddActivitiesToList();
+                //Clear all textboxes in the activities panel
+                ClearActivityTxtBoxes();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Something went wrong while adding an activity: " + exception.Message);
+            }
+        }
+        //update button for activities
+        private void btnActivityUpdate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //make a new ActivityService object
+                ActivityService activityService = new ActivityService();
+                //if a row wasn't selected say that a row must be selected
+                if (listViewActivities.SelectedItems.Count == 0)
+                {
+                    MessageBox.Show("Please select a row before updating one");
+                    return;
+                }
+                //if a textbox of activities isn't filled say that all textboxes must be filled
+                if (ActivityBoxEmpty())
+                {
+                    MessageBox.Show("Please fill all textboxes!");
+                    return;
+                }
+                //if the entered activity name has already been added say that the activity has already been added
+                if (ActivityNameWasAdded(txtActivityName.Text) && txtActivityName.Text != ((Activity)listViewActivities.SelectedItems[0].Tag).Name)
+                {
+                    MessageBox.Show("This activity has already been added!");
+                    return;
+                }
+                //if the start date is before the end date say that the start date can't be before the end date
+                if (dateTimeStart.Value > dateTimeEnd.Value)
+                {
+                    MessageBox.Show("The start date can't be before the end date!");
+                    return;
+                }
+                //make a new Activity object with all values from the textboxes
+                Activity activity = GetActivityFromTxtBoxes();
+                //update the selected drink in the Drinks database
+                activityService.UpdateActivity((Activity)listViewActivities.SelectedItems[0].Tag, activity);
+                //reload the activities in the ListView
+                AddActivitiesToList();
+                //Clear all textboxes in the activities panel
+                ClearActivityTxtBoxes();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Something went wrong while updating an activity: " + exception.Message);
+            }
+        }
+        //delete button for activities
+        private void btnActivityDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //make a new ActivityService object
+                ActivityService activityService = new ActivityService();
+                //if a row wasn't selected say that a row must be selected
+                if (listViewActivities.SelectedItems.Count == 0)
+                {
+                    MessageBox.Show("Please select a row before deleting one");
+                    return;
+                }
+                if (MessageBox.Show("Are you sure you want to delete this activity?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes) { return; }
+                //update the selected activity in the Activities database
+                activityService.DeleteActivity((Activity)listViewActivities.SelectedItems[0].Tag);
+                //reload the activities in the ListView
+                AddActivitiesToList();
+                //Clear all textboxes in the activities panel
+                ClearActivityTxtBoxes();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Something went wrong while deleting a drink: " + exception.Message);
+            }
+        }
+        //clear button for activities
+        private void BtnActivityClear_Click(object sender, EventArgs e)
+        {
+            ClearActivityTxtBoxes();
+        }
+
+        //method to empty out every textbox and set the start date to now and the end date to one hour after the start date in the activities panel
+        private void ClearActivityTxtBoxes()
+        {
+
+            txtActivityName.Clear();
+            txtActivityLocation.Clear();
+            dateTimeStart.Value = DateTime.Now;
+            dateTimeEnd.Value = DateTime.Now.AddHours(1);
+        }
+        //check if an activity box is empty
+        private bool ActivityBoxEmpty()
+        {
+            foreach (Control control in pnlActivities.Controls)
+            {
+                if (control is TextBox)
+                {
+                    if (String.IsNullOrWhiteSpace(control.Text) || String.IsNullOrEmpty(control.Text))
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+        //get an Activity object from the activity txt- and datetime boxes
+        private Activity GetActivityFromTxtBoxes()
+        {
+            Activity activity = new Activity()
+            {
+                Name = txtActivityName.Text,
+                Location = txtActivityLocation.Text,
+                StartDate = dateTimeStart.Value,
+                EndDate = dateTimeEnd.Value
+            };
+            return activity;
+        }
+        //method to check if an activity name was already added
+        private bool ActivityNameWasAdded(string name)
+        {
+            name.Replace(" ", "");
+            for (int i = 0; i < listViewActivities.Items.Count; i++)
+            {
+                if (name == listViewActivities.Items[i].Text.Replace(" ", ""))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
     }
 }
