@@ -540,5 +540,30 @@ namespace SomerenUI
         {
             showPanel("Revenue Report");
         }
+
+        private void btnActivityAdd_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnActivityUpdate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnActivityDelete_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnActivityClear_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listViewActivities_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

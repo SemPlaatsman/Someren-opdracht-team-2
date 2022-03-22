@@ -110,6 +110,26 @@
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.labelRevenueReport = new System.Windows.Forms.Label();
+            this.pnlActivities = new System.Windows.Forms.Panel();
+            this.dateTimeEnd = new System.Windows.Forms.DateTimePicker();
+            this.dateTimeStart = new System.Windows.Forms.DateTimePicker();
+            this.btnActivityAdd = new System.Windows.Forms.Button();
+            this.btnActivityUpdate = new System.Windows.Forms.Button();
+            this.btnActivityDelete = new System.Windows.Forms.Button();
+            this.BtnActivityClear = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtActivityLocation = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtActivityName = new System.Windows.Forms.TextBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.listViewActivities = new System.Windows.Forms.ListView();
+            this.activityName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.activityLocation = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.activityStartDateTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.activityEndDateTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label13 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlDashboard.SuspendLayout();
@@ -124,6 +144,8 @@
             this.CheckoutPannel.SuspendLayout();
             this.panelRevenueReport.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            this.pnlActivities.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.SuspendLayout();
             // 
             // imgDashboard
@@ -862,12 +884,210 @@
             this.labelRevenueReport.TabIndex = 3;
             this.labelRevenueReport.Text = "Revenue Report";
             // 
+            // pnlActivities
+            // 
+            this.pnlActivities.Controls.Add(this.dateTimeEnd);
+            this.pnlActivities.Controls.Add(this.dateTimeStart);
+            this.pnlActivities.Controls.Add(this.btnActivityAdd);
+            this.pnlActivities.Controls.Add(this.btnActivityUpdate);
+            this.pnlActivities.Controls.Add(this.btnActivityDelete);
+            this.pnlActivities.Controls.Add(this.BtnActivityClear);
+            this.pnlActivities.Controls.Add(this.label8);
+            this.pnlActivities.Controls.Add(this.label9);
+            this.pnlActivities.Controls.Add(this.txtActivityLocation);
+            this.pnlActivities.Controls.Add(this.label10);
+            this.pnlActivities.Controls.Add(this.label12);
+            this.pnlActivities.Controls.Add(this.txtActivityName);
+            this.pnlActivities.Controls.Add(this.pictureBox6);
+            this.pnlActivities.Controls.Add(this.listViewActivities);
+            this.pnlActivities.Controls.Add(this.label13);
+            this.pnlActivities.Location = new System.Drawing.Point(0, 0);
+            this.pnlActivities.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlActivities.Name = "pnlActivities";
+            this.pnlActivities.Size = new System.Drawing.Size(940, 463);
+            this.pnlActivities.TabIndex = 20;
+            // 
+            // dateTimeEnd
+            // 
+            this.dateTimeEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimeEnd.Location = new System.Drawing.Point(358, 397);
+            this.dateTimeEnd.Margin = new System.Windows.Forms.Padding(2);
+            this.dateTimeEnd.Name = "dateTimeEnd";
+            this.dateTimeEnd.Size = new System.Drawing.Size(158, 20);
+            this.dateTimeEnd.TabIndex = 11;
+            // 
+            // dateTimeStart
+            // 
+            this.dateTimeStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimeStart.Location = new System.Drawing.Point(358, 366);
+            this.dateTimeStart.Margin = new System.Windows.Forms.Padding(2);
+            this.dateTimeStart.Name = "dateTimeStart";
+            this.dateTimeStart.Size = new System.Drawing.Size(158, 20);
+            this.dateTimeStart.TabIndex = 10;
+            // 
+            // btnActivityAdd
+            // 
+            this.btnActivityAdd.Location = new System.Drawing.Point(22, 425);
+            this.btnActivityAdd.Margin = new System.Windows.Forms.Padding(2);
+            this.btnActivityAdd.Name = "btnActivityAdd";
+            this.btnActivityAdd.Size = new System.Drawing.Size(120, 26);
+            this.btnActivityAdd.TabIndex = 12;
+            this.btnActivityAdd.Text = "Add";
+            this.btnActivityAdd.UseVisualStyleBackColor = true;
+            // 
+            // btnActivityUpdate
+            // 
+            this.btnActivityUpdate.Location = new System.Drawing.Point(147, 425);
+            this.btnActivityUpdate.Margin = new System.Windows.Forms.Padding(2);
+            this.btnActivityUpdate.Name = "btnActivityUpdate";
+            this.btnActivityUpdate.Size = new System.Drawing.Size(120, 26);
+            this.btnActivityUpdate.TabIndex = 13;
+            this.btnActivityUpdate.Text = "Update";
+            this.btnActivityUpdate.UseVisualStyleBackColor = true;
+            // 
+            // btnActivityDelete
+            // 
+            this.btnActivityDelete.Location = new System.Drawing.Point(272, 425);
+            this.btnActivityDelete.Margin = new System.Windows.Forms.Padding(2);
+            this.btnActivityDelete.Name = "btnActivityDelete";
+            this.btnActivityDelete.Size = new System.Drawing.Size(120, 26);
+            this.btnActivityDelete.TabIndex = 14;
+            this.btnActivityDelete.Text = "Delete";
+            this.btnActivityDelete.UseVisualStyleBackColor = true;
+            // 
+            // BtnActivityClear
+            // 
+            this.BtnActivityClear.Location = new System.Drawing.Point(396, 425);
+            this.BtnActivityClear.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnActivityClear.Name = "BtnActivityClear";
+            this.BtnActivityClear.Size = new System.Drawing.Size(120, 26);
+            this.BtnActivityClear.TabIndex = 15;
+            this.BtnActivityClear.Text = "Clear textboxes";
+            this.BtnActivityClear.UseVisualStyleBackColor = true;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(244, 400);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(96, 13);
+            this.label8.TabIndex = 13;
+            this.label8.Text = "End date and time:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(244, 370);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(99, 13);
+            this.label9.TabIndex = 12;
+            this.label9.Text = "Start date and time:";
+            // 
+            // txtActivityLocation
+            // 
+            this.txtActivityLocation.Location = new System.Drawing.Point(79, 397);
+            this.txtActivityLocation.Margin = new System.Windows.Forms.Padding(2);
+            this.txtActivityLocation.Name = "txtActivityLocation";
+            this.txtActivityLocation.Size = new System.Drawing.Size(158, 20);
+            this.txtActivityLocation.TabIndex = 9;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(20, 401);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(51, 13);
+            this.label10.TabIndex = 8;
+            this.label10.Text = "Location:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(20, 370);
+            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(38, 13);
+            this.label12.TabIndex = 5;
+            this.label12.Text = "Name:";
+            // 
+            // txtActivityName
+            // 
+            this.txtActivityName.Location = new System.Drawing.Point(79, 366);
+            this.txtActivityName.Margin = new System.Windows.Forms.Padding(2);
+            this.txtActivityName.Name = "txtActivityName";
+            this.txtActivityName.Size = new System.Drawing.Size(158, 20);
+            this.txtActivityName.TabIndex = 8;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = global::SomerenUI.Properties.Resources.someren;
+            this.pictureBox6.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox6.InitialImage")));
+            this.pictureBox6.Location = new System.Drawing.Point(808, 0);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(130, 123);
+            this.pictureBox6.TabIndex = 3;
+            this.pictureBox6.TabStop = false;
+            // 
+            // listViewActivities
+            // 
+            this.listViewActivities.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.activityName,
+            this.activityLocation,
+            this.activityStartDateTime,
+            this.activityEndDateTime});
+            this.listViewActivities.FullRowSelect = true;
+            this.listViewActivities.GridLines = true;
+            this.listViewActivities.HideSelection = false;
+            this.listViewActivities.Location = new System.Drawing.Point(16, 41);
+            this.listViewActivities.Margin = new System.Windows.Forms.Padding(2);
+            this.listViewActivities.MultiSelect = false;
+            this.listViewActivities.Name = "listViewActivities";
+            this.listViewActivities.Size = new System.Drawing.Size(768, 307);
+            this.listViewActivities.TabIndex = 1;
+            this.listViewActivities.UseCompatibleStateImageBehavior = false;
+            this.listViewActivities.View = System.Windows.Forms.View.Details;
+            // 
+            // activityName
+            // 
+            this.activityName.Text = "Name";
+            this.activityName.Width = 300;
+            // 
+            // activityLocation
+            // 
+            this.activityLocation.Text = "Location";
+            this.activityLocation.Width = 200;
+            // 
+            // activityStartDateTime
+            // 
+            this.activityStartDateTime.Text = "Start date and time";
+            this.activityStartDateTime.Width = 130;
+            // 
+            // activityEndDateTime
+            // 
+            this.activityEndDateTime.Text = "End date and time";
+            this.activityEndDateTime.Width = 130;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(12, 9);
+            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(107, 29);
+            this.label13.TabIndex = 0;
+            this.label13.Text = "Activities";
+            // 
             // SomerenUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(960, 389);
+            this.Controls.Add(this.pnlActivities);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.CheckoutPannel);
             this.Controls.Add(this.panelRevenueReport);
@@ -905,6 +1125,9 @@
             this.panelRevenueReport.ResumeLayout(false);
             this.panelRevenueReport.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            this.pnlActivities.ResumeLayout(false);
+            this.pnlActivities.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -993,6 +1216,26 @@
         private System.Windows.Forms.Button orderButon;
         private System.Windows.Forms.TextBox priceTextBox;
         private System.Windows.Forms.Label priceLabel;
+        private System.Windows.Forms.Panel pnlActivities;
+        private System.Windows.Forms.DateTimePicker dateTimeEnd;
+        private System.Windows.Forms.DateTimePicker dateTimeStart;
+        private System.Windows.Forms.Button btnActivityAdd;
+        private System.Windows.Forms.Button btnActivityUpdate;
+        private System.Windows.Forms.Button btnActivityDelete;
+        private System.Windows.Forms.Button BtnActivityClear;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtActivityLocation;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtActivityName;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.ListView listViewActivities;
+        private System.Windows.Forms.ColumnHeader activityName;
+        private System.Windows.Forms.ColumnHeader activityLocation;
+        private System.Windows.Forms.ColumnHeader activityStartDateTime;
+        private System.Windows.Forms.ColumnHeader activityEndDateTime;
+        private System.Windows.Forms.Label label13;
     }
 }
 
