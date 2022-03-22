@@ -670,6 +670,7 @@ namespace SomerenUI
             }
         }
 
+
         //add button for activities
         private void btnActivityAdd_Click(object sender, EventArgs e)
         {
