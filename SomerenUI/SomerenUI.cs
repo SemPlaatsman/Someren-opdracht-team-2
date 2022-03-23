@@ -673,6 +673,7 @@ namespace SomerenUI
                     li.SubItems.Add(a.Location);
                     li.SubItems.Add(a.StartDate.ToString("dd-MM-yyyy HH:mm:ss"));
                     li.SubItems.Add(a.EndDate.ToString("dd-MM-yyyy HH:mm:ss"));
+                    li.SubItems.Add(a.Id.ToString());
                     li.Tag = a;
                     listView.Items.Add(li);
                 }
