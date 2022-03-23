@@ -874,7 +874,11 @@ namespace SomerenUI
             return false;
         }
 
-        // got to supervisor Mmanagement tab
+
+
+
+        // SUPERVISER PAGE
+        //------------------------------------------------------------------
         private void supervisorsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPanel("ActivitiesAdd");
@@ -889,10 +893,11 @@ namespace SomerenUI
         }
         private void CheckTeachers(List<Activity> Supervisors)
         {
-            
-           
 
-                for (int i =0; i< supervisorsCheckedlist.Items.Count;i++)
+
+            supervisorsCheckedlist.BeginUpdate();
+
+            for (int i =0; i< supervisorsCheckedlist.Items.Count;i++)
                 {
                 supervisorsCheckedlist.SetItemChecked(i, false);
                      foreach (Activity a in Supervisors)
@@ -904,10 +909,58 @@ namespace SomerenUI
                         }
 
                      }
-                }
+            }
+            supervisorsCheckedlist.EndUpdate();
+
 
         }
 
+
+        private List<Teacher> GetCheckedItems()
+        {
+            List<Teacher> t =  new List<Teacher>();
+
+
+            for(int i =0; i < supervisorsCheckedlist.CheckedItems.Count;i++)
+            {
+              t.Add((Teacher)supervisorsCheckedlist.CheckedItems[0]);
+            }
+            return t;
+
+
+        }
+        private Activity GetSelectedEventFromList()
+        {
+            Activity activity = new Activity();
+            foreach (ListViewItem a in activitieslist2.Items)
+            {
+                UncheckTeachers(supervisorsCheckedlist);
+                if (a.Selected)
+                {
+                 
+                        activity.Id = int.Parse(a.SubItems[4].Text);
+                        activity.Name =a.SubItems[0].Text;
+                        activity.Location =a.SubItems[1].Text;
+                        activity.StartDate =DateTime.Parse(a.SubItems[2].Text);
+                        activity.EndDate =DateTime.Parse(a.SubItems[3].Text);
+                        
+
+                }
+
+            }
+            return activity;
+
+        }
+
+        private void UncheckTeachers(CheckedListBox c)
+        {
+            supervisorsCheckedlist.BeginUpdate();
+           
+            c.ClearSelected();
+
+            
+            supervisorsCheckedlist.EndUpdate();
+        }
 
        
 
@@ -915,10 +968,26 @@ namespace SomerenUI
         {
             ActivityService activity = new ActivityService();
             foreach (ListViewItem l in  activitieslist2.Items) {
-                List<Activity> supervisors = activity.GetActivitesWhitTeacherJoin(5);
-                CheckTeachers(supervisors);
+                UncheckTeachers(supervisorsCheckedlist);
+                int id = int.Parse(l.SubItems[4].Text);
+                if (l.Selected)
+                {
+                    List<Activity> supervisors = activity.GetActivitesWhitTeacherJoin(id);
+                    CheckTeachers(supervisors);
+
+                }
 
             }
+        }
+
+        
+
+        private void supervisorsCheckedlist_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            List<Teacher> teachers = GetCheckedItems();
+            int eventid = GetSelectedEventFromList().Id;
+            //int teacherid = teachers[0].Number;
         }
     }
 }
