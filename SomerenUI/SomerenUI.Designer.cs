@@ -102,6 +102,7 @@
             this.orderButon = new System.Windows.Forms.Button();
             this.priceTextBox = new System.Windows.Forms.TextBox();
             this.priceLabel = new System.Windows.Forms.Label();
+
             this.panelRevenueReport = new System.Windows.Forms.Panel();
             this.monthCalendarRevenue = new System.Windows.Forms.MonthCalendar();
             this.listViewRevenueReport = new System.Windows.Forms.ListView();
@@ -110,7 +111,8 @@
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.labelRevenueReport = new System.Windows.Forms.Label();
-            this.pnlActivities = new System.Windows.Forms.Panel();
+
+          this.pnlActivities = new System.Windows.Forms.Panel();
             this.dateTimeEnd = new System.Windows.Forms.DateTimePicker();
             this.dateTimeStart = new System.Windows.Forms.DateTimePicker();
             this.btnActivityAdd = new System.Windows.Forms.Button();
@@ -130,6 +132,7 @@
             this.activityStartDateTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.activityEndDateTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label13 = new System.Windows.Forms.Label();
+
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlDashboard.SuspendLayout();
@@ -855,6 +858,7 @@
             this.priceLabel.Size = new System.Drawing.Size(44, 17);
             this.priceLabel.TabIndex = 9;
             this.priceLabel.Text = "Price:";
+
             // 
             // panelRevenueReport
             // 
@@ -1125,6 +1129,7 @@
             this.label13.Size = new System.Drawing.Size(107, 29);
             this.label13.TabIndex = 0;
             this.label13.Text = "Activities";
+
             // 
             // SomerenUI
             // 
@@ -1282,6 +1287,7 @@
         private System.Windows.Forms.ColumnHeader activityStartDateTime;
         private System.Windows.Forms.ColumnHeader activityEndDateTime;
         private System.Windows.Forms.Label label13;
+
     }
 }
 
