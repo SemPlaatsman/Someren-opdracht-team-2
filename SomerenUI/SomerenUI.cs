@@ -839,5 +839,9 @@ namespace SomerenUI
             return false;
         }
 
+        private void participantsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // show panel participants
+        }
     }
 }
