@@ -12,7 +12,7 @@ namespace SomerenDAL
 {
     public class ParticipantDao : BaseDao
     {
-        public List<Participant> GetActivityStudents()
+        public List<Participant> GetAllParticipants()
         {
             string query = "SELECT activityId, studentId FROM ActivityStudent;";
             SqlParameter[] sqlParameters = new SqlParameter[0];
