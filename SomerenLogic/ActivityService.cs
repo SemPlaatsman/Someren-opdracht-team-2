@@ -51,5 +51,6 @@ namespace SomerenLogic
         {
             activitydb.Delete(activity);
         }
+
     }
 }

@@ -27,6 +27,15 @@ namespace SomerenDAL
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
+        public void UpdateActivity(int activity, List<Teacher> teaches)
+        {
+            string query = "SELECT A.*,T.*" +
+                "FROM ActivitySupervisor as ACS " +
+                "JOIN Activities as A on ACS.activityId = A.activityId " +
+                "JOIN Teachers as T on ACS.teacherId = T.teacherId " +
+                "WHERE A.activityId = @ActivityId ";
+        }
+
 
         private List<Activity> ReadTables(DataTable dataTable)
         {
