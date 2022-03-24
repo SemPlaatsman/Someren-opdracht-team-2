@@ -13,6 +13,8 @@ namespace SomerenDAL
     public class ActivityDao : BaseDao
     {
         //query to get all activities
+        
+
         public List<Activity> GetAllActivities()
         {
             string query = "SELECT activityId, activityName, activityLocation, startDateTime, endDateTime FROM Activities;";

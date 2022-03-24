@@ -27,15 +27,29 @@ namespace SomerenDAL
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
-        public void UpdateActivity(int activity, List<Teacher> teaches)
+        public void InsertActivity(int activity, Teacher teaches)
         {
-            string query = "SELECT A.*,T.*" +
-                "FROM ActivitySupervisor as ACS " +
-                "JOIN Activities as A on ACS.activityId = A.activityId " +
-                "JOIN Teachers as T on ACS.teacherId = T.teacherId " +
-                "WHERE A.activityId = @ActivityId ";
+            string query = "INSERT INTO ActivitySupervisor" +
+                           "VALUES(@teacherID, @activityID)";
+            SqlParameter[] sqlParameters = new SqlParameter[2]
+           {
+                new SqlParameter("@activity",activity),
+                new SqlParameter("@teacherID",teaches.Number)
+            };
+            ExecuteSelectQuery(query, sqlParameters);
         }
 
+        public void DeleteActivity(int activity, Teacher teaches)
+        {
+            string query = "DELETE FROM ActivitySupervisor " +
+                           "WHERE activityId = @activity AND teacherId = @teacherID";
+            SqlParameter[] sqlParameters = new SqlParameter[2]
+           {
+                new SqlParameter("@activity",activity),
+                new SqlParameter("@teacherID",teaches.Number)
+            };
+            ExecuteSelectQuery(query, sqlParameters);
+        }
 
         private List<Activity> ReadTables(DataTable dataTable)
         {

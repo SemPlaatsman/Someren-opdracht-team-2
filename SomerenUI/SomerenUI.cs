@@ -915,7 +915,7 @@ namespace SomerenUI
 
         }
 
-
+        //get checked items
         private List<Teacher> GetCheckedItems()
         {
             List<Teacher> t =  new List<Teacher>();
@@ -929,6 +929,21 @@ namespace SomerenUI
 
 
         }
+        //get unchecked items
+        private List<Teacher> GetUnCheckedItems()
+        {
+            List<Teacher> t = new List<Teacher>();
+
+
+            for (int i = 0; i < supervisorsCheckedlist.CheckedItems.Count; i++)
+            {
+                t.Add((Teacher)supervisorsCheckedlist.CheckedItems[0]);
+            }
+            return t;
+
+
+        }
+        //get selected events
         private Activity GetSelectedEventFromList()
         {
             Activity activity = new Activity();
@@ -952,6 +967,7 @@ namespace SomerenUI
 
         }
 
+
         private void UncheckTeachers(CheckedListBox c)
         {
             supervisorsCheckedlist.BeginUpdate();
@@ -962,11 +978,35 @@ namespace SomerenUI
             supervisorsCheckedlist.EndUpdate();
         }
 
-       
+       private void ValidateChange()
+        {
+            List<Teacher> Selectedteachers = GetCheckedItems();
+            List<Teacher> Unselectedteachers = GetUnCheckedItems();
+
+            MessageBoxButtons warning = MessageBoxButtons.OKCancel;
+            MessageBoxIcon warningIcon = MessageBoxIcon.Warning;
+            String errormessage = "Do you reaaaaaly want to delete this person?";
+            MessageBox.Show(errormessage, "test", warning, warningIcon);
+
+            foreach (Teacher ut in Unselectedteachers)
+            {
+                foreach (Teacher st in Selectedteachers)
+                {
+                    if (ut.Number == st.Number)
+                    {
+                        MessageBox.Show(errormessage,"test",warning,warningIcon);
+                    }
+                }
+            }
+
+
+            supervisorsCheckedlist.BeginUpdate();
+            supervisorsCheckedlist.EndUpdate();
+        }
 
         private void activitieslist2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ActivityService activity = new ActivityService();
+            ActivitySupervicersService activity = new ActivitySupervicersService();
             foreach (ListViewItem l in  activitieslist2.Items) {
                 UncheckTeachers(supervisorsCheckedlist);
                 int id = int.Parse(l.SubItems[4].Text);
@@ -987,6 +1027,9 @@ namespace SomerenUI
             
             List<Teacher> teachers = GetCheckedItems();
             int eventid = GetSelectedEventFromList().Id;
+
+            ValidateChange();
+
             //int teacherid = teachers[0].Number;
         }
     }
