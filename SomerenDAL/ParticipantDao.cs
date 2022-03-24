@@ -30,20 +30,31 @@ namespace SomerenDAL
             ExecuteEditQuery(query, sqlParameters);
         }
 
+        public void Delete(Participant participant)
+        {
+            string query = "DELETE FROM ActivityStudent WHERE activityId=@activityId AND studentId=@studentId";
+            SqlParameter[] sqlParameters = new SqlParameter[2]
+            {
+                new SqlParameter("@activityId", participant.ActivityId),
+                new SqlParameter("@studentId", participant.StudentId)
+            };
+            ExecuteEditQuery(query, sqlParameters);
+        }
+
         private List<Participant> ReadTables(DataTable dataTable)
         {
-            List<Participant> asList = new List<Participant>();
+            List<Participant> participantsList = new List<Participant>();
 
             foreach (DataRow dr in dataTable.Rows)
             {
-                Participant activityStudent = new Participant()
+                Participant participant = new Participant()
                 {
                     ActivityId = (int)dr["activityId"],
                     StudentId = (int)dr["studentId"]
                 };
-                asList.Add(activityStudent);
+                participantsList.Add(participant);
             }
-            return asList;
+            return participantsList;
         }
     }
 }
