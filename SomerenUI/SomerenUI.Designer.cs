@@ -1296,6 +1296,7 @@
             this.supervisorsCheckedlist.Name = "supervisorsCheckedlist";
             this.supervisorsCheckedlist.Size = new System.Drawing.Size(186, 334);
             this.supervisorsCheckedlist.TabIndex = 16;
+            this.supervisorsCheckedlist.SelectedIndexChanged += new System.EventHandler(this.supervisorsCheckedlist_SelectedIndexChanged);
             // 
             // activitieslist2
             // 
@@ -1315,6 +1316,7 @@
             this.activitieslist2.TabIndex = 1;
             this.activitieslist2.UseCompatibleStateImageBehavior = false;
             this.activitieslist2.View = System.Windows.Forms.View.Details;
+            this.activitieslist2.SelectedIndexChanged += new System.EventHandler(this.activitieslist2_SelectedIndexChanged_1);
             // 
             // namecolumn
             // 

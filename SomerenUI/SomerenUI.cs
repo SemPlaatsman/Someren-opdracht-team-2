@@ -1187,12 +1187,19 @@ namespace SomerenUI
 
         
 
-        private void activitieslist2_SelectedIndexChanged(object sender, EventArgs e)
+       
+        
+
+      
+
+     
+        private void activitieslist2_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             //UncheckTeachers(supervisorsCheckedlist);
 
             ActivitySupervicersService activity = new ActivitySupervicersService();
-            foreach (ListViewItem l in  activitieslist2.Items) {
+            foreach (ListViewItem l in activitieslist2.Items)
+            {
                 int id = int.Parse(l.SubItems[4].Text);
                 if (l.Selected)
                 {
@@ -1204,22 +1211,17 @@ namespace SomerenUI
             }
         }
 
-        
-
-      
-
-        private void supervisorsCheckedlist_SelectedIndexChanged_1(object sender, EventArgs e)
+        private void supervisorsCheckedlist_SelectedIndexChanged(object sender, EventArgs e)
         {
             int eventid = GetSelectedEventFromList().Id;
             List<Teacher> Checkedteachers = GetCheckedItems(supervisorsCheckedlist);
 
-             ValidateChange(supervisorsCheckedlist,eventid);
+            ValidateChange(supervisorsCheckedlist, eventid);
 
 
 
             //int teacherid = teachers[0].Number;
         }
-
     }
 
 
