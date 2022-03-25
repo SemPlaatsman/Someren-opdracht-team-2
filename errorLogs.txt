@@ -25,3 +25,5 @@ The statement has been terminated.
 The statement has been terminated.
 [25-3-2022 18:26:47] : Violation of PRIMARY KEY constraint 'PK_ActivityStudent'. Cannot insert duplicate key in object 'dbo.ActivityStudent'. The duplicate key value is (3, 5).
 The statement has been terminated.
+[25-3-2022 18:36:09] : Violation of PRIMARY KEY constraint 'PK_ActivityStudent'. Cannot insert duplicate key in object 'dbo.ActivityStudent'. The duplicate key value is (4, 4).
+The statement has been terminated.
