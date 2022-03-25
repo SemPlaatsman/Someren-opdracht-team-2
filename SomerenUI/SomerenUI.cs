@@ -32,7 +32,6 @@ namespace SomerenUI
         private void showPanel(string panelName)
         {
 
-
             switch (panelName)
             {
                 case "Dashboard":
@@ -85,19 +84,6 @@ namespace SomerenUI
                     AddActivitiesToList(listViewActivities);
                     pnlActivities.Show();
                     break;
-
-
-                // add case Participants
-                case "Participants":
-                    hideAll();
-                    AddActivityParticipantsToList();
-                    AddStudentsTolist(listViewParticipants);
-                    AddStudentActivitiesToList();
-                    pnlParticipants.Show();
-                    break;
-
-
-
                 case "ActivitiesAdd":
                     hideAll();
                     supervisorSetup();
@@ -306,7 +292,6 @@ namespace SomerenUI
                     ListViewItem li = new ListViewItem(Convert.ToString(s.Id));
                     li.SubItems.Add(s.FirstName);
                     li.SubItems.Add(s.LastName);
-                    li.Tag = s;
 
                     studentslistView.Items.Add(li);
                 }
@@ -343,7 +328,6 @@ namespace SomerenUI
                 MessageBox.Show("Something went wrong while loading the rooms: " + e.Message);
             }
         }
-
         //add drinks to selection
         private void AddDrinksToSelection(CheckedListBox drinksChecklist)
         {
@@ -361,7 +345,6 @@ namespace SomerenUI
                 {
 
                     drinksChecklist.Items.Add(d);
-
 
 
 
@@ -637,7 +620,6 @@ namespace SomerenUI
             return orders;
         }
 
-
         //drinks selection chainged 
         private void drinksSelectionCheckout_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -894,6 +876,7 @@ namespace SomerenUI
 
 
 
+
         // SUPERVISER PAGE
         //------------------------------------------------------------------
         private void supervisorsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1094,9 +1077,5 @@ namespace SomerenUI
 
             //int teacherid = teachers[0].Number;
         }
-
     }
-
-
-    
 }
