@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SomerenUI));
-            this.imgDashboard = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.dashboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dashboardToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -132,24 +131,6 @@
             this.activityStartDateTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.activityEndDateTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label13 = new System.Windows.Forms.Label();
-            this.pnlParticipants = new System.Windows.Forms.Panel();
-            this.btnParticipantRemove = new System.Windows.Forms.Button();
-            this.btnParticipantAdd = new System.Windows.Forms.Button();
-            this.labelGapParticipants = new System.Windows.Forms.Label();
-            this.listViewActivityParticipation = new System.Windows.Forms.ListView();
-            this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.listViewStudentActivities = new System.Windows.Forms.ListView();
-            this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader18 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader19 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.listViewParticipants = new System.Windows.Forms.ListView();
-            this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.labelParticipants = new System.Windows.Forms.Label();
-            this.id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-
             this.activitie2pannel = new System.Windows.Forms.Panel();
             this.supervisorsCheckedlist = new System.Windows.Forms.CheckedListBox();
             this.activitieslist2 = new System.Windows.Forms.ListView();
@@ -157,8 +138,6 @@
             this.locationcolumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.startdatecolumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.notneededcolimn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader20 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
             this.id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label17 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
@@ -180,16 +159,6 @@
             this.activitie2pannel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // imgDashboard
-            // 
-            this.imgDashboard.Location = new System.Drawing.Point(627, 0);
-            this.imgDashboard.Name = "imgDashboard";
-            this.imgDashboard.Size = new System.Drawing.Size(311, 270);
-            this.imgDashboard.TabIndex = 0;
-            this.imgDashboard.TabStop = false;
-            this.imgDashboard.Click += new System.EventHandler(this.imgDashboard_Click);
-            // 
-
             // menuStrip1
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -264,7 +233,6 @@
             // supervisorsToolStripMenuItem
             // 
             this.supervisorsToolStripMenuItem.Name = "supervisorsToolStripMenuItem";
-
             this.supervisorsToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.supervisorsToolStripMenuItem.Text = "supervisors";
             this.supervisorsToolStripMenuItem.Click += new System.EventHandler(this.supervisorsToolStripMenuItem_Click);
@@ -873,7 +841,6 @@
             // 
             // panelRevenueReport
             // 
-            this.panelRevenueReport.AutoSize = true;
             this.panelRevenueReport.Controls.Add(this.monthCalendarRevenue);
             this.panelRevenueReport.Controls.Add(this.listViewRevenueReport);
             this.panelRevenueReport.Controls.Add(this.pictureBox5);
@@ -882,7 +849,7 @@
             this.panelRevenueReport.Location = new System.Drawing.Point(20, 36);
             this.panelRevenueReport.Margin = new System.Windows.Forms.Padding(4);
             this.panelRevenueReport.Name = "panelRevenueReport";
-            this.panelRevenueReport.Size = new System.Drawing.Size(1255, 600);
+            this.panelRevenueReport.Size = new System.Drawing.Size(1251, 574);
             this.panelRevenueReport.TabIndex = 7;
             // 
             // monthCalendarRevenue
@@ -1140,152 +1107,6 @@
             this.label13.TabIndex = 0;
             this.label13.Text = "Activities";
             // 
-            // pnlParticipants
-            // 
-            this.pnlParticipants.Controls.Add(this.btnParticipantRemove);
-            this.pnlParticipants.Controls.Add(this.btnParticipantAdd);
-            this.pnlParticipants.Controls.Add(this.labelGapParticipants);
-            this.pnlParticipants.Controls.Add(this.listViewActivityParticipation);
-            this.pnlParticipants.Controls.Add(this.listViewStudentActivities);
-            this.pnlParticipants.Controls.Add(this.listViewParticipants);
-            this.pnlParticipants.Controls.Add(this.labelParticipants);
-            this.pnlParticipants.Location = new System.Drawing.Point(18, 32);
-            this.pnlParticipants.Name = "pnlParticipants";
-            this.pnlParticipants.Size = new System.Drawing.Size(935, 358);
-            this.pnlParticipants.TabIndex = 16;
-            // 
-            // btnParticipantRemove
-            // 
-            this.btnParticipantRemove.Location = new System.Drawing.Point(666, 322);
-            this.btnParticipantRemove.Name = "btnParticipantRemove";
-            this.btnParticipantRemove.Size = new System.Drawing.Size(216, 23);
-            this.btnParticipantRemove.TabIndex = 6;
-            this.btnParticipantRemove.Text = "Remove";
-            this.btnParticipantRemove.UseVisualStyleBackColor = true;
-            this.btnParticipantRemove.Click += new System.EventHandler(this.BtnParticipantRemove_Click);
-            // 
-            // btnParticipantAdd
-            // 
-            this.btnParticipantAdd.Location = new System.Drawing.Point(160, 322);
-            this.btnParticipantAdd.Name = "btnParticipantAdd";
-            this.btnParticipantAdd.Size = new System.Drawing.Size(343, 23);
-            this.btnParticipantAdd.TabIndex = 5;
-            this.btnParticipantAdd.Text = "Add";
-            this.btnParticipantAdd.UseVisualStyleBackColor = true;
-            this.btnParticipantAdd.Click += new System.EventHandler(this.btnParticipantAdd_Click);
-            // 
-            // labelGapParticipants
-            // 
-            this.labelGapParticipants.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.labelGapParticipants.Location = new System.Drawing.Point(649, 16);
-            this.labelGapParticipants.Name = "labelGapParticipants";
-            this.labelGapParticipants.Size = new System.Drawing.Size(2, 330);
-            this.labelGapParticipants.TabIndex = 4;
-            // 
-            // listViewActivityParticipation
-            // 
-            this.listViewActivityParticipation.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader15,
-            this.columnHeader16});
-            this.listViewActivityParticipation.FullRowSelect = true;
-            this.listViewActivityParticipation.GridLines = true;
-            this.listViewActivityParticipation.HideSelection = false;
-            this.listViewActivityParticipation.Location = new System.Drawing.Point(666, 58);
-            this.listViewActivityParticipation.MultiSelect = false;
-            this.listViewActivityParticipation.Name = "listViewActivityParticipation";
-            this.listViewActivityParticipation.Size = new System.Drawing.Size(216, 251);
-            this.listViewActivityParticipation.TabIndex = 3;
-            this.listViewActivityParticipation.UseCompatibleStateImageBehavior = false;
-            this.listViewActivityParticipation.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader15
-            // 
-            this.columnHeader15.Text = "Student ID";
-            this.columnHeader15.Width = 105;
-            // 
-            // columnHeader16
-            // 
-            this.columnHeader16.Text = "Activity ID";
-            this.columnHeader16.Width = 105;
-            // 
-            // listViewStudentActivities
-            // 
-            this.listViewStudentActivities.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader17,
-            this.columnHeader18,
-            this.columnHeader19});
-            this.listViewStudentActivities.FullRowSelect = true;
-            this.listViewStudentActivities.GridLines = true;
-            this.listViewStudentActivities.HideSelection = false;
-            this.listViewStudentActivities.Location = new System.Drawing.Point(332, 58);
-            this.listViewStudentActivities.MultiSelect = false;
-            this.listViewStudentActivities.Name = "listViewStudentActivities";
-            this.listViewStudentActivities.Size = new System.Drawing.Size(300, 251);
-            this.listViewStudentActivities.TabIndex = 2;
-            this.listViewStudentActivities.UseCompatibleStateImageBehavior = false;
-            this.listViewStudentActivities.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader17
-            // 
-            this.columnHeader17.Text = "Activity ID";
-            // 
-            // columnHeader18
-            // 
-            this.columnHeader18.Text = "Name";
-            this.columnHeader18.Width = 115;
-            // 
-            // columnHeader19
-            // 
-            this.columnHeader19.Text = "Location";
-            this.columnHeader19.Width = 115;
-            // 
-            // listViewParticipants
-            // 
-            this.listViewParticipants.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader12,
-            this.columnHeader13,
-            this.columnHeader14});
-            this.listViewParticipants.FullRowSelect = true;
-            this.listViewParticipants.GridLines = true;
-            this.listViewParticipants.HideSelection = false;
-            this.listViewParticipants.Location = new System.Drawing.Point(26, 58);
-            this.listViewParticipants.MultiSelect = false;
-            this.listViewParticipants.Name = "listViewParticipants";
-            this.listViewParticipants.Size = new System.Drawing.Size(300, 251);
-            this.listViewParticipants.TabIndex = 1;
-            this.listViewParticipants.UseCompatibleStateImageBehavior = false;
-            this.listViewParticipants.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader12
-            // 
-            this.columnHeader12.Text = "Name";
-            this.columnHeader12.Width = 102;
-            // 
-            // columnHeader13
-            // 
-            this.columnHeader13.Text = "Location";
-            this.columnHeader13.Width = 200;
-            // 
-            // columnHeader14
-            // 
-            this.columnHeader14.Text = "Start date and time";
-            this.columnHeader14.Width = 130;
-            // 
-            // labelParticipants
-            // 
-            this.labelParticipants.AutoSize = true;
-            this.labelParticipants.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F);
-            this.labelParticipants.Location = new System.Drawing.Point(26, 22);
-            this.labelParticipants.Name = "labelParticipants";
-            this.labelParticipants.Size = new System.Drawing.Size(138, 29);
-            this.labelParticipants.TabIndex = 0;
-            this.labelParticipants.Text = "Participants";
-            // 
-            // id
-            // 
-            this.id.Text = "id";
-            // 
-
             // activitie2pannel
             // 
             this.activitie2pannel.Controls.Add(this.supervisorsCheckedlist);
@@ -1313,8 +1134,6 @@
             this.locationcolumn,
             this.startdatecolumn,
             this.notneededcolimn,
-            this.columnHeader20});
-
             this.id});
             this.activitieslist2.FullRowSelect = true;
             this.activitieslist2.GridLines = true;
@@ -1381,8 +1200,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SomerenApp";
             this.Load += new System.EventHandler(this.SomerenUI_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).EndInit();
-      
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.pnlDashboard.ResumeLayout(false);
@@ -1408,9 +1225,6 @@
             this.pnlActivities.ResumeLayout(false);
             this.pnlActivities.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            this.pnlParticipants.ResumeLayout(false);
-            this.pnlParticipants.PerformLayout();
-
             this.activitie2pannel.ResumeLayout(false);
             this.activitie2pannel.PerformLayout();
             this.ResumeLayout(false);
@@ -1421,8 +1235,17 @@
         #endregion
 
         private System.Windows.Forms.PictureBox imgDashboard;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem dashboardToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dashboardToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.Panel pnlDashboard;
         private System.Windows.Forms.Label lbl_Dashboard;
+        private System.Windows.Forms.ToolStripMenuItem studentsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem lecturersToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem activitiesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem roomsToolStripMenuItem;
         private System.Windows.Forms.Panel pnlStudents;
         private System.Windows.Forms.Label lbl_Students;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -1430,6 +1253,7 @@
         private System.Windows.Forms.ColumnHeader studentID;
         private System.Windows.Forms.ColumnHeader studentFirstName;
         private System.Windows.Forms.ColumnHeader studentLastName;
+        private System.Windows.Forms.ToolStripMenuItem drinksToolStripMenuItem;
         private System.Windows.Forms.Panel lecturers_panel;
         private System.Windows.Forms.ListView teatcherListView;
         private System.Windows.Forms.ColumnHeader columnHeader4;
@@ -1467,8 +1291,10 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.ToolStripMenuItem checkoutToolStripItem;
         private System.Windows.Forms.ColumnHeader columnHeader8;
         private System.Windows.Forms.Panel CheckoutPannel;
+        private System.Windows.Forms.ToolStripMenuItem reportRevenueToolStripMenuItem;
         private System.Windows.Forms.Panel panelRevenueReport;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Label labelRevenueReport;
@@ -1509,37 +1335,7 @@
         private System.Windows.Forms.ColumnHeader activityStartDateTime;
         private System.Windows.Forms.ColumnHeader activityEndDateTime;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Panel pnlParticipants;
-        private System.Windows.Forms.ToolStripMenuItem dashboardToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem dashboardToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem studentsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem lecturersToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem activitiesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem participantsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem roomsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem drinksToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem checkoutToolStripItem;
-        private System.Windows.Forms.ToolStripMenuItem reportRevenueToolStripMenuItem;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.Label labelParticipants;
-        private System.Windows.Forms.ListView listViewActivityParticipation;
-        private System.Windows.Forms.ListView listViewStudentActivities;
-        private System.Windows.Forms.ListView listViewParticipants;
-        public System.Windows.Forms.ColumnHeader columnHeader12;
-        private System.Windows.Forms.ColumnHeader columnHeader13;
-        private System.Windows.Forms.Button btnParticipantRemove;
-        private System.Windows.Forms.Button btnParticipantAdd;
-        private System.Windows.Forms.Label labelGapParticipants;
-        private System.Windows.Forms.ColumnHeader columnHeader15;
-        private System.Windows.Forms.ColumnHeader columnHeader16;
-        private System.Windows.Forms.ColumnHeader columnHeader17;
-        private System.Windows.Forms.ColumnHeader columnHeader18;
-        private System.Windows.Forms.ColumnHeader columnHeader19;
-        private System.Windows.Forms.ColumnHeader columnHeader14;
         private System.Windows.Forms.ToolStripMenuItem supervisorsToolStripMenuItem;
-
         private System.Windows.Forms.Panel activitie2pannel;
         private System.Windows.Forms.ColumnHeader namecolumn;
         private System.Windows.Forms.ColumnHeader locationcolumn;
@@ -1549,7 +1345,6 @@
         private System.Windows.Forms.ListView activitieslist2;
         private System.Windows.Forms.ColumnHeader id;
         private System.Windows.Forms.ColumnHeader notneededcolimn;
-        private System.Windows.Forms.ColumnHeader columnHeader20;
 
     }
 }
