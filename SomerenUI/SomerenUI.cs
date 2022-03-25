@@ -854,9 +854,7 @@ namespace SomerenUI
             showPanel("Participants");
         }
 
-        // add particpants to list
-
-
+        // add participants to list
 
         private void AddActivityParticipantsToList()
         {
@@ -934,12 +932,17 @@ namespace SomerenUI
             }
         }
 
-        private void btnActivityRemove_Click(object sender, EventArgs e)
+        private void BtnParticipantRemove_Click(object sender, EventArgs e)
         {
             try
             {
-                Participant participant = (Participant)listViewActivityParticipation.SelectedItems[0].Tag;
-
+                ParticipantService participantService = new ParticipantService();
+                if (MessageBox.Show("Are you sure that you wish to remove this participant?", "WARNING", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes)
+                {
+                    return;
+                }
+                participantService.DeleteParticipant((Participant)listViewActivityParticipation.SelectedItems[0].Tag);
+                AddActivityParticipantsToList();                
             }
             catch (Exception exc)
             {

@@ -119,7 +119,7 @@
             this.activityEndDateTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label13 = new System.Windows.Forms.Label();
             this.pnlParticipants = new System.Windows.Forms.Panel();
-            this.btnActivityRemove = new System.Windows.Forms.Button();
+            this.btnParticipantRemove = new System.Windows.Forms.Button();
             this.btnParticipantAdd = new System.Windows.Forms.Button();
             this.labelGapParticipants = new System.Windows.Forms.Label();
             this.listViewActivityParticipation = new System.Windows.Forms.ListView();
@@ -1011,7 +1011,7 @@
             // 
             // pnlParticipants
             // 
-            this.pnlParticipants.Controls.Add(this.btnActivityRemove);
+            this.pnlParticipants.Controls.Add(this.btnParticipantRemove);
             this.pnlParticipants.Controls.Add(this.btnParticipantAdd);
             this.pnlParticipants.Controls.Add(this.labelGapParticipants);
             this.pnlParticipants.Controls.Add(this.listViewActivityParticipation);
@@ -1023,15 +1023,15 @@
             this.pnlParticipants.Size = new System.Drawing.Size(935, 358);
             this.pnlParticipants.TabIndex = 16;
             // 
-            // btnActivityRemove
+            // btnParticipantRemove
             // 
-            this.btnActivityRemove.Location = new System.Drawing.Point(666, 322);
-            this.btnActivityRemove.Name = "btnActivityRemove";
-            this.btnActivityRemove.Size = new System.Drawing.Size(216, 23);
-            this.btnActivityRemove.TabIndex = 6;
-            this.btnActivityRemove.Text = "Remove";
-            this.btnActivityRemove.UseVisualStyleBackColor = true;
-            this.btnActivityRemove.Click += new System.EventHandler(this.btnActivityRemove_Click);
+            this.btnParticipantRemove.Location = new System.Drawing.Point(666, 322);
+            this.btnParticipantRemove.Name = "btnParticipantRemove";
+            this.btnParticipantRemove.Size = new System.Drawing.Size(216, 23);
+            this.btnParticipantRemove.TabIndex = 6;
+            this.btnParticipantRemove.Text = "Remove";
+            this.btnParticipantRemove.UseVisualStyleBackColor = true;
+            this.btnParticipantRemove.Click += new System.EventHandler(this.BtnParticipantRemove_Click);
             // 
             // btnParticipantAdd
             // 
@@ -1422,7 +1422,7 @@
         private System.Windows.Forms.ListView listViewParticipants;
         public System.Windows.Forms.ColumnHeader columnHeader12;
         private System.Windows.Forms.ColumnHeader columnHeader13;
-        private System.Windows.Forms.Button btnActivityRemove;
+        private System.Windows.Forms.Button btnParticipantRemove;
         private System.Windows.Forms.Button btnParticipantAdd;
         private System.Windows.Forms.Label labelGapParticipants;
         private System.Windows.Forms.ColumnHeader columnHeader15;

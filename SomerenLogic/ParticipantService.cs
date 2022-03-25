@@ -29,7 +29,7 @@ namespace SomerenLogic
             participantdb.Add(participant);
         }
 
-        public void DeleteActivity(Participant participant)
+        public void DeleteParticipant(Participant participant)
         {
             participantdb.Delete(participant);
         }
