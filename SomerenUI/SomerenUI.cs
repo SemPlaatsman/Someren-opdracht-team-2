@@ -620,7 +620,7 @@ namespace SomerenUI
             return orders;
         }
 
-
+        //drinks selection chainged 
         private void drinksSelectionCheckout_SelectedIndexChanged(object sender, EventArgs e)
         {
             MakeReciet(MakeOrderList());
@@ -884,6 +884,7 @@ namespace SomerenUI
             showPanel("ActivitiesAdd");
         }
         //super visor
+        int teachersChecked = 0;
         private void supervisorSetup()
         {
             AddActivitiesToList(activitieslist2);
@@ -891,10 +892,13 @@ namespace SomerenUI
 
 
         }
+
+
+
         private void CheckTeachers(List<Activity> Supervisors)
         {
 
-
+            teachersChecked = 0;
             supervisorsCheckedlist.BeginUpdate();
 
             for (int i =0; i< supervisorsCheckedlist.Items.Count;i++)
@@ -906,6 +910,7 @@ namespace SomerenUI
                         if (t.Number == a.Teacher.Number)
                         {
                         supervisorsCheckedlist.SetItemChecked(i, true);
+                        teachersChecked++;
                         }
 
                      }
@@ -916,40 +921,49 @@ namespace SomerenUI
         }
 
         //get checked items
-        private List<Teacher> GetCheckedItems()
+        private List<Teacher> GetCheckedItems(CheckedListBox c)
         {
             List<Teacher> t =  new List<Teacher>();
 
 
-            for(int i =0; i < supervisorsCheckedlist.CheckedItems.Count;i++)
+          
+            foreach (Teacher teacher in c.CheckedItems)
             {
-              t.Add((Teacher)supervisorsCheckedlist.CheckedItems[0]);
+
+
+
+
+                t.Add(teacher);
             }
             return t;
 
-
         }
+
         //get unchecked items
-        private List<Teacher> GetUnCheckedItems()
+        private List<Teacher> GetUnCheckedItems(CheckedListBox c)
         {
             List<Teacher> t = new List<Teacher>();
-
-
-            for (int i = 0; i < supervisorsCheckedlist.CheckedItems.Count; i++)
+            foreach (Teacher teacher in c.Items)
             {
-                t.Add((Teacher)supervisorsCheckedlist.CheckedItems[0]);
+                if (!c.CheckedItems.Contains(teacher))
+                {
+                    // your code
+                    t.Add(teacher);
+                }
             }
             return t;
 
-
         }
+        
+        
+    
+        
         //get selected events
         private Activity GetSelectedEventFromList()
         {
             Activity activity = new Activity();
             foreach (ListViewItem a in activitieslist2.Items)
             {
-                UncheckTeachers(supervisorsCheckedlist);
                 if (a.Selected)
                 {
                  
@@ -978,37 +992,65 @@ namespace SomerenUI
             supervisorsCheckedlist.EndUpdate();
         }
 
-       private void ValidateChange()
+     
+       private  bool ValidateChange(CheckedListBox c,int activityid)
         {
-            List<Teacher> Selectedteachers = GetCheckedItems();
-            List<Teacher> Unselectedteachers = GetUnCheckedItems();
+            ActivitySupervicersService activitySupervicersService = new ActivitySupervicersService();
+            List<Teacher> Checkedteachers = GetCheckedItems(c);
+            List<Teacher> Unchekedteachers = GetUnCheckedItems(c);
+
 
             MessageBoxButtons warning = MessageBoxButtons.OKCancel;
             MessageBoxIcon warningIcon = MessageBoxIcon.Warning;
-            String errormessage = "Do you reaaaaaly want to delete this person?";
-            MessageBox.Show(errormessage, "test", warning, warningIcon);
+            string errormessage = "Do you reaaaaaly want to delete this person?";
+            
+            
 
-            foreach (Teacher ut in Unselectedteachers)
+
+            //DELETE CHECKED ITEM
+            if (c.CheckedItems.Count < teachersChecked)
             {
-                foreach (Teacher st in Selectedteachers)
+                DialogResult resultMessagebox = MessageBox.Show(errormessage, "warning", warning, warningIcon);
+
+                switch (resultMessagebox)
                 {
-                    if (ut.Number == st.Number)
-                    {
-                        MessageBox.Show(errormessage,"test",warning,warningIcon);
-                    }
+                    case DialogResult.OK:
+
+                        activitySupervicersService.DeleteActivity(activityid, Unchekedteachers);
+                        return true;
+
+                    break;
+
+                    case DialogResult.Cancel:
+
+                        return false;
+
+                    break;
+
+                    default:
+                        return false;
+                    break;
                 }
+              
             }
+            else{
+                activitySupervicersService.InsertActivity(activityid, Checkedteachers);
 
+            }
+            return false;
+           
 
-            supervisorsCheckedlist.BeginUpdate();
-            supervisorsCheckedlist.EndUpdate();
+            
         }
+
+        
 
         private void activitieslist2_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //UncheckTeachers(supervisorsCheckedlist);
+
             ActivitySupervicersService activity = new ActivitySupervicersService();
             foreach (ListViewItem l in  activitieslist2.Items) {
-                UncheckTeachers(supervisorsCheckedlist);
                 int id = int.Parse(l.SubItems[4].Text);
                 if (l.Selected)
                 {
@@ -1022,13 +1064,16 @@ namespace SomerenUI
 
         
 
-        private void supervisorsCheckedlist_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-            List<Teacher> teachers = GetCheckedItems();
-            int eventid = GetSelectedEventFromList().Id;
+      
 
-            ValidateChange();
+        private void supervisorsCheckedlist_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            int eventid = GetSelectedEventFromList().Id;
+            List<Teacher> Checkedteachers = GetCheckedItems(supervisorsCheckedlist);
+
+             ValidateChange(supervisorsCheckedlist,eventid);
+
+
 
             //int teacherid = teachers[0].Number;
         }

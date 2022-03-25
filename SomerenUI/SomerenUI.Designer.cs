@@ -191,19 +191,19 @@
             // dashboardToolStripMenuItem1
             // 
             this.dashboardToolStripMenuItem1.Name = "dashboardToolStripMenuItem1";
-            this.dashboardToolStripMenuItem1.Size = new System.Drawing.Size(131, 22);
+            this.dashboardToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.dashboardToolStripMenuItem1.Text = "Dashboard";
             this.dashboardToolStripMenuItem1.Click += new System.EventHandler(this.dashboardToolStripMenuItem1_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(128, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -233,7 +233,7 @@
             // supervisorsToolStripMenuItem
             // 
             this.supervisorsToolStripMenuItem.Name = "supervisorsToolStripMenuItem";
-            this.supervisorsToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.supervisorsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.supervisorsToolStripMenuItem.Text = "supervisors";
             this.supervisorsToolStripMenuItem.Click += new System.EventHandler(this.supervisorsToolStripMenuItem_Click);
             // 
@@ -757,7 +757,7 @@
             this.studentsListview.GridLines = true;
             this.studentsListview.HideSelection = false;
             this.studentsListview.Location = new System.Drawing.Point(47, 53);
-            this.studentsListview.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.studentsListview.Margin = new System.Windows.Forms.Padding(4);
             this.studentsListview.MinimumSize = new System.Drawing.Size(309, 373);
             this.studentsListview.Name = "studentsListview";
             this.studentsListview.Scrollable = false;
@@ -787,7 +787,7 @@
             this.stock});
             this.recietListView.HideSelection = false;
             this.recietListView.Location = new System.Drawing.Point(815, 52);
-            this.recietListView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.recietListView.Margin = new System.Windows.Forms.Padding(4);
             this.recietListView.Name = "recietListView";
             this.recietListView.Size = new System.Drawing.Size(269, 219);
             this.recietListView.TabIndex = 5;
@@ -812,7 +812,7 @@
             // orderButon
             // 
             this.orderButon.Location = new System.Drawing.Point(864, 343);
-            this.orderButon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.orderButon.Margin = new System.Windows.Forms.Padding(4);
             this.orderButon.Name = "orderButon";
             this.orderButon.Size = new System.Drawing.Size(100, 28);
             this.orderButon.TabIndex = 6;
@@ -823,7 +823,7 @@
             // priceTextBox
             // 
             this.priceTextBox.Location = new System.Drawing.Point(864, 288);
-            this.priceTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.priceTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.priceTextBox.Name = "priceTextBox";
             this.priceTextBox.ReadOnly = true;
             this.priceTextBox.Size = new System.Drawing.Size(63, 20);
@@ -847,7 +847,7 @@
             this.panelRevenueReport.Controls.Add(this.labelRevenueReport);
             this.panelRevenueReport.ForeColor = System.Drawing.SystemColors.MenuText;
             this.panelRevenueReport.Location = new System.Drawing.Point(20, 36);
-            this.panelRevenueReport.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelRevenueReport.Margin = new System.Windows.Forms.Padding(4);
             this.panelRevenueReport.Name = "panelRevenueReport";
             this.panelRevenueReport.Size = new System.Drawing.Size(1251, 574);
             this.panelRevenueReport.TabIndex = 7;
@@ -873,7 +873,7 @@
             this.listViewRevenueReport.GridLines = true;
             this.listViewRevenueReport.HideSelection = false;
             this.listViewRevenueReport.Location = new System.Drawing.Point(16, 53);
-            this.listViewRevenueReport.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listViewRevenueReport.Margin = new System.Windows.Forms.Padding(4);
             this.listViewRevenueReport.Name = "listViewRevenueReport";
             this.listViewRevenueReport.Size = new System.Drawing.Size(504, 372);
             this.listViewRevenueReport.TabIndex = 5;
@@ -900,7 +900,7 @@
             this.pictureBox5.Image = global::SomerenUI.Properties.Resources.someren;
             this.pictureBox5.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox5.InitialImage")));
             this.pictureBox5.Location = new System.Drawing.Point(1060, 0);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(191, 172);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1051,7 +1051,7 @@
             this.pictureBox6.Image = global::SomerenUI.Properties.Resources.someren;
             this.pictureBox6.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox6.InitialImage")));
             this.pictureBox6.Location = new System.Drawing.Point(1077, 0);
-            this.pictureBox6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox6.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(173, 151);
             this.pictureBox6.TabIndex = 3;
@@ -1119,12 +1119,13 @@
             // 
             // supervisorsCheckedlist
             // 
+            this.supervisorsCheckedlist.CheckOnClick = true;
             this.supervisorsCheckedlist.FormattingEnabled = true;
             this.supervisorsCheckedlist.Location = new System.Drawing.Point(669, 42);
             this.supervisorsCheckedlist.Name = "supervisorsCheckedlist";
             this.supervisorsCheckedlist.Size = new System.Drawing.Size(186, 334);
             this.supervisorsCheckedlist.TabIndex = 16;
-            this.supervisorsCheckedlist.SelectedIndexChanged += new System.EventHandler(this.supervisorsCheckedlist_SelectedIndexChanged);
+            this.supervisorsCheckedlist.SelectedIndexChanged += new System.EventHandler(this.supervisorsCheckedlist_SelectedIndexChanged_1);
             // 
             // activitieslist2
             // 
@@ -1184,8 +1185,8 @@
             this.ClientSize = new System.Drawing.Size(1028, 389);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.activitie2pannel);
-            this.Controls.Add(this.pnlActivities);
             this.Controls.Add(this.CheckoutPannel);
+            this.Controls.Add(this.pnlActivities);
             this.Controls.Add(this.panelRevenueReport);
             this.Controls.Add(this.pnlDrinks);
             this.Controls.Add(this.lecturers_panel);

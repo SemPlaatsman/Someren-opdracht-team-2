@@ -29,14 +29,14 @@ namespace SomerenDAL
 
         public void InsertActivity(int activity, Teacher teaches)
         {
-            string query = "INSERT INTO ActivitySupervisor" +
+            string query = "INSERT INTO ActivitySupervisor " +
                            "VALUES(@teacherID, @activityID)";
             SqlParameter[] sqlParameters = new SqlParameter[2]
            {
-                new SqlParameter("@activity",activity),
+                new SqlParameter("@activityID",activity),
                 new SqlParameter("@teacherID",teaches.Number)
             };
-            ExecuteSelectQuery(query, sqlParameters);
+            ExecuteEditQuery(query, sqlParameters);
         }
 
         public void DeleteActivity(int activity, Teacher teaches)
@@ -48,7 +48,7 @@ namespace SomerenDAL
                 new SqlParameter("@activity",activity),
                 new SqlParameter("@teacherID",teaches.Number)
             };
-            ExecuteSelectQuery(query, sqlParameters);
+            ExecuteEditQuery(query, sqlParameters);
         }
 
         private List<Activity> ReadTables(DataTable dataTable)
