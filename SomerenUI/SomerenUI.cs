@@ -1077,5 +1077,10 @@ namespace SomerenUI
 
             //int teacherid = teachers[0].Number;
         }
+
+        private void participantsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
