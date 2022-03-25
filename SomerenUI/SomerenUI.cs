@@ -893,6 +893,131 @@ namespace SomerenUI
         }
 
 
+        private void participantsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Participants");
+        }
+
+        // add participants to list
+
+        private void AddActivityParticipantsToList()
+        {
+            try
+            {
+                ParticipantService participantService = new ParticipantService();
+                List<Participant> participantsList = participantService.GetParticipants();
+
+                listViewActivityParticipation.Items.Clear();
+
+                foreach (Participant p in participantsList)
+                {
+                    ListViewItem li = new ListViewItem(Convert.ToString(p.StudentId));
+                    li.SubItems.Add(Convert.ToString(p.ActivityId));
+                    li.Tag = p;
+                    listViewActivityParticipation.Items.Add(li);
+                }
+
+                listViewActivityParticipation.View = View.Details;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong while loading the participants: " + e.Message);
+            }
+        }
+
+        private void AddStudentActivitiesToList()
+        {
+            try
+            {
+                // fill the activity listview within the activity panel with a list of activities
+                ActivityService activityService = new ActivityService();
+                List<Activity> activitiesList = activityService.GetActivities();
+
+                // clear the listview before filling it again
+                listViewStudentActivities.Items.Clear();
+
+                //foreach activity in the list of activities make one row in the activity ListView
+                foreach (Activity a in activitiesList)
+                {
+                    ListViewItem li = new ListViewItem(Convert.ToString(a.Id));
+                    li.SubItems.Add(a.Name);
+                    li.SubItems.Add(a.Location);
+                    li.Tag = a;
+                    listViewStudentActivities.Items.Add(li);
+                }
+                listViewStudentActivities.View = View.Details;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong while loading the student activities: " + e.Message);
+            }
+
+        }
+
+        private void btnParticipantAdd_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ParticipantService participantService = new ParticipantService();
+
+                Activity activity = (Activity)listViewStudentActivities.SelectedItems[0].Tag;
+                Student student = (Student)listViewParticipants.SelectedItems[0].Tag;
+
+                Participant participant = new Participant()
+                {
+                    ActivityId = activity.Id,
+                    StudentId = student.Id
+                };
+                if (ParticipantWasAdded(participant))
+                {
+                    return;
+                }
+                participantService.AddParticipant(participant);
+                AddActivityParticipantsToList();
+
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("Something went wrong while adding a participant: " + ex.Message);
+            }
+
+
+        }
+
+        private bool ParticipantWasAdded(Participant participant)
+        {
+            foreach (ListViewItem lvi in listViewActivityParticipation.Items)
+            {
+                Participant lviParticipant = (Participant)lvi.Tag;
+                if (lviParticipant.ActivityId == participant.ActivityId && lviParticipant.StudentId == participant.StudentId)
+                {
+                    MessageBox.Show("This Participant was already added!");
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private void BtnParticipantRemove_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ParticipantService participantService = new ParticipantService();
+                if (MessageBox.Show("Are you sure that you wish to remove this participant?", "WARNING", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes)
+                {
+                    return;
+                }
+                participantService.DeleteParticipant((Participant)listViewActivityParticipation.SelectedItems[0].Tag);
+                AddActivityParticipantsToList();                
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Something went wrong while removing a participant: " + exc.Message);
+            }
+        }
+
+
 
         // SUPERVISER PAGE
         //------------------------------------------------------------------
