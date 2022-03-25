@@ -103,7 +103,6 @@
             this.orderButon = new System.Windows.Forms.Button();
             this.priceTextBox = new System.Windows.Forms.TextBox();
             this.priceLabel = new System.Windows.Forms.Label();
-
             this.panelRevenueReport = new System.Windows.Forms.Panel();
             this.monthCalendarRevenue = new System.Windows.Forms.MonthCalendar();
             this.listViewRevenueReport = new System.Windows.Forms.ListView();
@@ -112,8 +111,7 @@
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.labelRevenueReport = new System.Windows.Forms.Label();
-
-          this.pnlActivities = new System.Windows.Forms.Panel();
+            this.pnlActivities = new System.Windows.Forms.Panel();
             this.dateTimeEnd = new System.Windows.Forms.DateTimePicker();
             this.dateTimeStart = new System.Windows.Forms.DateTimePicker();
             this.btnActivityAdd = new System.Windows.Forms.Button();
@@ -136,14 +134,12 @@
             this.activitie2pannel = new System.Windows.Forms.Panel();
             this.supervisorsCheckedlist = new System.Windows.Forms.CheckedListBox();
             this.activitieslist2 = new System.Windows.Forms.ListView();
-            this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.namecolumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.locationcolumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.startdatecolumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.notneededcolimn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label17 = new System.Windows.Forms.Label();
-
-            ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlDashboard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
@@ -195,19 +191,19 @@
             // dashboardToolStripMenuItem1
             // 
             this.dashboardToolStripMenuItem1.Name = "dashboardToolStripMenuItem1";
-            this.dashboardToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.dashboardToolStripMenuItem1.Size = new System.Drawing.Size(131, 22);
             this.dashboardToolStripMenuItem1.Text = "Dashboard";
             this.dashboardToolStripMenuItem1.Click += new System.EventHandler(this.dashboardToolStripMenuItem1_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(128, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -237,7 +233,7 @@
             // supervisorsToolStripMenuItem
             // 
             this.supervisorsToolStripMenuItem.Name = "supervisorsToolStripMenuItem";
-            this.supervisorsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.supervisorsToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.supervisorsToolStripMenuItem.Text = "supervisors";
             this.supervisorsToolStripMenuItem.Click += new System.EventHandler(this.supervisorsToolStripMenuItem_Click);
             // 
@@ -842,7 +838,6 @@
             this.priceLabel.Size = new System.Drawing.Size(34, 13);
             this.priceLabel.TabIndex = 9;
             this.priceLabel.Text = "Price:";
-
             // 
             // panelRevenueReport
             // 
@@ -1111,7 +1106,6 @@
             this.label13.Size = new System.Drawing.Size(107, 29);
             this.label13.TabIndex = 0;
             this.label13.Text = "Activities";
-
             // 
             // activitie2pannel
             // 
@@ -1136,10 +1130,10 @@
             // activitieslist2
             // 
             this.activitieslist2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader12,
-            this.columnHeader13,
-            this.columnHeader14,
-            this.columnHeader15,
+            this.namecolumn,
+            this.locationcolumn,
+            this.startdatecolumn,
+            this.notneededcolimn,
             this.id});
             this.activitieslist2.FullRowSelect = true;
             this.activitieslist2.GridLines = true;
@@ -1153,20 +1147,20 @@
             this.activitieslist2.View = System.Windows.Forms.View.Details;
             this.activitieslist2.SelectedIndexChanged += new System.EventHandler(this.activitieslist2_SelectedIndexChanged);
             // 
-            // columnHeader12
+            // namecolumn
             // 
-            this.columnHeader12.Text = "Name";
-            this.columnHeader12.Width = 102;
+            this.namecolumn.Text = "Name";
+            this.namecolumn.Width = 102;
             // 
-            // columnHeader13
+            // locationcolumn
             // 
-            this.columnHeader13.Text = "Location";
-            this.columnHeader13.Width = 200;
+            this.locationcolumn.Text = "Location";
+            this.locationcolumn.Width = 200;
             // 
-            // columnHeader14
+            // startdatecolumn
             // 
-            this.columnHeader14.Text = "Start date and time";
-            this.columnHeader14.Width = 130;
+            this.startdatecolumn.Text = "Start date and time";
+            this.startdatecolumn.Width = 130;
             // 
             // id
             // 
@@ -1343,14 +1337,14 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ToolStripMenuItem supervisorsToolStripMenuItem;
         private System.Windows.Forms.Panel activitie2pannel;
-        private System.Windows.Forms.ColumnHeader columnHeader12;
-        private System.Windows.Forms.ColumnHeader columnHeader13;
-        private System.Windows.Forms.ColumnHeader columnHeader14;
+        private System.Windows.Forms.ColumnHeader namecolumn;
+        private System.Windows.Forms.ColumnHeader locationcolumn;
+        private System.Windows.Forms.ColumnHeader startdatecolumn;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.CheckedListBox supervisorsCheckedlist;
         private System.Windows.Forms.ListView activitieslist2;
         private System.Windows.Forms.ColumnHeader id;
-        private System.Windows.Forms.ColumnHeader columnHeader15;
+        private System.Windows.Forms.ColumnHeader notneededcolimn;
 
     }
 }
