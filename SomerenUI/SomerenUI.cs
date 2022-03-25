@@ -89,6 +89,7 @@ namespace SomerenUI
                     hideAll();
                     AddActivityParticipantsToList();
                     AddStudentsTolist(listViewParticipants);
+                    AddStudentActivitiesToList();
                     pnlParticipants.Show();
                     break;
 
@@ -296,6 +297,7 @@ namespace SomerenUI
                     ListViewItem li = new ListViewItem(Convert.ToString(s.Id));
                     li.SubItems.Add(s.FirstName);
                     li.SubItems.Add(s.LastName);
+                    li.Tag = s;
 
                     studentslistView.Items.Add(li);
                 }
@@ -874,12 +876,74 @@ namespace SomerenUI
                 }
 
                 listViewActivityParticipation.View = View.Details;
-                listViewStudentActivities.View = View.Details;
-                listViewParticipants.View = View.Details;
             }
             catch (Exception e)
             {
                 MessageBox.Show("Something went wrong while loading the participants: " + e.Message);
+            }
+        }
+
+        private void AddStudentActivitiesToList()
+        {
+            try
+            {
+                // fill the activity listview within the activity panel with a list of activities
+                ActivityService activityService = new ActivityService();
+                List<Activity> activitiesList = activityService.GetActivities();
+
+                // clear the listview before filling it again
+                listViewStudentActivities.Items.Clear();
+
+                //foreach activity in the list of activities make one row in the activity ListView
+                foreach (Activity a in activitiesList)
+                {
+                    ListViewItem li = new ListViewItem(Convert.ToString(a.Id));
+                    li.SubItems.Add(a.Name);
+                    li.SubItems.Add(a.Location);
+                    li.Tag = a;
+                    listViewStudentActivities.Items.Add(li);
+                }
+                listViewStudentActivities.View = View.Details;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong while loading the student activities: " + e.Message);
+            }
+        }
+
+        private void btnParticipantAdd_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ParticipantService participantService = new ParticipantService();
+
+                Activity activity = (Activity)listViewStudentActivities.SelectedItems[0].Tag;
+                Student student = (Student)listViewParticipants.SelectedItems[0].Tag;
+
+                Participant participant = new Participant()
+                {
+                    ActivityId = activity.Id,
+                    StudentId = student.Id
+                };
+                participantService.AddParticipant(participant);
+                AddActivityParticipantsToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Something went wrong while adding a participant: " + ex.Message);
+            }
+        }
+
+        private void btnActivityRemove_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Participant participant = (Participant)listViewActivityParticipation.SelectedItems[0].Tag;
+
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Something went wrong while removing a participant: " + exc.Message);
             }
         }
     }

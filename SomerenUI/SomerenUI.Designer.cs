@@ -1031,6 +1031,7 @@
             this.btnActivityRemove.TabIndex = 6;
             this.btnActivityRemove.Text = "Remove";
             this.btnActivityRemove.UseVisualStyleBackColor = true;
+            this.btnActivityRemove.Click += new System.EventHandler(this.btnActivityRemove_Click);
             // 
             // btnParticipantAdd
             // 
@@ -1040,6 +1041,7 @@
             this.btnParticipantAdd.TabIndex = 5;
             this.btnParticipantAdd.Text = "Add";
             this.btnParticipantAdd.UseVisualStyleBackColor = true;
+            this.btnParticipantAdd.Click += new System.EventHandler(this.btnParticipantAdd_Click);
             // 
             // labelGapParticipants
             // 
@@ -1054,6 +1056,7 @@
             this.listViewActivityParticipation.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader15,
             this.columnHeader16});
+            this.listViewActivityParticipation.FullRowSelect = true;
             this.listViewActivityParticipation.GridLines = true;
             this.listViewActivityParticipation.HideSelection = false;
             this.listViewActivityParticipation.Location = new System.Drawing.Point(666, 58);
@@ -1080,6 +1083,7 @@
             this.columnHeader17,
             this.columnHeader18,
             this.columnHeader19});
+            this.listViewStudentActivities.FullRowSelect = true;
             this.listViewStudentActivities.GridLines = true;
             this.listViewStudentActivities.HideSelection = false;
             this.listViewStudentActivities.Location = new System.Drawing.Point(332, 58);
@@ -1110,6 +1114,7 @@
             this.columnHeader12,
             this.columnHeader13,
             this.columnHeader14});
+            this.listViewParticipants.FullRowSelect = true;
             this.listViewParticipants.GridLines = true;
             this.listViewParticipants.HideSelection = false;
             this.listViewParticipants.Location = new System.Drawing.Point(26, 58);
