@@ -32,7 +32,9 @@ namespace SomerenUI
         private void showPanel(string panelName)
         {
 
-            switch (panelName) {
+
+            switch (panelName)
+            {
                 case "Dashboard":
                     hideAll();
 
@@ -80,9 +82,10 @@ namespace SomerenUI
                     hideAll();
                     dateTimeStart.CustomFormat = "dd-MM-yyyy HH:mm:ss";
                     dateTimeEnd.CustomFormat = "dd-MM-yyyy HH:mm:ss";
-                    AddActivitiesToList();
+                    AddActivitiesToList(listViewActivities);
                     pnlActivities.Show();
                     break;
+
 
                 // add case Participants
                 case "Participants":
@@ -94,6 +97,12 @@ namespace SomerenUI
                     break;
 
 
+
+                case "ActivitiesAdd":
+                    hideAll();
+                    supervisorSetup();
+                    activitie2pannel.Show();
+                    break;
                 default:
                     hideAll();
                     break;
@@ -335,6 +344,7 @@ namespace SomerenUI
             }
         }
 
+        //add drinks to selection
         private void AddDrinksToSelection(CheckedListBox drinksChecklist)
         {
             try
@@ -354,6 +364,7 @@ namespace SomerenUI
 
 
 
+
                 }
             }
             catch (Exception e)
@@ -362,6 +373,36 @@ namespace SomerenUI
             }
 
         }
+
+        //add teacher to selection
+        private void AddTeacherToSelection(CheckedListBox checkedlist)
+        {
+            try
+            {
+                // fill the students listview within the students panel with a list of students
+                TeacherService teacherService = new TeacherService();
+                List<Teacher> TeacherList = teacherService.GetTeachers();
+
+                // clear the listview before filling it again
+                checkedlist.Items.Clear();
+
+                //foreach drink in the list of drinks make one row in the Drinks ListView
+                foreach (Teacher t in TeacherList)
+                {
+
+                    checkedlist.Items.Add(t);
+
+
+
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong while loading the drinks: " + e.Message);
+            }
+
+        }
+
 
         //exit application
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -597,6 +638,7 @@ namespace SomerenUI
         }
 
 
+        //drinks selection chainged 
         private void drinksSelectionCheckout_SelectedIndexChanged(object sender, EventArgs e)
         {
             MakeReciet(MakeOrderList());
@@ -631,7 +673,7 @@ namespace SomerenUI
             showPanel("Activities");
         }
         //add activities to the ListView
-        private void AddActivitiesToList()
+        private void AddActivitiesToList(ListView listView)
         {
             try
             {
@@ -640,7 +682,7 @@ namespace SomerenUI
                 List<Activity> activitiesList = activityService.GetActivities();
 
                 // clear the listview before filling it again
-                listViewActivities.Items.Clear();
+                listView.Items.Clear();
 
                 //foreach activity in the list of activities make one row in the activity ListView
                 foreach (Activity a in activitiesList)
@@ -649,10 +691,11 @@ namespace SomerenUI
                     li.SubItems.Add(a.Location);
                     li.SubItems.Add(a.StartDate.ToString("dd-MM-yyyy HH:mm:ss"));
                     li.SubItems.Add(a.EndDate.ToString("dd-MM-yyyy HH:mm:ss"));
+                    li.SubItems.Add(a.Id.ToString());
                     li.Tag = a;
-                    listViewActivities.Items.Add(li);
+                    listView.Items.Add(li);
                 }
-                listViewActivities.View = View.Details;
+                listView.View = View.Details;
             }
             catch (Exception e)
             {
@@ -713,7 +756,7 @@ namespace SomerenUI
                 //add an activity to the Activities database
                 activityService.AddActivity(activity);
                 //reload the activities in the ListView
-                AddActivitiesToList();
+                AddActivitiesToList(listViewActivities);
                 //Clear all textboxes in the activities panel
                 ClearActivityTxtBoxes();
             }
@@ -758,7 +801,7 @@ namespace SomerenUI
                 //update the selected drink in the Drinks database
                 activityService.UpdateActivity((Activity)listViewActivities.SelectedItems[0].Tag, activity);
                 //reload the activities in the ListView
-                AddActivitiesToList();
+                AddActivitiesToList(listViewActivities);
                 //Clear all textboxes in the activities panel
                 ClearActivityTxtBoxes();
             }
@@ -784,7 +827,7 @@ namespace SomerenUI
                 //update the selected activity in the Activities database
                 activityService.DeleteActivity((Activity)listViewActivities.SelectedItems[0].Tag);
                 //reload the activities in the ListView
-                AddActivitiesToList();
+                AddActivitiesToList(listViewActivities);
                 //Clear all textboxes in the activities panel
                 ClearActivityTxtBoxes();
             }
@@ -848,6 +891,7 @@ namespace SomerenUI
             }
             return false;
         }
+
 
         private void participantsToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -949,6 +993,210 @@ namespace SomerenUI
                 MessageBox.Show("Something went wrong while removing a participant: " + exc.Message);
             }
         }
+
+
+
+        // SUPERVISER PAGE
+        //------------------------------------------------------------------
+        private void supervisorsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("ActivitiesAdd");
+        }
+        //super visor
+        int teachersChecked = 0;
+        private void supervisorSetup()
+        {
+            AddActivitiesToList(activitieslist2);
+            AddTeacherToSelection(supervisorsCheckedlist);
+
+
+        }
+
+
+
+        private void CheckTeachers(List<Activity> Supervisors)
+        {
+
+            teachersChecked = 0;
+            supervisorsCheckedlist.BeginUpdate();
+
+            for (int i =0; i< supervisorsCheckedlist.Items.Count;i++)
+                {
+                supervisorsCheckedlist.SetItemChecked(i, false);
+                     foreach (Activity a in Supervisors)
+                     {
+                        Teacher t = (Teacher)supervisorsCheckedlist.Items[i];
+                        if (t.Number == a.Teacher.Number)
+                        {
+                        supervisorsCheckedlist.SetItemChecked(i, true);
+                        teachersChecked++;
+                        }
+
+                     }
+            }
+            supervisorsCheckedlist.EndUpdate();
+
+
+        }
+
+        //get checked items
+        private List<Teacher> GetCheckedItems(CheckedListBox c)
+        {
+            List<Teacher> t =  new List<Teacher>();
+
+
+          
+            foreach (Teacher teacher in c.CheckedItems)
+            {
+
+
+
+
+                t.Add(teacher);
+            }
+            return t;
+
+        }
+
+        //get unchecked items
+        private List<Teacher> GetUnCheckedItems(CheckedListBox c)
+        {
+            List<Teacher> t = new List<Teacher>();
+            foreach (Teacher teacher in c.Items)
+            {
+                if (!c.CheckedItems.Contains(teacher))
+                {
+                    // your code
+                    t.Add(teacher);
+                }
+            }
+            return t;
+
+        }
+        
+        
+    
+        
+        //get selected events
+        private Activity GetSelectedEventFromList()
+        {
+            Activity activity = new Activity();
+            foreach (ListViewItem a in activitieslist2.Items)
+            {
+                if (a.Selected)
+                {
+                 
+                        activity.Id = int.Parse(a.SubItems[4].Text);
+                        activity.Name =a.SubItems[0].Text;
+                        activity.Location =a.SubItems[1].Text;
+                        activity.StartDate =DateTime.Parse(a.SubItems[2].Text);
+                        activity.EndDate =DateTime.Parse(a.SubItems[3].Text);
+                        
+
+                }
+
+            }
+            return activity;
+
+        }
+
+
+        private void UncheckTeachers(CheckedListBox c)
+        {
+            supervisorsCheckedlist.BeginUpdate();
+           
+            c.ClearSelected();
+
+            
+            supervisorsCheckedlist.EndUpdate();
+        }
+
+     
+       private  bool ValidateChange(CheckedListBox c,int activityid)
+        {
+            ActivitySupervicersService activitySupervicersService = new ActivitySupervicersService();
+            List<Teacher> Checkedteachers = GetCheckedItems(c);
+            List<Teacher> Unchekedteachers = GetUnCheckedItems(c);
+
+
+            MessageBoxButtons warning = MessageBoxButtons.OKCancel;
+            MessageBoxIcon warningIcon = MessageBoxIcon.Warning;
+            string errormessage = "Do you reaaaaaly want to delete this person?";
+            
+            
+
+
+            //DELETE CHECKED ITEM
+            if (c.CheckedItems.Count < teachersChecked)
+            {
+                DialogResult resultMessagebox = MessageBox.Show(errormessage, "warning", warning, warningIcon);
+
+                switch (resultMessagebox)
+                {
+                    case DialogResult.OK:
+
+                        activitySupervicersService.DeleteActivity(activityid, Unchekedteachers);
+                        return true;
+
+                    break;
+
+                    case DialogResult.Cancel:
+
+                        return false;
+
+                    break;
+
+                    default:
+                        return false;
+                    break;
+                }
+              
+            }
+            else{
+                activitySupervicersService.InsertActivity(activityid, Checkedteachers);
+
+            }
+            return false;
+           
+
+            
+        }
+
+        
+
+        private void activitieslist2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //UncheckTeachers(supervisorsCheckedlist);
+
+            ActivitySupervicersService activity = new ActivitySupervicersService();
+            foreach (ListViewItem l in  activitieslist2.Items) {
+                int id = int.Parse(l.SubItems[4].Text);
+                if (l.Selected)
+                {
+                    List<Activity> supervisors = activity.GetActivitesWhitTeacherJoin(id);
+                    CheckTeachers(supervisors);
+
+                }
+
+            }
+        }
+
+        
+
+      
+
+        private void supervisorsCheckedlist_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            int eventid = GetSelectedEventFromList().Id;
+            List<Teacher> Checkedteachers = GetCheckedItems(supervisorsCheckedlist);
+
+             ValidateChange(supervisorsCheckedlist,eventid);
+
+
+
+            //int teacherid = teachers[0].Number;
+        }
+
     }
 
 

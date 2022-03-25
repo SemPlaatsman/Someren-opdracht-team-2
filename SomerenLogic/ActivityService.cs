@@ -13,11 +13,11 @@ namespace SomerenLogic
     {
         //new ActivityDao
         ActivityDao activitydb;
-
         //constructor to initialize the activitydb
         public ActivityService()
         {
             activitydb = new ActivityDao();
+
         }
 
         //command to get all activities with the activitydb
@@ -26,6 +26,7 @@ namespace SomerenLogic
             List<Activity> activities = activitydb.GetAllActivities();
             return activities;
         }
+       
 
         //command to add a activity with the activitydb
         public void AddActivity(Activity activity)
@@ -44,5 +45,6 @@ namespace SomerenLogic
         {
             activitydb.Delete(activity);
         }
+
     }
 }

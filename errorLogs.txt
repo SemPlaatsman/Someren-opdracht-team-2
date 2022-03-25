@@ -19,7 +19,101 @@ The statement has been terminated.
 [19/03/2022 17:36:19] : Incorrect syntax near 'stock'.
 [20-3-2022 17:01:41] : Er is een netwerkfout of een exemplaarspecifieke fout opgetreden tijdens het maken van verbinding met SQL Server. De server is niet gevonden of is niet toegankelijk. Controleer of de exemplaarnaam correct is en of in de instellingen van SQL Server externe verbindingen zijn toegestaan. (provider: Named Pipes Provider, error: 40 - Kon geen verbinding met SQL Server openen)
 
+[22/03/2022 17:07:25] : Must declare the scalar variable "@ActivityId".
+[25/03/2022 16:47:02] : Must declare the scalar variable "@activityID".
+[25/03/2022 16:47:02] : Must declare the scalar variable "@activityID".
+[25/03/2022 16:47:02] : Must declare the scalar variable "@activityID".
+[25/03/2022 16:47:02] : Must declare the scalar variable "@activityID".
+[25/03/2022 16:47:02] : Must declare the scalar variable "@activityID".
+[25/03/2022 16:47:02] : Must declare the scalar variable "@activityID".
+[25/03/2022 16:47:02] : Must declare the scalar variable "@activityID".
+[25/03/2022 16:47:02] : Must declare the scalar variable "@activityID".
+[25/03/2022 17:06:23] : Must declare the scalar variable "@activityID".
+[25/03/2022 17:06:24] : Must declare the scalar variable "@activityID".
+[25/03/2022 17:06:25] : Must declare the scalar variable "@activityID".
+[25/03/2022 17:06:26] : Must declare the scalar variable "@activityID".
+[25/03/2022 17:06:27] : Must declare the scalar variable "@activityID".
+[25/03/2022 17:06:28] : Must declare the scalar variable "@activityID".
+[25/03/2022 17:06:29] : Must declare the scalar variable "@activityID".
+[25/03/2022 17:06:29] : Must declare the scalar variable "@activityID".
+[25/03/2022 17:08:00] : Must declare the scalar variable "@activityID".
+[25/03/2022 17:08:05] : Must declare the scalar variable "@activityID".
+[25/03/2022 17:08:11] : Must declare the scalar variable "@activityID".
+[25/03/2022 17:08:16] : Must declare the scalar variable "@activityID".
+[25/03/2022 17:08:23] : Must declare the scalar variable "@activityID".
+[25/03/2022 17:08:23] : Must declare the scalar variable "@activityID".
+[25/03/2022 17:08:24] : Must declare the scalar variable "@activityID".
+[25/03/2022 17:08:24] : Must declare the scalar variable "@activityID".
+[25/03/2022 17:11:07] : Must declare the scalar variable "@activityID".
+[25/03/2022 17:11:08] : Must declare the scalar variable "@activityID".
+[25/03/2022 17:11:09] : Must declare the scalar variable "@activityID".
+[25/03/2022 17:11:10] : Must declare the scalar variable "@activityID".
+[25/03/2022 17:11:12] : Must declare the scalar variable "@activityID".
+[25/03/2022 17:11:13] : Must declare the scalar variable "@activityID".
+[25/03/2022 17:11:14] : Must declare the scalar variable "@activityID".
+[25/03/2022 17:11:14] : Must declare the scalar variable "@activityID".
+[25/03/2022 17:11:58] : Must declare the scalar variable "@activityID".
+[25/03/2022 17:12:03] : Must declare the scalar variable "@activityID".
+[25/03/2022 17:12:03] : Must declare the scalar variable "@activityID".
+[25/03/2022 17:12:15] : Must declare the scalar variable "@activityID".
+[25/03/2022 17:12:20] : Must declare the scalar variable "@activityID".
+[25/03/2022 17:12:29] : Must declare the scalar variable "@activityID".
+[25/03/2022 17:12:30] : Must declare the scalar variable "@activityID".
+[25/03/2022 17:12:31] : Must declare the scalar variable "@activityID".
+[25/03/2022 17:13:30] : Violation of PRIMARY KEY constraint 'PK_ActivitySupervisor'. Cannot insert duplicate key in object 'dbo.ActivitySupervisor'. The duplicate key value is (1, 4).
+The statement has been terminated.
+[25/03/2022 17:13:30] : Violation of PRIMARY KEY constraint 'PK_ActivitySupervisor'. Cannot insert duplicate key in object 'dbo.ActivitySupervisor'. The duplicate key value is (2, 4).
+The statement has been terminated.
+[25/03/2022 17:13:31] : Violation of PRIMARY KEY constraint 'PK_ActivitySupervisor'. Cannot insert duplicate key in object 'dbo.ActivitySupervisor'. The duplicate key value is (3, 4).
+The statement has been terminated.
+[25/03/2022 17:13:31] : Violation of PRIMARY KEY constraint 'PK_ActivitySupervisor'. Cannot insert duplicate key in object 'dbo.ActivitySupervisor'. The duplicate key value is (4, 4).
+The statement has been terminated.
+[25/03/2022 17:17:03] : Violation of PRIMARY KEY constraint 'PK_ActivitySupervisor'. Cannot insert duplicate key in object 'dbo.ActivitySupervisor'. The duplicate key value is (1, 1).
+The statement has been terminated.
+[25/03/2022 17:17:03] : Violation of PRIMARY KEY constraint 'PK_ActivitySupervisor'. Cannot insert duplicate key in object 'dbo.ActivitySupervisor'. The duplicate key value is (2, 1).
+The statement has been terminated.
+[25/03/2022 17:17:03] : Violation of PRIMARY KEY constraint 'PK_ActivitySupervisor'. Cannot insert duplicate key in object 'dbo.ActivitySupervisor'. The duplicate key value is (3, 1).
+The statement has been terminated.
+[25/03/2022 17:17:04] : Violation of PRIMARY KEY constraint 'PK_ActivitySupervisor'. Cannot insert duplicate key in object 'dbo.ActivitySupervisor'. The duplicate key value is (4, 1).
+The statement has been terminated.
+[25/03/2022 17:28:34] : Violation of PRIMARY KEY constraint 'PK_ActivitySupervisor'. Cannot insert duplicate key in object 'dbo.ActivitySupervisor'. The duplicate key value is (1, 1).
+The statement has been terminated.
+[25/03/2022 17:28:34] : Violation of PRIMARY KEY constraint 'PK_ActivitySupervisor'. Cannot insert duplicate key in object 'dbo.ActivitySupervisor'. The duplicate key value is (2, 1).
+The statement has been terminated.
+[25/03/2022 17:28:34] : Violation of PRIMARY KEY constraint 'PK_ActivitySupervisor'. Cannot insert duplicate key in object 'dbo.ActivitySupervisor'. The duplicate key value is (3, 1).
+The statement has been terminated.
+[25/03/2022 17:28:34] : Violation of PRIMARY KEY constraint 'PK_ActivitySupervisor'. Cannot insert duplicate key in object 'dbo.ActivitySupervisor'. The duplicate key value is (4, 1).
+The statement has been terminated.
+[25/03/2022 17:45:00] : The INSERT statement conflicted with the FOREIGN KEY constraint "FK_ActivitySupervisor". The conflict occurred in database "2122_INF1c_db2", table "dbo.Activities", column 'activityId'.
+The statement has been terminated.
+[25/03/2022 17:45:00] : The INSERT statement conflicted with the FOREIGN KEY constraint "FK_ActivitySupervisor". The conflict occurred in database "2122_INF1c_db2", table "dbo.Activities", column 'activityId'.
+The statement has been terminated.
+[25/03/2022 17:45:00] : The INSERT statement conflicted with the FOREIGN KEY constraint "FK_ActivitySupervisor". The conflict occurred in database "2122_INF1c_db2", table "dbo.Activities", column 'activityId'.
+The statement has been terminated.
+[25/03/2022 17:45:08] : Violation of PRIMARY KEY constraint 'PK_ActivitySupervisor'. Cannot insert duplicate key in object 'dbo.ActivitySupervisor'. The duplicate key value is (2, 4).
+The statement has been terminated.
+[25/03/2022 17:45:09] : Violation of PRIMARY KEY constraint 'PK_ActivitySupervisor'. Cannot insert duplicate key in object 'dbo.ActivitySupervisor'. The duplicate key value is (3, 4).
+The statement has been terminated.
+[25/03/2022 17:45:09] : Violation of PRIMARY KEY constraint 'PK_ActivitySupervisor'. Cannot insert duplicate key in object 'dbo.ActivitySupervisor'. The duplicate key value is (4, 4).
+The statement has been terminated.
+[25/03/2022 18:53:18] : Violation of PRIMARY KEY constraint 'PK_ActivitySupervisor'. Cannot insert duplicate key in object 'dbo.ActivitySupervisor'. The duplicate key value is (3, 1).
+The statement has been terminated.
+[25/03/2022 18:53:34] : Violation of PRIMARY KEY constraint 'PK_ActivitySupervisor'. Cannot insert duplicate key in object 'dbo.ActivitySupervisor'. The duplicate key value is (1, 1).
+The statement has been terminated.
+[25/03/2022 18:56:38] : Violation of PRIMARY KEY constraint 'PK_ActivitySupervisor'. Cannot insert duplicate key in object 'dbo.ActivitySupervisor'. The duplicate key value is (4, 1).
+The statement has been terminated.
+[25/03/2022 18:56:38] : Violation of PRIMARY KEY constraint 'PK_ActivitySupervisor'. Cannot insert duplicate key in object 'dbo.ActivitySupervisor'. The duplicate key value is (3, 1).
+The statement has been terminated.
+[25/03/2022 18:56:38] : Violation of PRIMARY KEY constraint 'PK_ActivitySupervisor'. Cannot insert duplicate key in object 'dbo.ActivitySupervisor'. The duplicate key value is (4, 1).
+The statement has been terminated.
+[25/03/2022 18:56:39] : Violation of PRIMARY KEY constraint 'PK_ActivitySupervisor'. Cannot insert duplicate key in object 'dbo.ActivitySupervisor'. The duplicate key value is (2, 1).
+The statement has been terminated.
+[25/03/2022 18:56:39] : Violation of PRIMARY KEY constraint 'PK_ActivitySupervisor'. Cannot insert duplicate key in object 'dbo.ActivitySupervisor'. The duplicate key value is (3, 1).
+The statement has been terminated.
+[25/03/2022 18:56:39] : Violation of PRIMARY KEY constraint 'PK_ActivitySupervisor'. Cannot insert duplicate key in object 'dbo.ActivitySupervisor'. The duplicate key value is (4, 1).
+
 [24-3-2022 10:23:38] : The DELETE statement conflicted with the REFERENCE constraint "FK__Orders__ForeignD__6754599E". The conflict occurred in database "2122_INF1c_db2", table "dbo.Orders", column 'ForeignDrink'.
+
 The statement has been terminated.
 [25-3-2022 18:26:41] : Violation of PRIMARY KEY constraint 'PK_ActivityStudent'. Cannot insert duplicate key in object 'dbo.ActivityStudent'. The duplicate key value is (3, 5).
 The statement has been terminated.
