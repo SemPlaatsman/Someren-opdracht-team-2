@@ -111,4 +111,7 @@ The statement has been terminated.
 [25/03/2022 18:56:39] : Violation of PRIMARY KEY constraint 'PK_ActivitySupervisor'. Cannot insert duplicate key in object 'dbo.ActivitySupervisor'. The duplicate key value is (3, 1).
 The statement has been terminated.
 [25/03/2022 18:56:39] : Violation of PRIMARY KEY constraint 'PK_ActivitySupervisor'. Cannot insert duplicate key in object 'dbo.ActivitySupervisor'. The duplicate key value is (4, 1).
+
+[24-3-2022 10:23:38] : The DELETE statement conflicted with the REFERENCE constraint "FK__Orders__ForeignD__6754599E". The conflict occurred in database "2122_INF1c_db2", table "dbo.Orders", column 'ForeignDrink'.
+
 The statement has been terminated.
