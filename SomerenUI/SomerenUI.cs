@@ -907,6 +907,7 @@ namespace SomerenUI
             {
                 MessageBox.Show("Something went wrong while loading the student activities: " + e.Message);
             }
+
         }
 
         private void btnParticipantAdd_Click(object sender, EventArgs e)
@@ -923,13 +924,35 @@ namespace SomerenUI
                     ActivityId = activity.Id,
                     StudentId = student.Id
                 };
+                if (ParticipantWasAdded(participant))
+                {
+                    return;
+                }
                 participantService.AddParticipant(participant);
                 AddActivityParticipantsToList();
+
             }
+
             catch (Exception ex)
             {
                 MessageBox.Show("Something went wrong while adding a participant: " + ex.Message);
             }
+
+
+        }
+
+        private bool ParticipantWasAdded(Participant participant)
+        {
+            foreach (ListViewItem lvi in listViewActivityParticipation.Items)
+            {
+                Participant lviParticipant = (Participant)lvi.Tag;
+                if (lviParticipant.ActivityId == participant.ActivityId && lviParticipant.StudentId == participant.StudentId)
+                {
+                    MessageBox.Show("This Participant was already added!");
+                    return true;
+                }
+            }
+            return false;
         }
 
         private void BtnParticipantRemove_Click(object sender, EventArgs e)
