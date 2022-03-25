@@ -13,12 +13,16 @@ namespace SomerenDAL
     public class ActivityDao : BaseDao
     {
         //query to get all activities
+        
+
         public List<Activity> GetAllActivities()
         {
             string query = "SELECT activityId, activityName, activityLocation, startDateTime, endDateTime FROM Activities;";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
+       
+
 
         //query to add an activity to the Activities database table
         public void Add(Activity activity)
@@ -64,16 +68,21 @@ namespace SomerenDAL
         private List<Activity> ReadTables(DataTable dataTable)
         {
             List<Activity> activities = new List<Activity>();
+            Teacher teacher = new Teacher();
 
             foreach (DataRow dr in dataTable.Rows)
             {
+                
+          
+
                 Activity activity = new Activity()
                 {
                     Id = (int)dr["activityId"],
                     Name = (string)dr["activityName"],
                     Location = (string)dr["activityLocation"],
                     StartDate = (DateTime)dr["startDateTime"],
-                    EndDate = (DateTime)dr["endDateTime"]
+                    EndDate = (DateTime)dr["endDateTime"],
+
                 };
                 activities.Add(activity);
             }
