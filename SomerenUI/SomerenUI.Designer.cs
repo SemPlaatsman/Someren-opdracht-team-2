@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SomerenUI));
-            this.imgDashboard = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.dashboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dashboardToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -149,6 +148,7 @@
             this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.labelParticipants = new System.Windows.Forms.Label();
             this.id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+
             this.activitie2pannel = new System.Windows.Forms.Panel();
             this.supervisorsCheckedlist = new System.Windows.Forms.CheckedListBox();
             this.activitieslist2 = new System.Windows.Forms.ListView();
@@ -158,6 +158,7 @@
             this.notneededcolimn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader20 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
+
             this.menuStrip1.SuspendLayout();
             this.pnlDashboard.SuspendLayout();
             this.pnlStudents.SuspendLayout();
@@ -185,6 +186,7 @@
             this.imgDashboard.TabIndex = 0;
             this.imgDashboard.TabStop = false;
             this.imgDashboard.Click += new System.EventHandler(this.imgDashboard_Click);
+
             // 
             // menuStrip1
             // 
@@ -262,6 +264,7 @@
             // 
             this.supervisorsToolStripMenuItem.Name = "supervisorsToolStripMenuItem";
             this.supervisorsToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+
             this.supervisorsToolStripMenuItem.Text = "supervisors";
             this.supervisorsToolStripMenuItem.Click += new System.EventHandler(this.supervisorsToolStripMenuItem_Click);
             // 
@@ -867,7 +870,6 @@
             // 
             // panelRevenueReport
             // 
-            this.panelRevenueReport.AutoSize = true;
             this.panelRevenueReport.Controls.Add(this.monthCalendarRevenue);
             this.panelRevenueReport.Controls.Add(this.listViewRevenueReport);
             this.panelRevenueReport.Controls.Add(this.pictureBox5);
@@ -876,7 +878,7 @@
             this.panelRevenueReport.Location = new System.Drawing.Point(20, 36);
             this.panelRevenueReport.Margin = new System.Windows.Forms.Padding(4);
             this.panelRevenueReport.Name = "panelRevenueReport";
-            this.panelRevenueReport.Size = new System.Drawing.Size(1255, 600);
+            this.panelRevenueReport.Size = new System.Drawing.Size(1251, 574);
             this.panelRevenueReport.TabIndex = 7;
             // 
             // monthCalendarRevenue
@@ -1279,6 +1281,7 @@
             // 
             this.id.Text = "id";
             // 
+
             // activitie2pannel
             // 
             this.activitie2pannel.Controls.Add(this.supervisorsCheckedlist);
@@ -1305,6 +1308,7 @@
             this.startdatecolumn,
             this.notneededcolimn,
             this.columnHeader20});
+
             this.activitieslist2.FullRowSelect = true;
             this.activitieslist2.GridLines = true;
             this.activitieslist2.HideSelection = false;
@@ -1325,6 +1329,7 @@
             // 
             this.locationcolumn.Text = "Location";
             this.locationcolumn.Width = 200;
+
             // 
             // startdatecolumn
             // 
@@ -1360,6 +1365,7 @@
             this.Text = "SomerenApp";
             this.Load += new System.EventHandler(this.SomerenUI_Load);
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).EndInit();
+
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.pnlDashboard.ResumeLayout(false);
@@ -1386,6 +1392,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.pnlParticipants.ResumeLayout(false);
             this.pnlParticipants.PerformLayout();
+
             this.activitie2pannel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1395,8 +1402,17 @@
         #endregion
 
         private System.Windows.Forms.PictureBox imgDashboard;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem dashboardToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dashboardToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.Panel pnlDashboard;
         private System.Windows.Forms.Label lbl_Dashboard;
+        private System.Windows.Forms.ToolStripMenuItem studentsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem lecturersToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem activitiesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem roomsToolStripMenuItem;
         private System.Windows.Forms.Panel pnlStudents;
         private System.Windows.Forms.Label lbl_Students;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -1404,6 +1420,7 @@
         private System.Windows.Forms.ColumnHeader studentID;
         private System.Windows.Forms.ColumnHeader studentFirstName;
         private System.Windows.Forms.ColumnHeader studentLastName;
+        private System.Windows.Forms.ToolStripMenuItem drinksToolStripMenuItem;
         private System.Windows.Forms.Panel lecturers_panel;
         private System.Windows.Forms.ListView teatcherListView;
         private System.Windows.Forms.ColumnHeader columnHeader4;
@@ -1441,8 +1458,10 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.ToolStripMenuItem checkoutToolStripItem;
         private System.Windows.Forms.ColumnHeader columnHeader8;
         private System.Windows.Forms.Panel CheckoutPannel;
+        private System.Windows.Forms.ToolStripMenuItem reportRevenueToolStripMenuItem;
         private System.Windows.Forms.Panel panelRevenueReport;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Label labelRevenueReport;
@@ -1483,37 +1502,12 @@
         private System.Windows.Forms.ColumnHeader activityStartDateTime;
         private System.Windows.Forms.ColumnHeader activityEndDateTime;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Panel pnlParticipants;
-        private System.Windows.Forms.ToolStripMenuItem dashboardToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem dashboardToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem studentsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem lecturersToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem activitiesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem participantsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem roomsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem drinksToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem checkoutToolStripItem;
-        private System.Windows.Forms.ToolStripMenuItem reportRevenueToolStripMenuItem;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.Label labelParticipants;
-        private System.Windows.Forms.ListView listViewActivityParticipation;
-        private System.Windows.Forms.ListView listViewStudentActivities;
-        private System.Windows.Forms.ListView listViewParticipants;
-        public System.Windows.Forms.ColumnHeader columnHeader12;
-        private System.Windows.Forms.ColumnHeader columnHeader13;
-        private System.Windows.Forms.Button btnParticipantRemove;
-        private System.Windows.Forms.Button btnParticipantAdd;
-        private System.Windows.Forms.Label labelGapParticipants;
-        private System.Windows.Forms.ColumnHeader columnHeader15;
-        private System.Windows.Forms.ColumnHeader columnHeader16;
-        private System.Windows.Forms.ColumnHeader columnHeader17;
-        private System.Windows.Forms.ColumnHeader columnHeader18;
-        private System.Windows.Forms.ColumnHeader columnHeader19;
-        private System.Windows.Forms.ColumnHeader columnHeader14;
         private System.Windows.Forms.ToolStripMenuItem supervisorsToolStripMenuItem;
-        
+
+        private System.Windows.Forms.Panel activitie2pannel;
+        private System.Windows.Forms.ColumnHeader namecolumn;
+        private System.Windows.Forms.ColumnHeader locationcolumn;
+        private System.Windows.Forms.ColumnHeader startdatecolumn;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.ColumnHeader id;
         private System.Windows.Forms.Panel activitie2pannel;
@@ -1524,6 +1518,7 @@
         private System.Windows.Forms.ColumnHeader startdatecolumn;
         private System.Windows.Forms.ColumnHeader notneededcolimn;
         private System.Windows.Forms.ColumnHeader columnHeader20;
+
     }
 }
 
