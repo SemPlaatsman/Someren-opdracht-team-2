@@ -48,6 +48,7 @@
     <Compile Include="DrinkDao.cs" />
     <Compile Include="ErrorLogger.cs" />
     <Compile Include="OrderDao.cs" />
+    <Compile Include="ParticipantDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RevenueDao.cs" />
     <Compile Include="RoomDao.cs" />
