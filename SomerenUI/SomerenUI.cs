@@ -32,7 +32,7 @@ namespace SomerenUI
         private void showPanel(string panelName)
         {
 
-            switch(panelName){
+            switch (panelName) {
                 case "Dashboard":
                     hideAll();
 
@@ -87,7 +87,8 @@ namespace SomerenUI
                 // add case Participants
                 case "Participants":
                     hideAll();
-                    AddParticipantsToList();
+                    AddActivityParticipantsToList();
+                    AddStudentsTolist(listViewParticipants);
                     pnlParticipants.Show();
                     break;
 
@@ -198,7 +199,7 @@ namespace SomerenUI
                 // clear the listview before filling it again
                 drinkslistview.Items.Clear();
                 drinkslistview.SmallImageList = GetDrinkIcons();
-                 
+
                 //foreach drink in the list of drinks make one row in the Drinks ListView
                 foreach (Drink d in drinksList)
                 {
@@ -242,7 +243,7 @@ namespace SomerenUI
                 listViewRevenueReport.Items.Add(lvi);
                 listViewRevenueReport.View = View.Details;
 
-            
+
             }
 
             catch (Exception excep)
@@ -284,7 +285,7 @@ namespace SomerenUI
             try
             {
                 // fill the students listview within the students panel with a list of students
-                StudentService studService = new StudentService(); 
+                StudentService studService = new StudentService();
                 List<Student> studentList = studService.GetStudents();
 
                 // clear the listview before filling it again
@@ -306,7 +307,7 @@ namespace SomerenUI
             }
         }
 
-       
+
         //add rooms to room list
         private void AddRoomsToList()
         {
@@ -332,7 +333,7 @@ namespace SomerenUI
             }
         }
 
-       private void AddDrinksToSelection(CheckedListBox drinksChecklist)
+        private void AddDrinksToSelection(CheckedListBox drinksChecklist)
         {
             try
             {
@@ -346,9 +347,9 @@ namespace SomerenUI
                 //foreach drink in the list of drinks make one row in the Drinks ListView
                 foreach (Drink d in drinksList)
                 {
-                    
+
                     drinksChecklist.Items.Add(d);
-                    
+
 
 
                 }
@@ -401,7 +402,7 @@ namespace SomerenUI
             showPanel("Rooms");
         }
 
-     
+
 
         //show the drink panel when the drinks toolstrip menu item is clicked
         private void drinksToolStripMenuItem_Click(object sender, EventArgs e)
@@ -412,7 +413,7 @@ namespace SomerenUI
         //button to clear all textboxes in the Drinks panel
         private void btnClearDrinksTxtBoxes_Click(object sender, EventArgs e)
         {
-            ClearDrinksTxtBoxes(); 
+            ClearDrinksTxtBoxes();
         }
 
         //add button for Drinks
@@ -511,7 +512,7 @@ namespace SomerenUI
         {
             showPanel("Checkout");
         }
-     
+
         //makes the reciet
         public void MakeReciet(List<Order> orders)
         {
@@ -592,7 +593,7 @@ namespace SomerenUI
             }
             return orders;
         }
-      
+
 
         private void drinksSelectionCheckout_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -852,7 +853,10 @@ namespace SomerenUI
         }
 
         // add particpants to list
-        private void AddParticipantsToList()
+
+
+
+        private void AddActivityParticipantsToList()
         {
             try
             {
@@ -860,23 +864,14 @@ namespace SomerenUI
                 List<Participant> participantsList = participantService.GetParticipants();
 
                 listViewActivityParticipation.Items.Clear();
-                listViewParticipants.Items.Clear();
-                listViewStudentActivities.Items.Clear();
 
                 foreach (Participant p in participantsList)
                 {
                     ListViewItem li = new ListViewItem(Convert.ToString(p.StudentId));
+                    li.SubItems.Add(Convert.ToString(p.ActivityId));
                     li.Tag = p;
-                    listViewParticipants.Items.Add(li);
+                    listViewActivityParticipation.Items.Add(li);
                 }
-
-                foreach (Participant p in participantsList)
-                {
-                    ListViewItem li = new ListViewItem(Convert.ToString(p.ActivityId));
-                    li.Tag = p;
-                    listViewStudentActivities.Items.Add(li);
-                }
-
 
                 listViewActivityParticipation.View = View.Details;
                 listViewStudentActivities.View = View.Details;
@@ -887,7 +882,8 @@ namespace SomerenUI
                 MessageBox.Show("Something went wrong while loading the participants: " + e.Message);
             }
         }
-
-
     }
+
+
+    
 }
