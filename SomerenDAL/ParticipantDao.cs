@@ -13,7 +13,7 @@ namespace SomerenDAL
     public class ParticipantDao : BaseDao
     {
         public List<Participant> GetAllParticipants()
-        {
+        { // previous query: SELECT activityId, studentID FROM ActivityStudent
             string query = "SELECT activityId, studentId FROM ActivityStudent;";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
@@ -48,7 +48,7 @@ namespace SomerenDAL
             foreach (DataRow dr in dataTable.Rows)
             {
                 Participant participant = new Participant()
-                {
+                { // must add data from students and activities
                     ActivityId = (int)dr["activityId"],
                     StudentId = (int)dr["studentId"]
                 };

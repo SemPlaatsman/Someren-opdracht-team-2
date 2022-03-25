@@ -84,6 +84,13 @@ namespace SomerenUI
                     pnlActivities.Show();
                     break;
 
+                // add case Participants
+                case "Participants":
+                    hideAll();
+                    AddParticipantsToList();
+                    pnlParticipants.Show();
+                    break;
+
 
                 default:
                     hideAll();
@@ -841,7 +848,46 @@ namespace SomerenUI
 
         private void participantsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // show panel participants
+            showPanel("Participants");
         }
+
+        // add particpants to list
+        private void AddParticipantsToList()
+        {
+            try
+            {
+                ParticipantService participantService = new ParticipantService();
+                List<Participant> participantsList = participantService.GetParticipants();
+
+                listViewActivityParticipation.Items.Clear();
+                listViewParticipants.Items.Clear();
+                listViewStudentActivities.Items.Clear();
+
+                foreach (Participant p in participantsList)
+                {
+                    ListViewItem li = new ListViewItem(Convert.ToString(p.StudentId));
+                    li.Tag = p;
+                    listViewParticipants.Items.Add(li);
+                }
+
+                foreach (Participant p in participantsList)
+                {
+                    ListViewItem li = new ListViewItem(Convert.ToString(p.ActivityId));
+                    li.Tag = p;
+                    listViewStudentActivities.Items.Add(li);
+                }
+
+
+                listViewActivityParticipation.View = View.Details;
+                listViewStudentActivities.View = View.Details;
+                listViewParticipants.View = View.Details;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong while loading the participants: " + e.Message);
+            }
+        }
+
+
     }
 }
