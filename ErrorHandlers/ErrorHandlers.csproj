@@ -4,13 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5C8BDA73-F134-4AF6-BB41-DBE88EBA2615}</ProjectGuid>
+    <ProjectGuid>{D3A6BB69-166B-4957-8D34-400529B5C0A0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SomerenDAL</RootNamespace>
-    <AssemblyName>SomerenDAL</AssemblyName>
+    <RootNamespace>ErrorHandlers</RootNamespace>
+    <AssemblyName>ErrorHandlers</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -32,7 +33,23 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Configuration.ConfigurationManager.6.0.0\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.AccessControl, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.AccessControl.6.0.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Permissions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Permissions.6.0.0\lib\net461\System.Security.Permissions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,30 +57,12 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ActivitieFullDao.cs" />
-    <Compile Include="ActivityDao.cs" />
-    <Compile Include="BaseDao.cs" />
-    <Compile Include="DrinkDao.cs" />
-    <Compile Include="OrderDao.cs" />
-    <Compile Include="ParticipantDao.cs" />
+    <Compile Include="ErrorLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RevenueDao.cs" />
-    <Compile Include="RoomDao.cs" />
-    <Compile Include="TeacherDao.cs" />
-    <Compile Include="StudentDao.cs" />
-    <Compile Include="UserDao.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ErrorHandlers\ErrorHandlers.csproj">
-      <Project>{d3a6bb69-166b-4957-8d34-400529b5c0a0}</Project>
-      <Name>ErrorHandlers</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SomerenModel\SomerenModel.csproj">
-      <Project>{90a9ed02-35d3-4d84-80e4-458bc835c722}</Project>
-      <Name>SomerenModel</Name>
-    </ProjectReference>
+    <Compile Include="SomerenException.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
