@@ -15,9 +15,10 @@ namespace SomerenUI
 {
     public partial class SomerenUI : Form
     {
-
-        public SomerenUI()
+        private User user;
+        public SomerenUI(User user)
         {
+            this.user = user;
             InitializeComponent();
 
 
@@ -1221,6 +1222,14 @@ namespace SomerenUI
         private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoginUI loginUI = new LoginUI();
+            this.Hide();
+            loginUI.ShowDialog();
+            this.Close();
         }
     }
 

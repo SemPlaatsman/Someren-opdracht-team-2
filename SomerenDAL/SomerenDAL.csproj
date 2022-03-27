@@ -46,7 +46,6 @@
     <Compile Include="ActivityDao.cs" />
     <Compile Include="BaseDao.cs" />
     <Compile Include="DrinkDao.cs" />
-    <Compile Include="ErrorLogger.cs" />
     <Compile Include="OrderDao.cs" />
     <Compile Include="ParticipantDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -54,8 +53,13 @@
     <Compile Include="RoomDao.cs" />
     <Compile Include="TeacherDao.cs" />
     <Compile Include="StudentDao.cs" />
+    <Compile Include="UserDao.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ErrorHandlers\ErrorHandlers.csproj">
+      <Project>{d3a6bb69-166b-4957-8d34-400529b5c0a0}</Project>
+      <Name>ErrorHandlers</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SomerenModel\SomerenModel.csproj">
       <Project>{90a9ed02-35d3-4d84-80e4-458bc835c722}</Project>
       <Name>SomerenModel</Name>
