@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Configuration;
 
-namespace SomerenDAL
+namespace ErrorHandlers
 {
     public static class ErrorLogger
     {
