@@ -15,9 +15,10 @@ namespace SomerenUI
 {
     public partial class SomerenUI : Form
     {
-
-        public SomerenUI()
+        private User user;
+        public SomerenUI(User user)
         {
+            this.user = user;
             InitializeComponent();
 
 
@@ -245,7 +246,6 @@ namespace SomerenUI
                 RevenueService revenueService = new RevenueService();
                 RevenueReport report = revenueService.GetReport();
 
-                MessageBox.Show($"{report.Sales}/{report.Turnover}/{report.NumberOfCustomers}");
                 ListViewItem lvi = new ListViewItem(Convert.ToString(report.Sales));
                 lvi.SubItems.Add(Convert.ToString(report.Turnover));
                 lvi.SubItems.Add(Convert.ToString(report.NumberOfCustomers));
@@ -1161,17 +1161,13 @@ namespace SomerenUI
                         activitySupervicersService.DeleteActivity(activityid, Unchekedteachers);
                         return true;
 
-                    break;
-
                     case DialogResult.Cancel:
 
                         return false;
 
-                    break;
 
                     default:
                         return false;
-                    break;
                 }
               
             }
@@ -1221,6 +1217,19 @@ namespace SomerenUI
 
 
             //int teacherid = teachers[0].Number;
+        }
+
+        private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoginUI loginUI = new LoginUI();
+            this.Hide();
+            loginUI.ShowDialog();
+            this.Close();
         }
     }
 
