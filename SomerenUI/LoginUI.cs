@@ -99,10 +99,7 @@ namespace SomerenUI
             return false;
         }
 
-        private void btnForgotPassword_Click(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
@@ -204,6 +201,67 @@ namespace SomerenUI
         private void btnRegisterReturn_Click(object sender, EventArgs e)
         {
             pnlRegister.Hide();
+        }
+
+
+        private void AddpasswordVield()
+        {
+         
+
+            TextBox textBox = new TextBox();
+            textBox.Name = "Password";
+            textBox.TabIndex = 7;
+            textBox.Width = 145;
+            textBox.Location = new Point(100, 120);
+
+            forgotgroupbox.Controls.Add(textBox);
+
+
+            Label label = new Label();
+            label.Name = "passwordlabel";
+            label.Text = "new password";
+            label.TabIndex = 6;
+            label.Location = new Point(10,122);
+
+            forgotgroupbox.Controls.Add(label);
+
+            check.Click -= check_Click;
+            check.Click += submit_Click;
+            check.Text = "submit";
+
+
+        }
+
+        private void btnForgotPassword_Click(object sender, EventArgs e)
+        {
+            string username = txtUsername.Text;
+            string password = txtPassword.Text;
+            usernameField.Text = username;
+            User user = new User(username, password);
+            forgotpassword.Show();
+        }
+
+        
+
+        private void returnButon_Click(object sender, EventArgs e)
+        {
+          
+            forgotpassword.Hide();
+        }
+
+     
+
+        private void check_Click(object sender, EventArgs e)
+        {
+            AddpasswordVield();
+
+        }
+        private void submit_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("test");
+            check.Click -= submit_Click;
+            forgotpassword.Hide();
+
         }
     }
 }

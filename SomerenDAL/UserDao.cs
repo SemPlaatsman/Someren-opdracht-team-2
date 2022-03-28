@@ -47,5 +47,32 @@ namespace SomerenDAL
             }
             return Convert.ToBoolean(dataTable.Rows[0]["admin"]);
         }
+        public bool UpdateUser(User user)
+        {
+            string query = "UPDATE User" +
+                "SET pasword = @pasword" +
+                "WHERE secretAnswer = @answer and secretQuestion = @question";
+            SqlParameter[] sqlParameters = new SqlParameter[3]
+            {
+                new SqlParameter("@username", user.Username),
+                new SqlParameter("@password", user.Password),
+                new SqlParameter("@admin", user.Admin)
+            };
+            return ExecuteEditQuery(query, sqlParameters);
+        }
+        public void GetGetquestion(User user)
+        {
+            string query = "SELECT Users.secretAnswer , Users.secretQuestion" +
+                "FROM Users" +
+                "WHERE username = @username";
+            SqlParameter[] sqlParameters = new SqlParameter[1]
+           {
+                new SqlParameter("@username", user.Username)
+
+           };
+
+            ExecuteSelectQuery(query, sqlParameters);
+
+        }
     }
 }

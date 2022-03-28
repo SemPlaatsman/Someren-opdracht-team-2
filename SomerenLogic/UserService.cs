@@ -27,5 +27,9 @@ namespace SomerenLogic
         {
             return userdb.RegisterUser(user);
         }
+        public void Getquestion(User user)
+        {
+            userdb.GetGetquestion(user);
+        }
     }
 }
