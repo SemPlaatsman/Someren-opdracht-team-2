@@ -1561,7 +1561,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader14;
         private System.Windows.Forms.ToolStripMenuItem supervisorsToolStripMenuItem;
         
-        private System.Windows.Forms.Label label17;
         private System.Windows.Forms.ColumnHeader id;
         private System.Windows.Forms.Panel activitie2pannel;
         private System.Windows.Forms.CheckedListBox supervisorsCheckedlist;
