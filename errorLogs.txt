@@ -121,3 +121,12 @@ The statement has been terminated.
 The statement has been terminated.
 [25-3-2022 18:36:09] : Violation of PRIMARY KEY constraint 'PK_ActivityStudent'. Cannot insert duplicate key in object 'dbo.ActivityStudent'. The duplicate key value is (4, 4).
 The statement has been terminated.
+[29/03/2022 11:10:08] : Incorrect syntax near 'username'.
+[29/03/2022 11:10:11] : Incorrect syntax near 'username'.
+[29/03/2022 12:04:14] : Incorrect syntax near 'username'.
+[29/03/2022 12:05:23] : Incorrect syntax near 'username'.
+[29/03/2022 12:07:31] : Incorrect syntax near 'username'.
+[29/03/2022 12:08:58] : Incorrect syntax near 'username'.
+[29/03/2022 12:12:44] : Incorrect syntax near 'username'.
+[29/03/2022 12:13:25] : Incorrect syntax near 'username'.
+[29/03/2022 12:13:54] : Incorrect syntax near 'username'.

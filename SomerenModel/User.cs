@@ -14,6 +14,10 @@ namespace SomerenModel
 
         public bool? Admin { get; set; }
 
+        public  UserQuestion  question{ get; set; }
+    
+
+
         public User(string username, string password)
         {
             Username = username;

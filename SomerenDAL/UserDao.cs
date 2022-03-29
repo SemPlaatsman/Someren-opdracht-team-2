@@ -60,10 +60,13 @@ namespace SomerenDAL
             };
             return ExecuteEditQuery(query, sqlParameters);
         }
-        public void GetGetquestion(User user)
+
+        public UserQuestion GetGetquestion(User user)
         {
-            string query = "SELECT Users.secretAnswer , Users.secretQuestion" +
-                "FROM Users" +
+          
+
+            string query = "SELECT  Users.secretAnswer , Users.secretQuestion " +
+                "FROM Users " +
                 "WHERE username = @username";
             SqlParameter[] sqlParameters = new SqlParameter[1]
            {
@@ -71,8 +74,26 @@ namespace SomerenDAL
 
            };
 
-            ExecuteSelectQuery(query, sqlParameters);
+           return ReadUserQuestion(ExecuteSelectQuery(query, sqlParameters));
 
         }
+        UserQuestion ReadUserQuestion(DataTable dt)
+        {
+            UserQuestion userQuestion;
+            try
+            {
+                DataRow dr = dt.Rows[0];
+                userQuestion = new UserQuestion((string)dr["secretQuestion"], (string)dr["secretAnswer"]);
+            }
+            catch
+            {
+                userQuestion = new UserQuestion(null,null);
+            }
+          
+                return userQuestion;
+            
+
+        }
+
     }
 }

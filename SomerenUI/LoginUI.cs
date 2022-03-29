@@ -206,6 +206,8 @@ namespace SomerenUI
 
         private void AddpasswordVield()
         {
+            questionlabel.Enabled = true;
+            antwoord.Enabled = true;
          
 
             TextBox textBox = new TextBox();
@@ -232,24 +234,88 @@ namespace SomerenUI
 
         }
 
+        private void AddQuestion()
+        {
+            questionlabel.Enabled = false;
+            antwoord.Enabled = false;
+            check.Enabled = false;
+            check.Click-= check_Click;
+            check.Click += GetQuestion;
+        }
+        
+        //forgot password button
         private void btnForgotPassword_Click(object sender, EventArgs e)
         {
+            usernameField.Text = null;
+
             string username = txtUsername.Text;
             string password = txtPassword.Text;
-            usernameField.Text = username;
+
             User user = new User(username, password);
-            forgotpassword.Show();
+
+            UserService userservice = new UserService();
+
+            UserQuestion question = userservice.Getquestion(user);
+
+            if(question.question != null )
+            {
+                forgotpassword.Show();
+                usernameField.Text = username;
+                questionlabel.Text = question.question;
+            }
+            else
+            {
+                MessageBox.Show("please fill in your username");
+                AddQuestion();
+                forgotpassword.Show();
+
+            }
+            
+
+            
         }
 
-        
 
+
+        //return buttons
         private void returnButon_Click(object sender, EventArgs e)
         {
           
             forgotpassword.Hide();
         }
 
-     
+        private void GetQuestion(object sender, EventArgs e)
+        {
+            string username = usernameField.Text;
+
+            string password = null;
+
+            User user = new User(username, password);
+
+            UserService userservice = new UserService();
+
+            UserQuestion question = userservice.Getquestion(user);
+            if( question.question != null)
+            {
+                questionlabel.Text=question.question;
+                questionlabel.Enabled = true;
+                antwoord.Enabled = true;
+                check.Click -= GetQuestion;
+                check.Click += check_Click;
+            }
+            else
+            {
+                MessageBoxButtons buttons = MessageBoxButtons.RetryCancel;
+                DialogResult result =  MessageBox.Show("you seem to not be registerd", "invalid password", buttons);
+
+                if(result == DialogResult.Cancel)
+                {
+                    forgotpassword.Hide();
+                }
+
+            }
+
+        }
 
         private void check_Click(object sender, EventArgs e)
         {
@@ -262,6 +328,14 @@ namespace SomerenUI
             check.Click -= submit_Click;
             forgotpassword.Hide();
 
+        }
+
+        private void usernameField_TextChanged(object sender, EventArgs e)
+        {
+            if (!questionlabel.Enabled)
+            {
+                check.Enabled = true;
+            }
         }
     }
 }

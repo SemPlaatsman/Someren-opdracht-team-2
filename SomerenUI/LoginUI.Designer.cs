@@ -488,6 +488,7 @@ namespace SomerenUI
             this.usernameField.Name = "usernameField";
             this.usernameField.Size = new System.Drawing.Size(179, 20);
             this.usernameField.TabIndex = 1;
+            this.usernameField.TextChanged += new System.EventHandler(this.usernameField_TextChanged);
             // 
             // antwoord
             // 
@@ -517,7 +518,7 @@ namespace SomerenUI
             // 
             // check
             // 
-            this.check.Location = new System.Drawing.Point(252, 234);
+            this.check.Location = new System.Drawing.Point(265, 160);
             this.check.Name = "check";
             this.check.Size = new System.Drawing.Size(75, 23);
             this.check.TabIndex = 0;
