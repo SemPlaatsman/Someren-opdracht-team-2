@@ -206,8 +206,14 @@ namespace SomerenUI
 
         private void AddpasswordVield()
         {
-            questionlabel.Enabled = true;
-            antwoord.Enabled = true;
+
+            usernamelabel.Enabled = false;
+            usernameField.Enabled = false;
+            questionlabel.Enabled = false;
+            antwoord.Enabled = false;
+
+
+            
          
 
             TextBox textBox = new TextBox();
@@ -234,6 +240,26 @@ namespace SomerenUI
 
         }
 
+        private void reset()
+        {
+            usernamelabel.Enabled = true;
+            usernameField.Enabled = true;
+          
+            usernameField.Text ="";
+            questionlabel.Text = "question";
+            antwoord.Text="";
+
+            for (int i = forgotgroupbox.Controls.Count - 1; i >= 0; i--)
+            {
+                Control c = forgotgroupbox.Controls[i];
+                if (c.Name == "passwordlabel" || c.Name == "Password")
+                {
+                    forgotgroupbox.Controls.RemoveAt(i);
+                }
+            }
+        }
+
+
         private void AddQuestion()
         {
             questionlabel.Enabled = false;
@@ -243,9 +269,14 @@ namespace SomerenUI
             check.Click += GetQuestion;
         }
         
+ 
+
         //forgot password button
         private void btnForgotPassword_Click(object sender, EventArgs e)
         {
+
+            reset();
+
             usernameField.Text = null;
 
             string username = txtUsername.Text;
@@ -277,8 +308,9 @@ namespace SomerenUI
         //return buttons
         private void returnButon_Click(object sender, EventArgs e)
         {
-          
             forgotpassword.Hide();
+            
+
         }
 
         private void GetQuestion(object sender, EventArgs e)
@@ -297,6 +329,7 @@ namespace SomerenUI
                 questionlabel.Text=question.question;
                 questionlabel.Enabled = true;
                 antwoord.Enabled = true;
+                usernameField.Enabled = false;
                 check.Click -= GetQuestion;
                 check.Click += check_Click;
             }
@@ -336,7 +369,6 @@ namespace SomerenUI
 
             if (Questionanswer.answer != null )
             {
-
                 AddpasswordVield();
 
             }
@@ -344,9 +376,43 @@ namespace SomerenUI
         }
         private void submit_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("test");
-            check.Click -= submit_Click;
-            forgotpassword.Hide();
+
+            //get data from form
+            string question = questionlabel.Text;
+            string answer = antwoord.Text;
+            string password = forgotgroupbox.Controls[4].Text;
+
+
+            //hash preparation
+            PasswordWithSaltHasher passwordWithSalt = new PasswordWithSaltHasher();
+
+            byte[] saltBytes = passwordWithSalt.GetSaltBytes();
+            //hash password
+            string paswordhashed =  passwordWithSalt.HashWithSalt(password,saltBytes,SHA512.Create()).Digest;
+            //hashanswer
+            string answerhashed = passwordWithSalt.HashWithSalt(answer, saltBytes, SHA512.Create()).Digest;
+
+            //setup question
+            UserQuestion userquestion = new UserQuestion(question, answerhashed);
+
+
+            //setup user to be updated
+            User user = new User(usernameField.Text, paswordhashed);
+            user.question = userquestion;
+
+            //update password
+            UserService userservice = new UserService();
+            if (userservice.UpdatePassword(user))
+            {
+                check.Click -= submit_Click;
+                forgotpassword.Hide();
+            }
+            else
+            {
+                MessageBoxIcon icon = MessageBoxIcon.Error;
+                MessageBox.Show("somethingwent wrong");
+            }
+         
 
         }
 

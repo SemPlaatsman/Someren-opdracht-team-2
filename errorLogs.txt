@@ -145,3 +145,6 @@ The multi-part identifier "Users.usernameFROM" could not be bound.
 [30/03/2022 13:08:10] : Invalid column name 'username'.
 Invalid column name 'secretAnswer'.
 The multi-part identifier "Users.usernameFROM" could not be bound.
+[30/03/2022 15:08:06] : A transport-level error has occurred when receiving results from the server. (provider: TCP Provider, error: 0 - The semaphore timeout period has expired.)
+[30/03/2022 16:45:51] : Incorrect syntax near 'pasword'.
+[30/03/2022 16:53:21] : Incorrect syntax near the keyword 'User'.

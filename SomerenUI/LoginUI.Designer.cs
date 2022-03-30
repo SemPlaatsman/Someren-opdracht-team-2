@@ -518,7 +518,8 @@ namespace SomerenUI
             // 
             // check
             // 
-            this.check.Location = new System.Drawing.Point(265, 160);
+            this.check.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.check.Location = new System.Drawing.Point(252, 314);
             this.check.Name = "check";
             this.check.Size = new System.Drawing.Size(75, 23);
             this.check.TabIndex = 0;

@@ -49,15 +49,15 @@ namespace SomerenDAL
         }
         public bool UpdateUser(User user)
         {
-            string query = "UPDATE User" +
-                "SET pasword = @pasword" +
+            string query = "UPDATE Users " +
+                "SET password = @password " +
                 "WHERE username= @username and secretAnswer = @answer and secretQuestion = @question";
             SqlParameter[] sqlParameters = new SqlParameter[4]
             {
                 new SqlParameter("@username", user.Username),
                 new SqlParameter("@password", user.Password),
-                new SqlParameter("@answer", user.Admin),
-                new SqlParameter("@question", user.question)
+                new SqlParameter("@answer", user.question.answer),
+                new SqlParameter("@question", user.question.question)
 
 
             };
