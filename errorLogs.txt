@@ -130,3 +130,18 @@ The statement has been terminated.
 [29/03/2022 12:12:44] : Incorrect syntax near 'username'.
 [29/03/2022 12:13:25] : Incorrect syntax near 'username'.
 [29/03/2022 12:13:54] : Incorrect syntax near 'username'.
+[30/03/2022 12:47:02] : Incorrect syntax near ','.
+[30/03/2022 12:48:59] : Incorrect syntax near ','.
+[30/03/2022 12:49:32] : Incorrect syntax near ','.
+[30/03/2022 13:00:18] : Incorrect syntax near ','.
+[30/03/2022 13:03:12] : Incorrect syntax near ','.
+[30/03/2022 13:03:25] : Incorrect syntax near ','.
+[30/03/2022 13:05:05] : Incorrect syntax near ','.
+[30/03/2022 13:05:49] : Incorrect syntax near ','.
+[30/03/2022 13:06:23] : Incorrect syntax near ','.
+[30/03/2022 13:07:17] : Invalid column name 'username'.
+Invalid column name 'secretAnswer'.
+The multi-part identifier "Users.usernameFROM" could not be bound.
+[30/03/2022 13:08:10] : Invalid column name 'username'.
+Invalid column name 'secretAnswer'.
+The multi-part identifier "Users.usernameFROM" could not be bound.

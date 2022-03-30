@@ -268,13 +268,10 @@ namespace SomerenUI
                 MessageBox.Show("please fill in your username");
                 AddQuestion();
                 forgotpassword.Show();
-
             }
-            
 
-            
+
         }
-
 
 
         //return buttons
@@ -317,9 +314,32 @@ namespace SomerenUI
 
         }
 
+
+
+
         private void check_Click(object sender, EventArgs e)
         {
-            AddpasswordVield();
+            string username = usernameField.Text;
+            string question = questionlabel.Text;
+            string answer = antwoord.Text;
+
+
+            PasswordWithSaltHasher pwHasher = new PasswordWithSaltHasher();
+            byte[] saltBytes = pwHasher.GetSaltBytes();
+            HashWithSaltResult hashResult = pwHasher.HashWithSalt(answer, saltBytes, SHA512.Create());
+
+            User user = new User(username, null);
+            user.question = new UserQuestion(question, hashResult.Digest);
+
+            UserService userservice = new UserService();
+             UserQuestion Questionanswer =   userservice.GetAnswer(user);
+
+            if (Questionanswer.answer != null )
+            {
+
+                AddpasswordVield();
+
+            }
 
         }
         private void submit_Click(object sender, EventArgs e)
