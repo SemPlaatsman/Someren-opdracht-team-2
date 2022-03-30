@@ -132,3 +132,7 @@ The statement has been terminated.
 [29/03/2022 12:13:54] : Incorrect syntax near 'username'.
 [30-3-2022 18:56:38] : Cannot insert duplicate key row in object 'dbo.Users' with unique index 'IX_Users_username'. The duplicate key value is (frank@infhaarlem.nl).
 The statement has been terminated.
+[30-3-2022 20:32:56] : Violation of PRIMARY KEY constraint 'PK_ActivitySupervisor'. Cannot insert duplicate key in object 'dbo.ActivitySupervisor'. The duplicate key value is (2, 1).
+The statement has been terminated.
+[30-3-2022 20:32:56] : Violation of PRIMARY KEY constraint 'PK_ActivitySupervisor'. Cannot insert duplicate key in object 'dbo.ActivitySupervisor'. The duplicate key value is (4, 1).
+The statement has been terminated.

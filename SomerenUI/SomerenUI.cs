@@ -27,11 +27,11 @@ namespace SomerenUI
             showPanel("Dashboard");
             if (user.Admin == false)
             {
-                DisableCRUDFunctions();
+                DisableCUDFunctions();
             }
         }
 
-        private void DisableCRUDFunctions()
+        private void DisableCUDFunctions()
         {
             btnClearDrinksTxtBoxes.Enabled = false;
             btnAdd.Enabled = false;
@@ -44,7 +44,8 @@ namespace SomerenUI
             BtnActivityClear.Enabled = false;
             btnParticipantAdd.Enabled = false;
             btnParticipantRemove.Enabled = false;
-
+            supervisorsCheckedlist.Enabled = false;
+            drinksSelectionCheckout.Enabled = false;
         }
 
         //method that shows a specific panel
