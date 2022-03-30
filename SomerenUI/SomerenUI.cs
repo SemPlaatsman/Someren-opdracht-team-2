@@ -20,13 +20,20 @@ namespace SomerenUI
         {
             this.user = user;
             InitializeComponent();
-
-
         }
 
         private void SomerenUI_Load(object sender, EventArgs e)
         {
             showPanel("Dashboard");
+            if (user.Admin == false)
+            {
+                DisableCUDFunctions();
+            }
+        }
+
+        private void DisableCUDFunctions()
+        {
+
         }
 
         //method that shows a specific panel
