@@ -27,12 +27,23 @@ namespace SomerenUI
             showPanel("Dashboard");
             if (user.Admin == false)
             {
-                DisableCUDFunctions();
+                DisableCRUDFunctions();
             }
         }
 
-        private void DisableCUDFunctions()
+        private void DisableCRUDFunctions()
         {
+            btnClearDrinksTxtBoxes.Enabled = false;
+            btnAdd.Enabled = false;
+            btnUpdate.Enabled = false;
+            btnDelete.Enabled = false;
+            orderButon.Enabled = false;
+            btnActivityAdd.Enabled = false;
+            btnActivityUpdate.Enabled = false;
+            btnActivityDelete.Enabled = false;
+            BtnActivityClear.Enabled = false;
+            btnParticipantAdd.Enabled = false;
+            btnParticipantRemove.Enabled = false;
 
         }
 
