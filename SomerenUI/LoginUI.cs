@@ -74,6 +74,7 @@ namespace SomerenUI
                 {
                     throw new SomerenException("Username/password combination was incorrect!");
                 }
+                lblErrorMessage.Text = string.Empty;
             }
             catch (SomerenException sex)
             {
@@ -175,6 +176,7 @@ namespace SomerenUI
                 }
                 MessageBox.Show($"{user.Username} has been registered");
                 EmptyRegisterBoxes();
+                lblErrorRegister.Text = string.Empty;
             }
             catch (SomerenException sex)
             {
