@@ -27,12 +27,6 @@ namespace SomerenLogic
             return drinks;
         }
 
-        public List<Drink> GetDrinksByID(int ID)
-        {
-            List<Drink> drinks = drinkdb.GetDrinkByid(ID);
-            return drinks;
-        }
-
         //command to add a drink with the drinkdb
         public void AddDrink(Drink drink)
         {
