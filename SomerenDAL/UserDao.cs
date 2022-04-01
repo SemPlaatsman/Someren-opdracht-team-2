@@ -49,14 +49,17 @@ namespace SomerenDAL
         }
         public bool UpdateUser(User user)
         {
-            string query = "UPDATE User" +
-                "SET pasword = @pasword" +
-                "WHERE secretAnswer = @answer and secretQuestion = @question";
-            SqlParameter[] sqlParameters = new SqlParameter[3]
+            string query = "UPDATE Users " +
+                "SET password = @password " +
+                "WHERE username= @username and secretAnswer = @answer and secretQuestion = @question";
+            SqlParameter[] sqlParameters = new SqlParameter[4]
             {
                 new SqlParameter("@username", user.Username),
                 new SqlParameter("@password", user.Password),
-                new SqlParameter("@admin", user.Admin)
+                new SqlParameter("@answer", user.question.answer),
+                new SqlParameter("@question", user.question.question)
+
+
             };
             return ExecuteEditQuery(query, sqlParameters);
         }
@@ -77,6 +80,28 @@ namespace SomerenDAL
            return ReadUserQuestion(ExecuteSelectQuery(query, sqlParameters));
 
         }
+
+        public UserQuestion GetAnswer(User user)
+        {
+
+
+            string query = "SELECT Users.secretAnswer , Users.secretQuestion " +
+                "FROM Users " +
+                "WHERE username = @username AND secretAnswer = @secretAnswer " ;
+            SqlParameter[] sqlParameters = new SqlParameter[2]
+           {
+                new SqlParameter("@username", user.Username),
+                new SqlParameter("@secretAnswer", user.question.answer)
+
+
+           };
+
+            return ReadUserQuestion(ExecuteSelectQuery(query, sqlParameters));
+
+        }
+
+
+
         UserQuestion ReadUserQuestion(DataTable dt)
         {
             UserQuestion userQuestion;

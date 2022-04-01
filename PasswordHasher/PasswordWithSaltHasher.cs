@@ -10,6 +10,7 @@ namespace PasswordHasher
 {
     public class PasswordWithSaltHasher
     {
+
         public HashWithSaltResult HashWithSalt(string password, byte[] saltBytes, HashAlgorithm hashAlgo)
         {
             byte[] passwordAsBytes = Encoding.UTF8.GetBytes(password);
