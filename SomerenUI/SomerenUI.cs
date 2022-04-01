@@ -1,5 +1,6 @@
 ﻿using SomerenLogic;
 using SomerenModel;
+using ErrorHandlers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -213,6 +214,7 @@ namespace SomerenUI
             }
             catch (Exception ex)
             {
+                ErrorLogger.WriteLogToFile(ex.Message);
                 MessageBox.Show("Something went wrong while selecting a drink: " + ex.Message);
             }
         }
@@ -254,6 +256,7 @@ namespace SomerenUI
             }
             catch (Exception e)
             {
+                ErrorLogger.WriteLogToFile(e.Message);
                 MessageBox.Show("Something went wrong while loading the drinks: " + e.Message);
             }
         }
@@ -277,6 +280,7 @@ namespace SomerenUI
 
             catch (Exception excep)
             {
+                ErrorLogger.WriteLogToFile(excep.Message);
                 MessageBox.Show("Something went wrong while loading the revenue report: " + excep.Message);
             }
         }
@@ -305,6 +309,7 @@ namespace SomerenUI
             }
             catch (Exception e)
             {
+                ErrorLogger.WriteLogToFile(e.Message);
                 MessageBox.Show("Something went wrong while loading the teachers: " + e.Message);
             }
         }
@@ -333,6 +338,7 @@ namespace SomerenUI
             }
             catch (Exception e)
             {
+                ErrorLogger.WriteLogToFile(e.Message);
                 MessageBox.Show("Something went wrong while loading the students: " + e.Message);
             }
         }
@@ -359,6 +365,7 @@ namespace SomerenUI
             }
             catch (Exception e)
             {
+                ErrorLogger.WriteLogToFile(e.Message);
                 MessageBox.Show("Something went wrong while loading the rooms: " + e.Message);
             }
         }
@@ -388,6 +395,7 @@ namespace SomerenUI
             }
             catch (Exception e)
             {
+                ErrorLogger.WriteLogToFile(e.Message);
                 MessageBox.Show("Something went wrong while loading the drinks: " + e.Message);
             }
 
@@ -417,6 +425,7 @@ namespace SomerenUI
             }
             catch (Exception e)
             {
+                ErrorLogger.WriteLogToFile(e.Message);
                 MessageBox.Show("Something went wrong while loading the drinks: " + e.Message);
             }
 
@@ -488,8 +497,7 @@ namespace SomerenUI
                 //if a textbox of Drinks isn't filled say that all textboxes must be filled
                 if (DrinksBoxesFilled())
                 {
-                    MessageBox.Show("Please fill all textboxes!");
-                    return;
+                    throw new SomerenException("Please fill all textboxes!");
                 }
                 //make a new Drink object with all values from the textboxes
                 Drink drink = GetDrinkFromTxtBoxes();
@@ -500,8 +508,13 @@ namespace SomerenUI
                 //Clear all textboxes in the Drinks panel
                 ClearDrinksTxtBoxes();
             }
+            catch (SomerenException somerenException)
+            {
+                MessageBox.Show(somerenException.Message);
+            }
             catch (Exception exception)
             {
+                ErrorLogger.WriteLogToFile(exception.Message);
                 MessageBox.Show("Something went wrong while adding a drink: " + exception.Message);
             }
         }
@@ -516,14 +529,12 @@ namespace SomerenUI
                 //if a row wasn't selected say that a row must be selected
                 if (listViewDrinks.SelectedItems.Count == 0)
                 {
-                    MessageBox.Show("Please select a row before updating one");
-                    return;
+                    throw new SomerenException("Please select a row before updating one");
                 }
                 //if a textbox of Drinks isn't filled say that all textboxes must be filled
                 if (DrinksBoxesFilled())
                 {
-                    MessageBox.Show("Please fill all textboxes!");
-                    return;
+                    throw new SomerenException("Please fill all textboxes!");
                 }
                 //make a new Drink object with all values from the textboxes
                 Drink drink = GetDrinkFromTxtBoxes();
@@ -534,8 +545,13 @@ namespace SomerenUI
                 //Clear all textboxes in the Drinks panel
                 ClearDrinksTxtBoxes();
             }
+            catch (SomerenException somerenException)
+            {
+                MessageBox.Show(somerenException.Message);
+            }
             catch (Exception exception)
             {
+                ErrorLogger.WriteLogToFile(exception.Message);
                 MessageBox.Show("Something went wrong while updating a drink: " + exception.Message);
             }
         }
@@ -550,8 +566,7 @@ namespace SomerenUI
                 //if a row wasn't selected say that a row must be selected
                 if (listViewDrinks.SelectedItems.Count == 0)
                 {
-                    MessageBox.Show("Please select a row before deleting one");
-                    return;
+                    throw new SomerenException("Please select a row before deleting one");
                 }
                 if (MessageBox.Show("Are you sure you want to delete this row?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No) { return; }
                 //update the selected drink in the Drinks database
@@ -561,8 +576,13 @@ namespace SomerenUI
                 //Clear all textboxes in the Drinks panel
                 ClearDrinksTxtBoxes();
             }
+            catch (SomerenException somerenException)
+            {
+                MessageBox.Show(somerenException.Message);
+            }
             catch (Exception exception)
             {
+                ErrorLogger.WriteLogToFile(exception.Message);
                 MessageBox.Show("Something went wrong while deleting a drink: " + exception.Message);
             }
         }
@@ -718,6 +738,7 @@ namespace SomerenUI
             }
             catch (Exception e)
             {
+                ErrorLogger.WriteLogToFile(e.Message);
                 MessageBox.Show("Something went wrong while loading the activities: " + e.Message);
             }
         }
@@ -740,6 +761,7 @@ namespace SomerenUI
             }
             catch (Exception ex)
             {
+                ErrorLogger.WriteLogToFile(ex.Message);
                 MessageBox.Show("Something went wrong while selecting an activity: " + ex.Message);
             }
         }
@@ -755,20 +777,17 @@ namespace SomerenUI
                 //if a textbox of Activities isn't filled say that all textboxes must be filled
                 if (ActivityBoxEmpty())
                 {
-                    MessageBox.Show("Please fill all textboxes!");
-                    return;
+                    throw new SomerenException("Please fill all textboxes!");
                 }
                 //if the entered activity name has already been added say that the activity has already been added
                 if (ActivityNameWasAdded(txtActivityName.Text))
                 {
-                    MessageBox.Show("This activity has already been added!");
-                    return;
+                    throw new SomerenException("This activity has already been added!");
                 }
                 //if the start date is before the end date say that the start date can't be before the end date
                 if (dateTimeStart.Value > dateTimeEnd.Value)
                 {
-                    MessageBox.Show("The start date can't be before the end date!");
-                    return;
+                    throw new SomerenException("The start date can't be before the end date!");
                 }
                 //make a new Activity object with all values from the textboxes
                 Activity activity = GetActivityFromTxtBoxes();
@@ -779,8 +798,13 @@ namespace SomerenUI
                 //Clear all textboxes in the activities panel
                 ClearActivityTxtBoxes();
             }
+            catch (SomerenException somerenException)
+            {
+                MessageBox.Show(somerenException.Message);
+            }
             catch (Exception exception)
             {
+                ErrorLogger.WriteLogToFile(exception.Message);
                 MessageBox.Show("Something went wrong while adding an activity: " + exception.Message);
             }
         }
@@ -794,26 +818,22 @@ namespace SomerenUI
                 //if a row wasn't selected say that a row must be selected
                 if (listViewActivities.SelectedItems.Count == 0)
                 {
-                    MessageBox.Show("Please select a row before updating one");
-                    return;
+                    throw new SomerenException("Please select a row before updating one");
                 }
                 //if a textbox of activities isn't filled say that all textboxes must be filled
                 if (ActivityBoxEmpty())
                 {
-                    MessageBox.Show("Please fill all textboxes!");
-                    return;
+                    throw new SomerenException("Please fill all textboxes!");
                 }
                 //if the entered activity name has already been added say that the activity has already been added
                 if (ActivityNameWasAdded(txtActivityName.Text) && txtActivityName.Text != ((Activity)listViewActivities.SelectedItems[0].Tag).Name)
                 {
-                    MessageBox.Show("This activity has already been added!");
-                    return;
+                    throw new SomerenException("This activity has already been added!");
                 }
                 //if the start date is before the end date say that the start date can't be before the end date
                 if (dateTimeStart.Value > dateTimeEnd.Value)
                 {
-                    MessageBox.Show("The start date can't be before the end date!");
-                    return;
+                    throw new SomerenException("The start date can't be before the end date!");
                 }
                 //make a new Activity object with all values from the textboxes
                 Activity activity = GetActivityFromTxtBoxes();
@@ -824,8 +844,13 @@ namespace SomerenUI
                 //Clear all textboxes in the activities panel
                 ClearActivityTxtBoxes();
             }
+            catch (SomerenException somerenException)
+            {
+                MessageBox.Show(somerenException.Message);
+            }
             catch (Exception exception)
             {
+                ErrorLogger.WriteLogToFile(exception.Message);
                 MessageBox.Show("Something went wrong while updating an activity: " + exception.Message);
             }
         }
@@ -839,8 +864,7 @@ namespace SomerenUI
                 //if a row wasn't selected say that a row must be selected
                 if (listViewActivities.SelectedItems.Count == 0)
                 {
-                    MessageBox.Show("Please select a row before deleting one");
-                    return;
+                    throw new SomerenException("Please select a row before deleting one");
                 }
                 if (MessageBox.Show("Are you sure you want to delete this activity?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes) { return; }
                 //update the selected activity in the Activities database
@@ -850,8 +874,13 @@ namespace SomerenUI
                 //Clear all textboxes in the activities panel
                 ClearActivityTxtBoxes();
             }
+            catch (SomerenException somerenException)
+            {
+                MessageBox.Show(somerenException.Message);
+            }
             catch (Exception exception)
             {
+                ErrorLogger.WriteLogToFile(exception.Message);
                 MessageBox.Show("Something went wrong while deleting a drink: " + exception.Message);
             }
         }
@@ -940,6 +969,7 @@ namespace SomerenUI
             }
             catch (Exception e)
             {
+                ErrorLogger.WriteLogToFile(e.Message);
                 MessageBox.Show("Something went wrong while loading the participants: " + e.Message);
             }
         }
@@ -968,6 +998,7 @@ namespace SomerenUI
             }
             catch (Exception e)
             {
+                ErrorLogger.WriteLogToFile(e.Message);
                 MessageBox.Show("Something went wrong while loading the student activities: " + e.Message);
             }
 
@@ -989,15 +1020,19 @@ namespace SomerenUI
                 };
                 if (ParticipantWasAdded(participant))
                 {
-                    return;
+                    throw new SomerenException("This participant was already added!");
                 }
                 participantService.AddParticipant(participant);
                 AddActivityParticipantsToList();
 
             }
-
+            catch (SomerenException somerenException)
+            {
+                MessageBox.Show(somerenException.Message);
+            }
             catch (Exception ex)
             {
+                ErrorLogger.WriteLogToFile(ex.Message);
                 MessageBox.Show("Something went wrong while adding a participant: " + ex.Message);
             }
 
@@ -1011,7 +1046,7 @@ namespace SomerenUI
                 Participant lviParticipant = (Participant)lvi.Tag;
                 if (lviParticipant.ActivityId == participant.ActivityId && lviParticipant.StudentId == participant.StudentId)
                 {
-                    MessageBox.Show("This Participant was already added!");
+                    //MessageBox.Show("This Participant was already added!");
                     return true;
                 }
             }
@@ -1032,6 +1067,7 @@ namespace SomerenUI
             }
             catch (Exception exc)
             {
+                ErrorLogger.WriteLogToFile(exc.Message);
                 MessageBox.Show("Something went wrong while removing a participant: " + exc.Message);
             }
         }
@@ -1155,7 +1191,7 @@ namespace SomerenUI
 
      
        private  bool ValidateChange(CheckedListBox c,int activityid)
-        {
+       {
             ActivitySupervicersService activitySupervicersService = new ActivitySupervicersService();
             List<Teacher> Checkedteachers = GetCheckedItems(c);
             List<Teacher> Unchekedteachers = GetUnCheckedItems(c);
@@ -1198,7 +1234,7 @@ namespace SomerenUI
            
 
             
-        }
+       }
 
         
 
