@@ -246,10 +246,10 @@ namespace SomerenUI
         {
             usernamelabel.Enabled = true;
             usernameField.Enabled = true;
-          
-            usernameField.Text ="";
+
+            usernameField.Text = "";
             questionlabel.Text = "question";
-            antwoord.Text="";
+            antwoord.Text = "";
 
             for (int i = forgotgroupbox.Controls.Count - 1; i >= 0; i--)
             {
@@ -298,9 +298,9 @@ namespace SomerenUI
             }
             else
             {
+                forgotpassword.Show();
                 MessageBox.Show("please fill in your username");
                 AddQuestion();
-                forgotpassword.Show();
             }
 
 
@@ -311,8 +311,7 @@ namespace SomerenUI
         private void returnButon_Click(object sender, EventArgs e)
         {
             forgotpassword.Hide();
-            
-
+            reset();
         }
 
         private void GetQuestion(object sender, EventArgs e)
@@ -378,42 +377,50 @@ namespace SomerenUI
         }
         private void submit_Click(object sender, EventArgs e)
         {
-
-            //get data from form
-            string question = questionlabel.Text;
-            string answer = antwoord.Text;
-            string password = forgotgroupbox.Controls[4].Text;
-
-
-            //hash preparation
-            PasswordWithSaltHasher passwordWithSalt = new PasswordWithSaltHasher();
-
-            byte[] saltBytes = passwordWithSalt.GetSaltBytes();
-            //hash password
-            string paswordhashed =  passwordWithSalt.HashWithSalt(password,saltBytes,SHA512.Create()).Digest;
-            //hashanswer
-            string answerhashed = passwordWithSalt.HashWithSalt(answer, saltBytes, SHA512.Create()).Digest;
-
-            //setup question
-            UserQuestion userquestion = new UserQuestion(question, answerhashed);
-
-
-            //setup user to be updated
-            User user = new User(usernameField.Text, paswordhashed);
-            user.question = userquestion;
-
-            //update password
-            UserService userservice = new UserService();
-            if (userservice.UpdatePassword(user))
+            try
             {
-                check.Click -= submit_Click;
-                forgotpassword.Hide();
+                //get data from form
+                string question = questionlabel.Text;
+                string answer = antwoord.Text;
+                string password = forgotgroupbox.Controls[4].Text;
+
+
+                //hash preparation
+                PasswordWithSaltHasher passwordWithSalt = new PasswordWithSaltHasher();
+
+                byte[] saltBytes = passwordWithSalt.GetSaltBytes();
+                //hash password
+                string paswordhashed = passwordWithSalt.HashWithSalt(password, saltBytes, SHA512.Create()).Digest;
+                //hashanswer
+                string answerhashed = passwordWithSalt.HashWithSalt(answer, saltBytes, SHA512.Create()).Digest;
+
+                //setup question
+                UserQuestion userquestion = new UserQuestion(question, answerhashed);
+
+
+                //setup user to be updated
+                User user = new User(usernameField.Text, paswordhashed);
+                user.question = userquestion;
+
+                //update password
+                UserService userservice = new UserService();
+                if (userservice.UpdatePassword(user))
+                {
+                    check.Click -= submit_Click;
+                    forgotpassword.Hide();
+                }
+                else
+                {
+                    //MessageBoxIcon icon = MessageBoxIcon.Error;
+                    MessageBox.Show("somethingwent wrong", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else
+            catch (Exception excep)
             {
-                MessageBoxIcon icon = MessageBoxIcon.Error;
-                MessageBox.Show("somethingwent wrong");
+                ErrorLogger.WriteLogToFile(excep.Message);
+                MessageBox.Show("Something went wrong while updating your password" + excep.Message);
             }
+            
          
 
         }
