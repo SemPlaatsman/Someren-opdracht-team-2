@@ -31,6 +31,14 @@ namespace SomerenLogic
         {
            return userdb.GetGetquestion(user);
         }
-        
+        public UserQuestion GetAnswer(User user)
+        {
+            return userdb.GetAnswer(user);
+        }
+
+        public bool UpdatePassword(User user)
+        {
+            return userdb.UpdateUser(user);
+        }
     }
 }
