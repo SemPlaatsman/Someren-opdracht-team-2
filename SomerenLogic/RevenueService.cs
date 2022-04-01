@@ -9,19 +9,19 @@ using System.Threading.Tasks;
 
 namespace SomerenLogic
 {
-    public class TeacherService
+    public class RevenueService
     {
-        TeacherDao teacherdb;
+        RevenueDao revenuedb;
 
-        public TeacherService()
+        public RevenueService()
         {
-            teacherdb = new TeacherDao();
+            revenuedb = new RevenueDao();
         }
 
-        public List<Teacher> GetTeachers()
+        public RevenueReport GetReport()
         {
-            List<Teacher> teachers = teacherdb.GetAllTeachers();
-            return teachers;
+            return revenuedb.GetRevenueReport();
         }
+
     }
 }
