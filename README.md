@@ -1,5 +1,5 @@
 # Someren project for InHolland project 'Databases'
-This is a group project for a camping trip to Someren. This project focuses on writing SQL queries combined with C# programming structures while using the three-tier architecture (presentation, application, data).
+This is a group project for a camping trip to Someren. This project focuses on writing SQL queries combined with C# programming while using the three-tier architecture (presentation, application, data).
 
 # My contributions
 - Students
